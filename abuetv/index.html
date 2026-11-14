@@ -300,6 +300,79 @@ p.sub{margin:0;font-size:20px;color:var(--muted)}
 .send b{font-family:var(--f-display);font-size:28px}
 .send p{margin:0;font-size:20px}
 
+/* ---------- juegos ---------- */
+.me[aria-current="page"]{background:var(--primary-soft);border-color:var(--primary)}
+.calm{display:flex;gap:12px;align-items:center;padding:14px 16px;border-radius:18px;background:var(--sand-soft);font-weight:700;font-size:19px;line-height:1.3}
+.calm .ic{color:var(--primary);width:28px;height:28px}
+.gcard{background:var(--surface);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
+.gart{position:relative;aspect-ratio:16/7;max-width:100%;background:var(--g);display:grid;place-items:center;color:#fff}
+.gart::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(255,255,255,.18),transparent 62%)}
+.gart .art{position:relative;z-index:1;font-size:64px;line-height:1;filter:drop-shadow(0 10px 18px rgba(0,0,0,.35))}
+.gart .tag{position:absolute;z-index:2;top:10px;left:10px;font-size:16px;font-weight:700;background:rgba(0,0,0,.45);padding:3px 10px;border-radius:999px}
+.gbody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px}
+.gbody small{font-weight:700;font-size:18px;color:var(--primary)}
+.gbody b{font-family:var(--f-display);font-weight:800;font-size:24px;line-height:1.15}
+.gbody p{margin:0 0 6px;font-size:19px;color:var(--muted)}
+.gpromo{background:var(--surface);padding:14px 0 18px}
+.gpromo .shelf{display:flex;align-items:center;gap:8px}
+.gpromo .shelf .ic{color:var(--primary);width:26px;height:26px}
+.gpromo .gcard{margin:12px 16px 0;box-shadow:inset 0 0 0 1px var(--line)}
+.stat{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 16px;border-radius:16px;background:var(--surface);box-shadow:var(--shadow);font-weight:700;font-size:19px}
+.stat b{font-size:22px;font-variant-numeric:tabular-nums}
+.msg{display:flex;gap:12px;align-items:center;min-height:66px;padding:12px 16px;border-radius:16px;font-size:20px;font-weight:700;line-height:1.25;background:var(--surface);box-shadow:var(--shadow)}
+.msg .ic{width:28px;height:28px;color:var(--primary)}
+.msg.good{background:var(--primary-soft);box-shadow:none}
+.msg.soft{background:var(--sand-soft);box-shadow:none}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.seg button{min-height:64px;border:0;border-radius:14px;background:var(--chip);font-weight:700;font-size:20px;line-height:1.15}
+.seg small{display:block;font-weight:400;font-size:18px}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.mgrid.easy{grid-template-columns:repeat(2,1fr)}
+.mcard{aspect-ratio:4/5;padding:0;border:0;background:none;perspective:900px;border-radius:16px}
+.mgrid.easy .mcard{aspect-ratio:5/4}
+.mcard .inner{position:relative;display:block;width:100%;height:100%;transform-style:preserve-3d;transition:transform .5s ease}
+.mcard.up .inner,.mcard.done .inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;padding:4px}
+.face.back{background:linear-gradient(135deg,#2B2145,#5E4B8B);color:#fff;box-shadow:var(--shadow)}
+.face.back .qm{display:grid;place-items:center;width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.18);font-family:var(--f-display);font-weight:800;font-size:28px}
+.face.back small{font-size:17px;font-weight:700;opacity:.9}
+.face.front{background:var(--surface);transform:rotateY(180deg);box-shadow:inset 0 0 0 2px var(--line)}
+.face.front .em{font-size:46px;line-height:1.1}
+.mgrid.easy .face.front .em{font-size:56px}
+.face.front small{font-size:18px;font-weight:700}
+.mcard.done .face.front{background:var(--primary-soft);box-shadow:none}
+.mcard.done .face.front::after{content:"✓ Pareja";font-size:16px;font-weight:700;color:#fff;background:var(--primary);border-radius:999px;padding:0 8px}
+.qcard{padding:22px 18px 18px;border-radius:22px;background:var(--surface);box-shadow:var(--shadow);text-align:center;display:flex;flex-direction:column;gap:12px}
+.qcard .lbl{margin:0;font-size:18px;font-weight:700;color:var(--muted)}
+.qcard .q{margin:0;font-family:var(--f-display);font-weight:800;font-size:30px;line-height:1.2;text-wrap:balance}
+.qcard .full{margin:0;padding:10px;border-radius:12px;background:var(--primary-soft);font-weight:700;font-size:21px}
+.opt{display:flex;align-items:center;gap:14px;width:100%;min-height:84px;padding:12px 16px;border:0;border-radius:18px;background:var(--surface);box-shadow:inset 0 0 0 2px var(--line);font-weight:700;font-size:23px;line-height:1.2;text-align:left}
+.opt:active{transform:scale(.98)}
+.opt .tag{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--chip);font-size:20px}
+.opt .tag .ic{width:24px;height:24px;stroke-width:3}
+.opt.right{background:var(--primary);color:#fff;box-shadow:none}
+.opt.right .tag{background:rgba(255,255,255,.22)}
+.opt.wrong{background:var(--chip);color:var(--muted);box-shadow:none;text-decoration:line-through}
+.ballbox{display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px;border-radius:22px;background:var(--surface);box-shadow:var(--shadow);font-weight:700;font-size:19px}
+.ball{display:grid;place-items:center;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#EEEAE1);box-shadow:inset 0 -6px 0 rgba(0,0,0,.06),0 6px 16px rgba(30,41,59,.15);font-family:var(--f-display);font-weight:800;font-size:56px;font-variant-numeric:tabular-nums}
+.ball.empty{font-size:19px;font-family:var(--f-body);text-align:center;line-height:1.15;color:var(--muted)}
+.bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:14px;border-radius:22px;background:linear-gradient(135deg,#5C2430,#B5566A)}
+.bhead{grid-column:1/-1;text-align:center;color:#fff;font-family:var(--f-display);font-weight:800;font-size:22px}
+.cell{aspect-ratio:1;border:0;border-radius:16px;background:var(--surface);font-family:var(--f-display);font-weight:800;font-size:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-variant-numeric:tabular-nums}
+.cell:active{transform:scale(.96)}
+.cell.mark{background:var(--primary);color:#fff}
+.cell.mark small{font-family:var(--f-body);font-size:17px;font-weight:700}
+.cell.call{background:var(--sand);animation:callpulse 1.1s ease-in-out infinite}
+@keyframes callpulse{0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}50%{box-shadow:0 0 0 6px rgba(255,255,255,.9)}}
+.history{margin:0;font-size:18px;color:var(--muted)}
+.history b{color:var(--ink)}
+.win{display:flex;flex-direction:column;align-items:center;gap:12px;padding:22px 18px;border-radius:22px;background:var(--primary-soft);text-align:center}
+.win .wico{display:grid;place-items:center;width:72px;height:72px;border-radius:50%;background:var(--primary);color:#fff}
+.win .wico .ic{width:38px;height:38px}
+.win b{font-family:var(--f-display);font-weight:800;font-size:28px}
+.win p{margin:0;font-size:20px}
+
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
@@ -324,8 +397,8 @@ p.sub{margin:0;font-size:20px;color:var(--muted)}
         <nav class="nav" id="nav" aria-label="Secciones principales">
           <button data-act="tab:home" id="navHome"></button>
           <button data-act="tab:shorts" id="navShorts"></button>
+          <button data-act="tab:games" id="navGames"></button>
           <button data-act="tab:saved" id="navSaved"></button>
-          <button data-act="tab:likes" id="navLikes"></button>
         </nav>
       </div>
 
@@ -333,7 +406,7 @@ p.sub{margin:0;font-size:20px;color:var(--muted)}
       <div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle"></div>
     </div>
   </div>
-  <p class="stage-note">AbueTV v0.5 · prototipo para celular. Ábralo en el teléfono para verlo a pantalla completa.</p>
+  <p class="stage-note">AbueTV v0.6 · prototipo para celular. Ábralo en el teléfono para verlo a pantalla completa.</p>
 </div>
 
 <script>
@@ -363,6 +436,10 @@ const I={
   pin:'<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
   spark:'<path d="M12 3l1.8 4.7 4.7 1.8-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/>',
   shorts:'<rect x="6" y="2" width="12" height="20" rx="3"/><polygon points="10.5 9 15 12 10.5 15 10.5 9"/>',
+  dice:'<rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.4" fill="currentColor"/>',
+  bulb:'<path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/>',
+  bell:'<path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>',
+  x:'<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>',
   trash:'<polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>'
 };
 const ic=(n,cls)=>`<svg class="ic ${cls||""}" viewBox="0 0 24 24" aria-hidden="true">${I[n]}</svg>`;
@@ -448,7 +525,8 @@ const PHRASES=[
   {text:"¿Cómo se hacen los tamales?",    go:()=>openPlayer("v05")},
   {text:"Quiero rezar el rosario",        go:()=>openPlayer("v08")},
   {text:"Quiero ver animalitos",          go:()=>filterTo("animales")},
-  {text:"Quiero ver videos cortitos",     go:()=>goTab("shorts")}
+  {text:"Quiero ver videos cortitos",     go:()=>goTab("shorts")},
+  {text:"Quiero jugar a las parejas",     go:()=>startGame("memory")}
 ];
 
 /* ================= ESTADO + MEMORIA DEL TELÉFONO ================= */
@@ -526,15 +604,15 @@ $("downBtn").innerHTML=ic("down")+"Bajar lista";
 $("navHome").innerHTML=`<span class="pill">${ic("home")}</span>Videos`;
 $("navShorts").innerHTML=`<span class="pill">${ic("shorts","nf")}</span>Shorts`;
 $("navSaved").innerHTML=`<span class="pill">${ic("heart")}</span>Guardados`;
-$("navLikes").innerHTML=`<span class="pill">${ic("star")}</span>Mis gustos`;
+$("navGames").innerHTML=`<span class="pill">${ic("dice","nf")}</span>Juegos`;
 
 function render(keepScroll){
   const inApp=S.onboarded;
   $("nav").hidden=!inApp;
   const me=$("me"); me.hidden=!inApp;
-  if(inApp){ const n=firstName(); me.innerHTML=n?`<span class="av">${esc(n.charAt(0).toUpperCase())}</span><span>${esc(n)}</span>`:`<span class="av">${ic("user")}</span><span>Invitado</span>`; me.setAttribute("aria-label","Mis gustos y mi cuenta"); }
+  if(inApp){ const n=firstName(); me.innerHTML=`<span class="av">${n?esc(n.charAt(0).toUpperCase()):ic("user")}</span><span>Mis gustos</span>`; me.setAttribute("aria-current",S.tab==="likes"?"page":"false"); }
   document.querySelectorAll(".nav button").forEach(b=>{ if(b.dataset.act==="tab:"+S.tab) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
-  const views={welcome:vWelcome,name:vName,country:vCountry,interests:vInterests,home:vHome,player:vPlayer,shorts:vShorts,saved:vSaved,likes:vLikes};
+  const views={welcome:vWelcome,name:vName,country:vCountry,interests:vInterests,home:vHome,player:vPlayer,shorts:vShorts,games:vGames,memory:vMemory,refran:vQuiz,trivia:vQuiz,bingo:vBingo,saved:vSaved,likes:vLikes};
   content.innerHTML=views[S.screen]();
   const sh=S.screen==="shorts";
   content.classList.toggle("dark",sh);
@@ -673,6 +751,8 @@ function feedWithShelf(list){
       <div class="sgrid">${shortsForYou().slice(0,4).map(shortCard).join("")}</div>
       <button class="btn ghost" data-act="tab:shorts">${ic("shorts")}Ver más shorts</button></section>`;
     cards.splice(Math.min(2,cards.length),0,shelf);
+    const promo=`<section class="gpromo" aria-label="Juegos"><h2 class="shelf">${ic("dice","nf")}Hora de jugar</h2>${gameCard(dayGame(),true)}</section>`;
+    cards.splice(Math.min(5,cards.length),0,promo);
   }
   return cards.join("");
 }
@@ -834,6 +914,232 @@ content.addEventListener("touchend",e=>{
   if(Math.abs(dy)>60&&Math.abs(dy)>Math.abs(dx)) changeShort(dy>0?1:-1);
 },{passive:true});
 
+/* ================= JUEGOS (sin reloj y sin "perdiste") ================= */
+const GAMES=[
+  {id:"memory", em:"🃏", title:"Encontrar parejas",           kind:"Memoria",                 grad:"linear-gradient(135deg,#2B2145,#5E4B8B)", desc:"Voltee las cartas y busque las que son iguales: frutas, flores e instrumentos."},
+  {id:"refran", em:"📜", title:"Complete el refrán",          kind:"Dichos de antes",         grad:"linear-gradient(135deg,#6B4A12,#C08A2E)", desc:"Le mostramos el comienzo de un refrán y usted elige cómo termina."},
+  {id:"trivia", em:"🌎", title:"Preguntas de nuestra tierra", kind:"Cultura latinoamericana", grad:"linear-gradient(135deg,#0F3D45,#2E8794)", desc:"Preguntas sencillas sobre lugares, comidas y costumbres de Latinoamérica."},
+  {id:"bingo",  em:"🎱", title:"Lotería cantada",             kind:"Bingo de números",        grad:"linear-gradient(135deg,#5C2430,#B5566A)", desc:"La app canta los números en voz alta y usted los marca en su cartón."}
+];
+const GAME=Object.fromEntries(GAMES.map(g=>[g.id,g]));
+const FIGURES=[
+  {k:"manzana",em:"🍎",name:"Manzana"},{k:"girasol",em:"🌻",name:"Girasol"},{k:"guitarra",em:"🎸",name:"Guitarra"},{k:"platano",em:"🍌",name:"Plátano"},
+  {k:"rosa",em:"🌹",name:"Rosa"},{k:"trompeta",em:"🎺",name:"Trompeta"},{k:"mango",em:"🥭",name:"Mango"},{k:"colibri",em:"🐦",name:"Colibrí"}
+];
+const REFRANES=[
+  {q:"Al que madruga…",ok:"…Dios lo ayuda.",no:"…se le enfría el café."},
+  {q:"Más vale pájaro en mano…",ok:"…que cien volando.",no:"…que uno en la jaula."},
+  {q:"Camarón que se duerme…",ok:"…se lo lleva la corriente.",no:"…sueña con el mar."},
+  {q:"Dime con quién andas…",ok:"…y te diré quién eres.",no:"…y te diré a dónde vas."},
+  {q:"No por mucho madrugar…",ok:"…amanece más temprano.",no:"…se llega primero al mercado."},
+  {q:"A caballo regalado…",ok:"…no se le mira el colmillo.",no:"…se le compra silla nueva."},
+  {q:"En casa de herrero…",ok:"…cuchillo de palo.",no:"…martillo de oro."},
+  {q:"Perro que ladra…",ok:"…no muerde.",no:"…tiene hambre."},
+  {q:"Ojos que no ven…",ok:"…corazón que no siente.",no:"…pies que no caminan."},
+  {q:"Más vale tarde…",ok:"…que nunca.",no:"…que temprano."},
+  {q:"El que mucho abarca…",ok:"…poco aprieta.",no:"…mucho carga."},
+  {q:"Agua que no has de beber…",ok:"…déjala correr.",no:"…guárdala en la nevera."}
+];
+const TRIVIA=[
+  {q:"¿En qué país está Machu Picchu?",ok:"Perú",no:"Chile"},
+  {q:"¿De dónde es el tango?",ok:"Argentina y Uruguay",no:"México"},
+  {q:"¿Con qué fruta se hace el guacamole?",ok:"Aguacate",no:"Mango"},
+  {q:"¿De qué país son los mariachis?",ok:"México",no:"Colombia"},
+  {q:"¿Con qué se hacen las arepas?",ok:"Harina de maíz",no:"Harina de trigo"},
+  {q:"¿Cuál es el río más grande de Sudamérica?",ok:"El Amazonas",no:"El Magdalena"},
+  {q:"¿Qué ave grande vuela sobre los Andes?",ok:"El cóndor",no:"El flamenco"},
+  {q:"¿En qué país está el famoso canal que une dos océanos?",ok:"Panamá",no:"Costa Rica"},
+  {q:"¿Qué se toma en un mate?",ok:"Yerba mate",no:"Chocolate"},
+  {q:"¿Qué fiesta mexicana recuerda a los seres queridos que ya partieron?",ok:"Día de Muertos",no:"Carnaval"},
+  {q:"¿Qué pajarito aletea tan rápido que parece quieto en el aire?",ok:"El colibrí",no:"La paloma"},
+  {q:"¿Qué baile alegre nació en República Dominicana?",ok:"El merengue",no:"El vals"}
+];
+const PRAISE=["¡Muy bien hecho!","¡Excelente memoria!","¡Qué buena vista!","¡Así se hace!","¡Maravilloso!"];
+const LINES=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+const LEVELS={facil:{pairs:4,label:"Fácil",note:"4 parejas"},normal:{pairs:6,label:"Normal",note:"6 parejas"}};
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+let memTimer=null;
+S.memLevel="facil"; S.mem=null; S.quiz=null; S.bingo=null;
+
+const seq=list=>list.forEach(([f,d,w])=>setTimeout(()=>tone(f,d,"sine",.11),w*1000));
+const SFX={
+  flip:()=>tone(520,.09,"triangle",.06),
+  ok:()=>seq([[523,.18,0],[659,.18,.12],[784,.32,.24]]),
+  soft:()=>seq([[392,.22,0],[349,.3,.16]]),
+  bell:()=>tone(880,.6,"sine",.09),
+  win:()=>seq([[523,.3,0],[659,.3,.14],[784,.3,.28],[1047,.45,.42]])
+};
+const canSpeak=("speechSynthesis" in window)&&typeof SpeechSynthesisUtterance!=="undefined";
+function clean(t){ return String(t).replace(/\p{Extended_Pictographic}|️/gu,"").replace(/[…«»]/g," ").replace(/\s+/g," ").trim(); }
+function say(t){
+  if(!canSpeak) return;
+  try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(clean(t)); u.lang="es-419"; u.rate=.85;
+    const vs=speechSynthesis.getVoices(); const v=vs.find(v=>/^es[-_](419|MX|CO|US|AR)/i.test(v.lang))||vs.find(v=>/^es/i.test(v.lang)); if(v) u.voice=v;
+    speechSynthesis.speak(u); }catch(e){}
+}
+function hush(){ if(canSpeak) try{ speechSynthesis.cancel(); }catch(e){} }
+
+const dayGame=()=>GAMES[new Date().getDate()%GAMES.length];
+const msgBox=(m,id)=>`<div class="msg ${m.cls}" ${id?`id="${id}"`:""} aria-live="polite">${ic(m.icon)}<span>${m.text}</span></div>`;
+function gameCard(g,day){
+  return `<article class="gcard"><div class="gart" style="--g:${g.grad}"><span class="tag">${day?"Juego del día":"Sin tiempo límite"}</span><span class="art" aria-hidden="true">${g.em}</span></div>
+    <div class="gbody"><small>${g.kind}</small><b>${g.title}</b><p>${g.desc}</p><button class="btn primary" data-act="game:${g.id}">${ic("play","fill")}Jugar</button></div></article>`;
+}
+function vGames(){
+  const d=dayGame();
+  return `<div class="pad col">
+    <h1 class="big">Juegos tranquilos</h1>
+    <div class="calm">${ic("heart")}<span>Sin prisa y sin reloj. Aquí nunca se pierde: cada intento cuenta.</span></div>
+    <h2 class="h3">Juego del día</h2>
+    ${gameCard(d,true)}
+    <h2 class="h3">Más juegos</h2>
+    ${GAMES.filter(g=>g.id!==d.id).map(g=>gameCard(g)).join("")}
+  </div>`;
+}
+const gameShell=(g,inner)=>`<div><button class="exitbar" data-act="exitGame">${ic("arrowL")}Salir del juego</button><div class="pad col"><h1 class="big">${g.title}</h1>${inner}</div></div>`;
+function startGame(id){
+  stopPlayer(); stopShorts(); closeModal(); hush(); clearTimeout(memTimer);
+  S.tab="games"; S.screen=id;
+  if(id==="memory") newMemory();
+  if(id==="refran"||id==="trivia") newQuiz(id);
+  if(id==="bingo") newBingo();
+  render();
+}
+
+/* --- Encontrar parejas --- */
+function newMemory(){
+  const n=LEVELS[S.memLevel].pairs, figs=shuffle(FIGURES).slice(0,n);
+  S.mem={pairs:n,first:null,lock:false,found:0,msg:{cls:"",icon:"bulb",text:"Toque una carta para darle la vuelta."},
+    cards:shuffle(figs.concat(figs)).map((f,i)=>({i,k:f.k,em:f.em,name:f.name,up:false,done:false,peek:false}))};
+}
+function vMemory(){
+  const m=S.mem;
+  return gameShell(GAME.memory,`
+    <div class="seg" role="group" aria-label="Dificultad">${Object.entries(LEVELS).map(([k,l])=>`<button data-act="level:${k}" aria-pressed="${S.memLevel===k}">${l.label}<small>${l.note}</small></button>`).join("")}</div>
+    <div class="stat"><span>Parejas encontradas</span><b id="memCount">${m.found} de ${m.pairs}</b></div>
+    ${msgBox(m.msg,"gmsg")}
+    <div class="mgrid ${m.pairs===4?"easy":""}" id="mgrid">
+      ${m.cards.map(c=>`<button class="mcard" data-act="card:${c.i}" aria-label="Carta ${c.i+1}, boca abajo"><span class="inner">
+        <span class="face back"><span class="qm" aria-hidden="true">?</span><small>Toque</small></span>
+        <span class="face front"><span class="em" aria-hidden="true">${c.em}</span><small>${c.name}</small></span></span></button>`).join("")}
+    </div>
+    <div id="memWin"></div>
+    <button class="btn ghost" data-act="hint" id="hintBtn">${ic("bulb")}Dame una pista</button>
+    <button class="btn ghost" data-act="memAgain">${ic("again")}Empezar de nuevo</button>`);
+}
+function memMsg(cls,icon,text){ S.mem.msg={cls,icon,text}; const el=$("gmsg"); if(el) el.outerHTML=msgBox(S.mem.msg,"gmsg"); }
+function syncMem(){
+  const m=S.mem;
+  document.querySelectorAll("#mgrid .mcard").forEach((b,i)=>{ const c=m.cards[i], show=c.up||c.peek;
+    b.classList.toggle("up",show); b.classList.toggle("done",c.done);
+    b.setAttribute("aria-label",c.done?`Carta ${i+1}: ${c.name}, pareja encontrada`:(show?`Carta ${i+1}: ${c.name}`:`Carta ${i+1}, boca abajo`)); });
+  $("memCount").textContent=m.found+" de "+m.pairs;
+}
+function flipCard(i){
+  const m=S.mem, c=m.cards[i];
+  if(m.lock||c.up||c.done) return;
+  c.up=true; SFX.flip();
+  if(m.first===null){ m.first=i; syncMem(); memMsg("","bulb",`Salió: ${c.name}. Ahora busque su pareja.`); return; }
+  const a=m.cards[m.first]; m.first=null;
+  if(a.k===c.k){
+    a.done=c.done=true; m.found++; syncMem();
+    if(m.found===m.pairs){
+      SFX.win(); memMsg("good","check","¡Excelente memoria! Encontró todas las parejas."); $("hintBtn").hidden=true;
+      $("memWin").innerHTML=`<div class="win"><span class="wico">${ic("star","fill")}</span><b>¡Muy bien hecho!</b><p>Encontró las ${m.pairs} parejas. ¡Qué buena memoria!</p>
+        <button class="btn primary xl" data-act="memAgain">${ic("again")}Jugar otra vez</button>
+        ${m.pairs===4?`<button class="btn ghost" data-act="level:normal">Probar el nivel Normal</button>`:""}</div>`;
+      setTimeout(()=>{ const w=$("memWin"); if(w) w.scrollIntoView({behavior:"smooth",block:"center"}); },400);
+    } else { setTimeout(SFX.ok,120); memMsg("good","check",`${pick(PRAISE)} Encontró la pareja: ${c.name}.`); }
+  } else {
+    m.lock=true; syncMem(); setTimeout(SFX.soft,150);
+    memMsg("soft","again",`${a.name} y ${c.name} no son iguales. Mírelas bien: se voltean solitas.`);
+    memTimer=setTimeout(()=>{ a.up=c.up=false; m.lock=false; if(S.screen!=="memory") return; syncMem(); memMsg("","bulb","Con calma. Toque otra carta."); },2200);
+  }
+}
+function hint(){
+  const m=S.mem; if(m.lock||m.found===m.pairs) return;
+  let targets, txt;
+  if(m.first!==null){ const k=m.cards[m.first].k; targets=m.cards.filter(c=>c.k===k&&!c.up); txt="Mire: su pareja está ahí. Cuando se voltee, tóquela."; }
+  else { const pend=m.cards.filter(c=>!c.done&&!c.up), c=pick(pend); targets=pend.filter(x=>x.k===c.k); txt="Mire bien estas dos cartas: son iguales. Cuando se volteen, búsquelas."; }
+  targets.forEach(c=>c.peek=true); m.lock=true; syncMem(); memMsg("","bulb",txt); SFX.bell();
+  const el=document.querySelectorAll("#mgrid .mcard")[targets[0].i]; if(el) el.scrollIntoView({behavior:"smooth",block:"center"});
+  memTimer=setTimeout(()=>{ targets.forEach(c=>c.peek=false); m.lock=false; if(S.screen!=="memory") return; syncMem(); memMsg("","bulb","¡Ahora usted! Toque las cartas, sin prisa."); },1900);
+}
+
+/* --- Refrán y Preguntas de nuestra tierra (mismo motor) --- */
+function newQuiz(kind){ S.quiz={kind,items:shuffle(kind==="refran"?REFRANES:TRIVIA).slice(0,8),n:0,first:0,tried:[],solved:false,opts:null,finished:false}; setOpts(); }
+function setOpts(){ const z=S.quiz, it=z.items[z.n]; z.opts=shuffle([{t:it.ok,ok:true},{t:it.no,ok:false}]); z.tried=[]; z.solved=false; }
+const fullAns=(z,it)=>z.kind==="refran"?it.q.replace("…","")+" "+it.ok.replace("…",""):it.ok;
+function vQuiz(){
+  const z=S.quiz, g=GAME[z.kind], ref=z.kind==="refran";
+  if(z.finished) return gameShell(g,`<div class="win"><span class="wico">${ic("star","fill")}</span><b>¡Excelente!</b>
+    <p>Terminó ${ref?"los":"las"} ${z.items.length} ${ref?"refranes":"preguntas"}. Acertó ${z.first} a la primera.</p>
+    <p>${ref?"¡Usted sabe mucho de los dichos de antes!":"¡Qué bien conoce nuestra tierra!"}</p>
+    <button class="btn primary xl" data-act="quizAgain">${ic("again")}Jugar otra vez</button>
+    <button class="btn ghost" data-act="exitGame">Elegir otro juego</button></div>`);
+  const it=z.items[z.n];
+  let m={cls:"",icon:"bulb",text:ref?"¿Cómo termina este refrán? Toque una opción.":"Toque la respuesta que crea correcta."};
+  if(z.solved) m={cls:"good",icon:"check",text:z.tried.length===1?pick(PRAISE):"¡Eso es! Muy bien."};
+  else if(z.tried.length) m={cls:"soft",icon:"again",text:"¡Casi! Esa no es. Pruebe con la otra opción."};
+  return gameShell(g,`
+    <div class="stat"><span>${ref?"Refrán":"Pregunta"}</span><b>${z.n+1} de ${z.items.length}</b></div>
+    <div class="qcard"><p class="lbl">${ref?"Complete el refrán:":"Pregunta:"}</p><p class="q">${esc(it.q)}</p>
+      ${z.solved&&ref?`<p class="full">${esc(fullAns(z,it))}</p>`:""}
+      ${canSpeak?`<button class="btn ghost" data-act="listen">${ic("vol2")}Escuchar en voz alta</button>`:""}</div>
+    ${msgBox(m)}
+    ${z.opts.map((o,i)=>{ const tried=z.tried.includes(i), cls=(z.solved&&o.ok)?"right":(tried&&!o.ok?"wrong":"");
+      const tag=cls==="right"?ic("check"):cls==="wrong"?ic("x"):(i===0?"A":"B");
+      return `<button class="opt ${cls}" data-act="opt:${i}" ${(z.solved||tried)?'aria-disabled="true"':""}><span class="tag">${tag}</span><span>${esc(o.t)}</span></button>`; }).join("")}
+    ${z.solved?`<button class="btn primary xl" data-act="quizNext">${z.n+1<z.items.length?"Siguiente":"Ver mi resultado"}${ic("right")}</button>`:""}
+    <button class="btn ghost" data-act="quizAgain">${ic("again")}Empezar de nuevo</button>`);
+}
+function quizOpt(i){
+  const z=S.quiz; if(z.solved||z.tried.includes(i)) return;
+  z.tried.push(i);
+  if(z.opts[i].ok){ z.solved=true; if(z.tried.length===1) z.first++; SFX.ok(); const it=z.items[z.n]; setTimeout(()=>say((z.kind==="refran"?"":"¡Así es! ")+fullAns(z,it)),650); }
+  else SFX.soft();
+  render(true);
+}
+
+/* --- Lotería cantada --- */
+function newBingo(){
+  S.bingo={nums:shuffle(Array.from({length:30},(_,i)=>i+1)).slice(0,9).sort((a,b)=>a-b),marked:Array(9).fill(false),
+    pile:shuffle(Array.from({length:30},(_,i)=>i+1)),called:[],cur:null,won:false,msg:{cls:"",icon:"bell",text:"Toque «Cantar número» para sacar la primera balota."}};
+}
+function vBingo(){
+  const b=S.bingo;
+  return gameShell(GAME.bingo,`
+    <div class="ballbox"><span>${b.cur?"Salió el número":"Balota"}</span><span class="ball ${b.cur?"":"empty"}" aria-live="polite">${b.cur??"Aún no<br>sale"}</span></div>
+    ${b.won?"":`<button class="btn primary xl" data-act="bingoCall">${ic("bell")}Cantar número</button>`}
+    ${msgBox(b.msg)}
+    <div class="bgrid" role="group" aria-label="Su cartón"><div class="bhead">Mi cartón</div>
+      ${b.nums.map((n,i)=>`<button class="cell ${b.marked[i]?"mark":(n===b.cur?"call":"")}" data-act="cell:${i}" aria-label="Número ${n}${b.marked[i]?", marcado":""}">${n}${b.marked[i]?"<small>Marcado</small>":""}</button>`).join("")}
+    </div>
+    ${b.won?`<div class="win"><span class="wico">${ic("star","fill")}</span><b>¡Lotería!</b><p>¡Felicitaciones! Completó una línea.</p>
+      <button class="btn primary xl" data-act="bingoAgain">${ic("again")}Jugar otra vez</button></div>`:""}
+    <p class="history">Números que ya salieron: <b>${b.called.length?b.called.join(" · "):"ninguno todavía"}</b></p>
+    <button class="btn ghost" data-act="bingoAgain">${ic("again")}Cartón nuevo</button>`);
+}
+function bingoCall(){
+  const b=S.bingo; if(b.won||!b.pile.length) return;
+  b.cur=b.pile.pop(); b.called.push(b.cur);
+  const has=b.nums.includes(b.cur);
+  b.msg=has?{cls:"good",icon:"check",text:`¡Usted tiene el ${b.cur}! Tóquelo en su cartón para marcarlo.`}
+           :{cls:"",icon:"bell",text:`El ${b.cur} no está en su cartón. Toque «Cantar número» otra vez.`};
+  SFX.bell(); setTimeout(()=>say(`Salió el número ${b.cur}. `+(has?"¡Usted lo tiene!":"")),350);
+  render(true);
+}
+function bingoCell(i){
+  const b=S.bingo; if(b.won||b.marked[i]) return;
+  const n=b.nums[i];
+  if(!b.called.includes(n)){ SFX.soft(); b.msg={cls:"soft",icon:"again",text:`El ${n} todavía no ha salido. Espere con calma.`}; render(true); return; }
+  b.marked[i]=true;
+  if(LINES.some(l=>l.every(k=>b.marked[k]))){ b.won=true; SFX.win(); say("¡Lotería! ¡Felicitaciones!"); b.msg={cls:"good",icon:"star",text:"¡Lotería! ¡Excelente, completó una línea!"}; }
+  else { SFX.ok(); b.msg={cls:"good",icon:"check",text:`${pick(PRAISE)} Marcó el ${n}.`}; }
+  render(true);
+}
+
 /* ================= GUARDADOS ================= */
 function guestNotice(text){
   if(S.account) return "";
@@ -901,7 +1207,7 @@ function choosePhrase(i){
 }
 
 /* ================= NAVEGACIÓN Y EVENTOS ================= */
-function goTab(t){ stopPlayer(); stopShorts(); closeModal(); S.confirmUnsave=null; if(t==="shorts"){ openShorts(); return; } S.tab=t; S.screen=t; render(); }
+function goTab(t){ stopPlayer(); stopShorts(); closeModal(); clearTimeout(memTimer); hush(); S.confirmUnsave=null; if(t==="shorts"){ openShorts(); return; } S.tab=t; S.screen=t; render(); }
 function syncTiles(){
   document.querySelectorAll(".tile").forEach(b=>b.setAttribute("aria-pressed",S.interests.includes(b.dataset.act.split(":")[1])));
   const n=S.interests.length;
@@ -954,6 +1260,19 @@ $("phone").addEventListener("click",e=>{
     case "phrase": choosePhrase(+arg); break;
     case "reset": stopPlayer(); try{ localStorage.removeItem(STORE); }catch(err){}
       stopShorts(); Object.assign(S,{onboarded:false,account:null,interests:[],saved:[],last:null,tab:"home",screen:"welcome",flow:null,backTo:null,filter:"para"}); render(); break;
+    case "game": startGame(arg); break;
+    case "exitGame": clearTimeout(memTimer); hush(); S.tab="games"; S.screen="games"; render(); break;
+    case "level": clearTimeout(memTimer); S.memLevel=arg; newMemory(); render(); break;
+    case "hint": hint(); break;
+    case "card": flipCard(+arg); break;
+    case "memAgain": clearTimeout(memTimer); newMemory(); render(); break;
+    case "opt": quizOpt(+arg); break;
+    case "quizNext": { const z=S.quiz; hush(); if(z.n+1<z.items.length){ z.n++; setOpts(); } else z.finished=true; render(); break; }
+    case "quizAgain": hush(); newQuiz(S.quiz.kind); render(); break;
+    case "listen": { const z=S.quiz, it=z.items[z.n]; say(z.solved?fullAns(z,it):it.q+(z.kind==="refran"?" ¿Cómo termina?":"")+" ¿"+z.opts[0].t+", o "+z.opts[1].t+"?"); break; }
+    case "bingoCall": bingoCall(); break;
+    case "cell": bingoCell(+arg); break;
+    case "bingoAgain": newBingo(); render(); break;
     case "short": openShorts(arg); break;
     case "stoggle": { const x=curShort(); if(S.st>=x.dur){ S.st=0; S.sPlaying=true; } else S.sPlaying=!S.sPlaying; updateShort(); break; }
     case "srepeat": S.st=0; S.sPlaying=true; updateShort(); break;
