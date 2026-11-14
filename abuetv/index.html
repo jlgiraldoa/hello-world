@@ -231,13 +231,13 @@ p.sub{margin:0;font-size:20px;color:var(--muted)}
 .scroll button{display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;border:0;border-radius:999px;background:var(--chip);font-weight:700;font-size:19px}
 .scroll button .ic{width:22px;height:22px}
 .scroll button[aria-disabled="true"]{opacity:.4}
-.nav{display:grid;grid-template-columns:repeat(3,1fr);margin-top:6px}
-.nav button{display:flex;flex-direction:column;align-items:center;gap:4px;min-height:74px;padding:4px 2px;border:0;background:none;font-weight:700;font-size:18px;color:var(--muted)}
-.nav .pill{display:grid;place-items:center;width:66px;height:38px;border-radius:999px;transition:background .15s}
+.nav{display:grid;grid-template-columns:repeat(4,1fr);margin-top:6px}
+.nav button{display:flex;flex-direction:column;align-items:center;gap:4px;min-height:74px;padding:4px 0;border:0;background:none;font-weight:700;font-size:clamp(16px,4.3vw,18px);letter-spacing:-.2px;white-space:nowrap;color:var(--muted)}
+.nav .pill{display:grid;place-items:center;width:58px;height:38px;border-radius:999px;transition:background .15s}
 .nav .pill .ic{width:26px;height:26px}
 .nav button[aria-current="page"]{color:var(--ink)}
 .nav button[aria-current="page"] .pill{background:var(--primary-soft);color:var(--primary)}
-.nav button[aria-current="page"] .ic{fill:currentColor}
+.nav button[aria-current="page"] .ic:not(.nf){fill:currentColor}
 
 /* ---------- aviso + búsqueda por voz ---------- */
 .toast{position:absolute;left:16px;right:16px;bottom:168px;z-index:30;background:#1E293B;color:#fff;border-radius:14px;padding:14px 16px;font-size:20px;font-weight:700;
@@ -258,6 +258,47 @@ p.sub{margin:0;font-size:20px;color:var(--muted)}
 .phrase{display:flex;align-items:center;gap:12px;min-height:68px;padding:0 18px;border:0;border-radius:16px;background:var(--chip);font-weight:700;font-size:21px;text-align:left}
 .phrase .ic{color:var(--primary)}
 .heard{padding:16px;border-radius:16px;background:var(--primary-soft);font-size:22px;font-weight:700;text-align:center}
+
+/* ---------- shorts (videos cortitos verticales) ---------- */
+.sshelf{display:flex;flex-direction:column;gap:12px;padding:6px 0 10px;background:var(--surface)}
+.sshelf .shelf{display:flex;align-items:center;gap:8px;padding-top:12px}
+.sshelf .shelf .ic{color:var(--danger);width:26px;height:26px}
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 16px}
+.scard{display:flex;flex-direction:column;gap:8px;padding:0;border:0;background:none;text-align:left}
+.vthumb{position:relative;aspect-ratio:9/14;max-width:100%;border-radius:16px;background:var(--g);overflow:hidden;display:grid;place-items:center;color:#fff}
+.vthumb::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.45),transparent 45%)}
+.vthumb .art{position:relative;z-index:1;font-size:58px;filter:drop-shadow(0 8px 14px rgba(0,0,0,.35))}
+.vthumb .tag{position:absolute;z-index:2;top:8px;left:8px;display:flex;align-items:center;gap:4px;background:rgba(0,0,0,.55);font-weight:700;font-size:16px;padding:2px 8px;border-radius:999px}
+.vthumb .tag .ic{width:15px;height:15px}
+.vthumb .dur{position:absolute;z-index:2;right:8px;bottom:8px;background:rgba(0,0,0,.82);font-weight:700;font-size:17px;padding:1px 7px;border-radius:6px}
+.scard b{font-size:19px;line-height:1.22;padding:0 2px}
+.sshelf .btn{width:auto;margin:0 16px}
+.content.dark{overflow:hidden;background:#000}
+.shorts{position:relative;height:100%;background:var(--g);color:#fff;overflow:hidden;animation:sin .28s ease}
+@keyframes sin{from{opacity:.35;transform:translateY(24px)}to{opacity:1;transform:none}}
+.shorts::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.5),transparent 20%,transparent 52%,rgba(0,0,0,.75));pointer-events:none;z-index:1}
+.stap{position:absolute;inset:0;z-index:0;display:grid;place-items:center;padding:0;border:0;background:none;color:#fff}
+.stap .art{font-size:118px;transform:translateY(-50px);filter:drop-shadow(0 14px 24px rgba(0,0,0,.35))}
+.sbar{position:absolute;z-index:3;top:0;left:0;right:0;height:6px;background:rgba(255,255,255,.3)}
+.sbar i{display:block;height:100%;width:0;background:#fff;transition:width .9s linear}
+.stop{position:absolute;z-index:3;top:16px;left:12px;right:12px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.sexit{display:flex;align-items:center;gap:6px;min-height:50px;padding:0 18px 0 10px;border:0;border-radius:999px;background:var(--danger);color:#fff;font-weight:700;font-size:19px}
+.scount{font-weight:700;font-size:18px;background:rgba(0,0,0,.45);padding:6px 12px;border-radius:999px;white-space:nowrap}
+.sph{position:absolute;z-index:2;top:78px;left:12px;font-size:15px;font-weight:700;background:rgba(0,0,0,.42);border:1.5px dashed rgba(255,255,255,.65);border-radius:6px;padding:1px 8px}
+.ssubs{position:absolute;z-index:2;left:14px;right:100px;bottom:118px;color:var(--sub);font-weight:700;font-size:21px;line-height:1.25;background:rgba(0,0,0,.72);border-radius:10px;padding:8px 12px;text-align:center}
+.sinfo{position:absolute;z-index:2;left:16px;right:104px;bottom:18px}
+.sinfo b{display:block;font-family:var(--f-display);font-size:21px;line-height:1.2;text-shadow:0 1px 4px rgba(0,0,0,.5)}
+.sinfo span{display:block;font-size:18px;opacity:.92;margin-top:4px}
+.sinfo .ic{width:16px;height:16px;vertical-align:-2px}
+.sside{position:absolute;z-index:3;right:6px;bottom:14px;display:flex;flex-direction:column;gap:10px}
+.sside button{display:flex;flex-direction:column;align-items:center;gap:4px;width:88px;padding:0;border:0;background:none;color:#fff;font-weight:700;font-size:18px;text-shadow:0 1px 4px rgba(0,0,0,.7)}
+.sside .circ{display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.22);backdrop-filter:blur(6px)}
+.sside .circ .ic{width:28px;height:28px}
+.sside button.on .circ{background:var(--primary)}
+.spause{position:absolute;z-index:2;left:50%;top:38%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.95);color:var(--ink);border-radius:999px;padding:10px 20px;font-weight:700;font-size:20px;white-space:nowrap;pointer-events:none}
+.send{position:absolute;z-index:4;inset:0;background:rgba(0,0,0,.66);display:flex;flex-direction:column;justify-content:center;gap:14px;padding:24px;text-align:center}
+.send b{font-family:var(--f-display);font-size:28px}
+.send p{margin:0;font-size:20px}
 
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
@@ -282,6 +323,7 @@ p.sub{margin:0;font-size:20px;color:var(--muted)}
         </div>
         <nav class="nav" id="nav" aria-label="Secciones principales">
           <button data-act="tab:home" id="navHome"></button>
+          <button data-act="tab:shorts" id="navShorts"></button>
           <button data-act="tab:saved" id="navSaved"></button>
           <button data-act="tab:likes" id="navLikes"></button>
         </nav>
@@ -291,7 +333,7 @@ p.sub{margin:0;font-size:20px;color:var(--muted)}
       <div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle"></div>
     </div>
   </div>
-  <p class="stage-note">AbueTV v0.4 · prototipo para celular. Ábralo en el teléfono para verlo a pantalla completa.</p>
+  <p class="stage-note">AbueTV v0.5 · prototipo para celular. Ábralo en el teléfono para verlo a pantalla completa.</p>
 </div>
 
 <script>
@@ -320,6 +362,7 @@ const I={
   user:'<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
   pin:'<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
   spark:'<path d="M12 3l1.8 4.7 4.7 1.8-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/>',
+  shorts:'<rect x="6" y="2" width="12" height="20" rx="3"/><polygon points="10.5 9 15 12 10.5 15 10.5 9"/>',
   trash:'<polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>'
 };
 const ic=(n,cls)=>`<svg class="ic ${cls||""}" viewBox="0 0 24 24" aria-hidden="true">${I[n]}</svg>`;
@@ -382,12 +425,30 @@ const VIDEOS=[
 ];
 const VID=Object.fromEntries(VIDEOS.map(v=>[v.id,v]));
 
+/* ================= SHORTS: videos cortitos verticales (catálogo propio con IA) ================= */
+const SHORTS=[
+  {id:"s01",topic:"cocina",em:"🍚",dur:30,title:"Un truco para que el arroz no se pegue",subs:["¿Se le pega el arroz?","Lávelo dos veces antes de cocinarlo.","Y no lo destape mientras se cocina. ¡Listo!"]},
+  {id:"s02",topic:"animales",em:"🐦",dur:25,title:"El colibrí que visita mi ventana",subs:["Mire quién llegó…","Viene todas las mañanas por agua con azúcar.","¡Qué alegría verlo!"]},
+  {id:"s03",topic:"boleros",em:"🎸",dur:40,title:"Un minuto de bolero",subs:["🎵 Guitarra y voz…","«Cuando te vi pasar por la vereda…»","«…supe que eras tú.»"]},
+  {id:"s04",topic:"ejercicio",em:"🖐️",dur:35,title:"Tres ejercicios para las manos",subs:["Abra y cierre las manos diez veces.","Ahora toque cada dedo con el pulgar.","Gire las muñecas despacio. ¡Muy bien!"]},
+  {id:"s05",topic:"recuerdos",em:"📜",dur:20,title:"El refrán del día",subs:["«Al que madruga…»","«…Dios lo ayuda.»","¿Lo sabía? ¡Seguro que sí!"]},
+  {id:"s06",topic:"fe",em:"🌙",dur:30,title:"Oración corta para dormir en paz",subs:["Gracias, Señor, por este día.","Cuida a mi familia esta noche.","Amén. Que descanse."]},
+  {id:"s07",topic:"cocina",em:"🥭",dur:25,title:"Cómo saber si un mango está maduro",subs:["Tóquelo suavecito.","Si cede un poquito, está listo.","Y huela el tallo: debe oler dulce."]},
+  {id:"s08",topic:"humor",em:"😄",dur:20,title:"El chiste del día",subs:["¿Qué hace una abeja en el gimnasio?","¡Zum-ba!","😄 ¡Ja, ja, ja!"]},
+  {id:"s09",topic:"viajes",em:"🌄",dur:30,title:"Atardecer en el lago Titicaca",subs:["Estamos entre Perú y Bolivia.","El sol se esconde detrás de las montañas.","Respire hondo y disfrute."]},
+  {id:"s10",topic:"plantas",em:"🌱",dur:25,title:"La matica de albahaca",subs:["La albahaca quiere sol y agua seguida.","Corte las puntas para que crezca más.","¡Y úsela en la cocina!"]},
+  {id:"s11",topic:"tropical",em:"💃",dur:30,title:"Treinta segundos de cumbia",subs:["🥁 ¡Suena la cumbia!","Mueva los hombros, uno y dos.","¡Eso es! Qué alegría."]},
+  {id:"s12",topic:"rancheras",em:"🎺",dur:30,title:"Un grito de mariachi",subs:["🎺 Las trompetas anuncian…","«¡Ay, ay, ay, ay!»","¡Que viva México!"]}
+];
+const SHO=Object.fromEntries(SHORTS.map(x=>[x.id,x]));
+
 const PHRASES=[
   {text:"Quiero escuchar boleros",       go:()=>filterTo("boleros")},
   {text:"Pon música de mariachi",         go:()=>filterTo("rancheras")},
   {text:"¿Cómo se hacen los tamales?",    go:()=>openPlayer("v05")},
   {text:"Quiero rezar el rosario",        go:()=>openPlayer("v08")},
-  {text:"Quiero ver animalitos",          go:()=>filterTo("animales")}
+  {text:"Quiero ver animalitos",          go:()=>filterTo("animales")},
+  {text:"Quiero ver videos cortitos",     go:()=>goTab("shorts")}
 ];
 
 /* ================= ESTADO + MEMORIA DEL TELÉFONO ================= */
@@ -398,11 +459,11 @@ const S={
   onboarded:!!saved0.onboarded,
   account:saved0.account||null,
   interests:Array.isArray(saved0.interests)?saved0.interests.filter(id=>TOP[id]):[],
-  saved:Array.isArray(saved0.saved)?saved0.saved.filter(id=>VID[id]):[],
+  saved:Array.isArray(saved0.saved)?saved0.saved.filter(id=>VID[id]||SHO[id]):[],
   last:saved0.last&&VID[saved0.last.id]?saved0.last:null,
   tab:"home", screen:saved0.onboarded?"home":"welcome",
   flow:null, draftName:"", draftCountry:null, backTo:null,
-  filter:"para", vid:null, t:0, playing:false, vol:3, endShown:false, confirmUnsave:null
+  filter:"para", sOrder:[], sIdx:0, st:0, sPlaying:false, vid:null, t:0, playing:false, vol:3, endShown:false, confirmUnsave:null
 };
 function persist(){ try{ localStorage.setItem(STORE,JSON.stringify({onboarded:S.onboarded,account:S.account,interests:S.interests,saved:S.saved,last:S.last})); }catch(e){} }
 
@@ -448,10 +509,11 @@ const MOODS={
   oracion:{notes:[262,330,392,330,294,349,440,349],step:950,type:"sine"},
   calma:{notes:[330,392,440,392,349,440,523,440],step:700,type:"sine"}
 };
-const musicOn=()=>S.screen==="player"&&S.playing&&S.vol>0;
+const curItem=()=>S.screen==="player"?VID[S.vid]:S.screen==="shorts"?SHO[S.sOrder[S.sIdx]]:null;
+const musicOn=()=>((S.screen==="player"&&S.playing)||(S.screen==="shorts"&&S.sPlaying))&&S.vol>0;
 function musicUpdate(){
   if(musicOn()&&!musicTimer){
-    const m=MOODS[TOP[VID[S.vid].topic].mood]; noteIdx=0;
+    const m=MOODS[TOP[curItem().topic].mood]; noteIdx=0;
     const play=()=>{ if(!musicOn()){ stopMusic(); return; } tone(m.notes[noteIdx++%m.notes.length],m.step/1000*1.6,m.type,.03*S.vol); };
     play(); musicTimer=setInterval(play,m.step);
   } else if(!musicOn()) stopMusic();
@@ -462,6 +524,7 @@ function stopMusic(){ clearInterval(musicTimer); musicTimer=null; }
 $("upBtn").innerHTML=ic("up")+"Subir lista";
 $("downBtn").innerHTML=ic("down")+"Bajar lista";
 $("navHome").innerHTML=`<span class="pill">${ic("home")}</span>Videos`;
+$("navShorts").innerHTML=`<span class="pill">${ic("shorts","nf")}</span>Shorts`;
 $("navSaved").innerHTML=`<span class="pill">${ic("heart")}</span>Guardados`;
 $("navLikes").innerHTML=`<span class="pill">${ic("star")}</span>Mis gustos`;
 
@@ -471,8 +534,13 @@ function render(keepScroll){
   const me=$("me"); me.hidden=!inApp;
   if(inApp){ const n=firstName(); me.innerHTML=n?`<span class="av">${esc(n.charAt(0).toUpperCase())}</span><span>${esc(n)}</span>`:`<span class="av">${ic("user")}</span><span>Invitado</span>`; me.setAttribute("aria-label","Mis gustos y mi cuenta"); }
   document.querySelectorAll(".nav button").forEach(b=>{ if(b.dataset.act==="tab:"+S.tab) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
-  const views={welcome:vWelcome,name:vName,country:vCountry,interests:vInterests,home:vHome,player:vPlayer,saved:vSaved,likes:vLikes};
+  const views={welcome:vWelcome,name:vName,country:vCountry,interests:vInterests,home:vHome,player:vPlayer,shorts:vShorts,saved:vSaved,likes:vLikes};
   content.innerHTML=views[S.screen]();
+  const sh=S.screen==="shorts";
+  content.classList.toggle("dark",sh);
+  $("upBtn").innerHTML=ic("up")+(sh?"Short anterior":"Subir lista");
+  $("downBtn").innerHTML=ic("down")+(sh?"Siguiente short":"Bajar lista");
+  if(sh) updateShort();
   if(!keepScroll){ content.style.scrollBehavior="auto"; content.scrollTop=0; content.style.scrollBehavior=""; }
   if(S.screen==="player") updatePlayer();
   if(S.screen==="name"){ const i=$("nameInput"); i.addEventListener("input",()=>{ S.draftName=i.value; $("nameNext").setAttribute("aria-disabled",String(!i.value.trim())); }); }
@@ -585,9 +653,28 @@ function vHome(){
     ${resumeCard()}
     ${has?"":`<div class="tip"><p>Cuéntenos qué le gusta y le mostraremos primero esos videos.</p><button class="btn primary" data-act="tab:likes">${ic("star")}Elegir mis gustos</button></div>`}
     <h2 class="shelf" id="listTitle">${title}</h2>
-    <div class="feed">${list.map(videoCard).join("")}</div>
+    <div class="feed">${feedWithShelf(list)}</div>
     <p class="endnote">Ya vio toda la lista. Toque <b>Subir lista</b> para volver arriba.</p>
   </div>`;
+}
+function shortCard(x){
+  return `<button class="scard" data-act="short:${x.id}">
+    <span class="vthumb" style="--g:${TOP[x.topic].grad}"><span class="tag">${ic("shorts")}Short</span><span class="art" aria-hidden="true">${x.em}</span><span class="dur">${mmss(x.dur)}</span></span>
+    <b>${esc(x.title)}</b></button>`;
+}
+function shortsForYou(){
+  const sc=x=>S.interests.includes(x.topic)?1:0;
+  return SHORTS.slice().sort((a,b)=>sc(b)-sc(a));
+}
+function feedWithShelf(list){
+  const cards=list.map(videoCard);
+  if(S.filter==="para"||S.filter==="todo"){
+    const shelf=`<section class="sshelf" aria-label="Shorts"><h2 class="shelf">${ic("shorts")}Shorts: videos cortitos</h2>
+      <div class="sgrid">${shortsForYou().slice(0,4).map(shortCard).join("")}</div>
+      <button class="btn ghost" data-act="tab:shorts">${ic("shorts")}Ver más shorts</button></section>`;
+    cards.splice(Math.min(2,cards.length),0,shelf);
+  }
+  return cards.join("");
 }
 function filterTo(id){ S.tab="home"; S.screen="home"; S.filter=id; render(); const h=$("listTitle"); if(h) h.scrollIntoView({block:"start"}); toast("Aquí tiene: "+TOP[id].label); }
 
@@ -672,6 +759,7 @@ function saveLast(){
 }
 function openPlayer(id,from){
   if(S.screen==="player") saveLast();
+  stopShorts();
   stopMusic(); closeModal();
   S.tab="home"; S.screen="player"; S.vid=id; S.t=from||0; S.playing=true; S.endShown=false;
   render();
@@ -683,14 +771,81 @@ function openPlayer(id,from){
 }
 function stopPlayer(){ if(S.screen==="player") saveLast(); clearInterval(tick); S.playing=false; stopMusic(); }
 
+/* ================= SHORTS ================= */
+let sTick=null, touchY=null, touchX=null;
+const curShort=()=>SHO[S.sOrder[S.sIdx]];
+function vShorts(){
+  const x=curShort(), saved=S.saved.includes(x.id);
+  return `<div class="shorts" style="--g:${TOP[x.topic].grad}">
+    <button class="stap" data-act="stoggle" aria-label="Pausar o continuar"><span class="art" aria-hidden="true">${x.em}</span></button>
+    <div class="sbar" aria-hidden="true"><i id="sfill"></i></div>
+    <div class="stop"><button class="sexit" data-act="tab:home">${ic("arrowL")}Salir</button><span class="scount">Short ${S.sIdx+1} de ${S.sOrder.length}</span></div>
+    <span class="sph">Aquí va el short (video vertical)</span>
+    <span class="spause" id="spause" hidden>${ic("pause","fill")}En pausa</span>
+    <div class="ssubs" id="ssubs" aria-live="polite"></div>
+    <div class="sinfo"><b>${esc(x.title)}</b><span>AbueTV · ${ic("spark")} Hecho con IA · ${mmss(x.dur)}</span></div>
+    <div class="sside">
+      <button data-act="ssave" id="ssave" class="${saved?"on":""}"><span class="circ">${ic("heart",saved?"fill":"")}</span>${saved?"Guardado":"Guardar"}</button>
+      <button data-act="srepeat"><span class="circ">${ic("again")}</span>Repetir</button>
+      <button data-act="stoggle" id="stog"></button>
+    </div>
+    <div class="send" id="send" hidden>
+      <b>Terminó el short</b><p>¿Quiere ver otro?</p>
+      <button class="btn primary xl" data-act="snext">${ic("down")}Ver el siguiente short</button>
+      <button class="btn ghost" data-act="srepeat">${ic("again")}Ver este de nuevo</button>
+    </div>
+  </div>`;
+}
+function updateShort(){
+  const x=curShort(); if(!x||S.screen!=="shorts") return;
+  const done=S.st>=x.dur;
+  $("sfill").style.width=(S.st/x.dur*100)+"%";
+  const idx=Math.min(x.subs.length-1,Math.floor(S.st/(x.dur/x.subs.length)));
+  const sb=$("ssubs"); if(sb.textContent!==x.subs[idx]) sb.textContent=x.subs[idx];
+  $("spause").hidden=S.sPlaying||done;
+  $("stog").innerHTML=`<span class="circ">${ic(S.sPlaying?"pause":"play","fill")}</span>${S.sPlaying?"Pausar":"Seguir"}`;
+  $("send").hidden=!done;
+  musicUpdate();
+}
+function openShorts(id){
+  stopPlayer(); closeModal(); stopMusic();
+  S.sOrder=shortsForYou().map(x=>x.id);
+  if(id){ S.sIdx=Math.max(0,S.sOrder.indexOf(id)); } else if(S.sIdx>=S.sOrder.length) S.sIdx=0;
+  S.st=0; S.sPlaying=true; S.tab="shorts"; S.screen="shorts";
+  render();
+  clearInterval(sTick);
+  sTick=setInterval(()=>{
+    if(S.screen!=="shorts"){ clearInterval(sTick); return; }
+    if(S.sPlaying){ const x=curShort(); S.st=Math.min(x.dur,S.st+1); if(S.st>=x.dur) S.sPlaying=false; updateShort(); }
+  },1000);
+}
+function stopShorts(){ clearInterval(sTick); S.sPlaying=false; stopMusic(); }
+function changeShort(d){
+  let n=S.sIdx+d;
+  if(n<0) return;
+  if(n>=S.sOrder.length){ n=0; toast("Ya vio todos los shorts de hoy. Volvemos al primero."); }
+  stopMusic(); S.sIdx=n; S.st=0; S.sPlaying=true; render(true);
+  if(!sTick) openShorts(S.sOrder[n]);
+}
+content.addEventListener("touchstart",e=>{ if(S.screen!=="shorts") return; touchY=e.touches[0].clientY; touchX=e.touches[0].clientX; },{passive:true});
+content.addEventListener("touchend",e=>{
+  if(S.screen!=="shorts"||touchY==null) return;
+  const dy=touchY-e.changedTouches[0].clientY, dx=touchX-e.changedTouches[0].clientX; touchY=null;
+  if(Math.abs(dy)>60&&Math.abs(dy)>Math.abs(dx)) changeShort(dy>0?1:-1);
+},{passive:true});
+
 /* ================= GUARDADOS ================= */
 function guestNotice(text){
   if(S.account) return "";
   return `<div class="notice"><p>Está usando AbueTV sin cuenta.<small>${text}</small></p>
     <button class="btn ghost" data-act="signupFromApp">${ic("user")}Crear mi cuenta</button></div>`;
 }
+function sRow(x){
+  return `<button class="row" data-act="short:${x.id}">${thumb(x,{sm:true})}
+    <span><b>${esc(x.title)}</b><small>Short · ${TOP[x.topic].label}</small><span class="see">${ic("play")}Ver</span></span></button>`;
+}
 function vSaved(){
-  const list=S.saved.map(id=>VID[id]).filter(Boolean);
+  const list=S.saved.map(id=>VID[id]||SHO[id]).filter(Boolean);
   const head=`<h1 class="big">Mis guardados</h1>${guestNotice("Sus guardados se quedan en este teléfono. Con una cuenta no los pierde si cambia de celular.")}`;
   if(!list.length) return `<div class="pad col">${head}
     <div class="empty">${ic("heart")}<b>Todavía no hay videos guardados</b>
@@ -698,7 +853,7 @@ function vSaved(){
       <button class="btn primary" data-act="tab:home">${ic("home")}Ir a ver videos</button></div></div>`;
   return `<div class="pad col">${head}
     <p class="sub">Tiene ${list.length} ${list.length===1?"video guardado":"videos guardados"}.</p>
-    <div class="col" style="gap:8px">${list.map(v=>`<div class="saveditem">${rowItem(v)}
+    <div class="col" style="gap:8px">${list.map(v=>`<div class="saveditem">${VID[v.id]?rowItem(v):sRow(v)}
       ${S.confirmUnsave===v.id
         ?`<div class="confirm"><p>¿Quitar este video de sus guardados?</p><div class="two"><button class="btn danger" data-act="unsaveYes:${v.id}">Sí, quitar</button><button class="btn ghost" data-act="unsaveNo">No, dejarlo</button></div></div>`
         :`<button class="rm" data-act="unsave:${v.id}">${ic("trash")}Quitar de guardados</button>`}
@@ -746,7 +901,7 @@ function choosePhrase(i){
 }
 
 /* ================= NAVEGACIÓN Y EVENTOS ================= */
-function goTab(t){ stopPlayer(); closeModal(); S.confirmUnsave=null; S.tab=t; S.screen=t; render(); }
+function goTab(t){ stopPlayer(); stopShorts(); closeModal(); S.confirmUnsave=null; if(t==="shorts"){ openShorts(); return; } S.tab=t; S.screen=t; render(); }
 function syncTiles(){
   document.querySelectorAll(".tile").forEach(b=>b.setAttribute("aria-pressed",S.interests.includes(b.dataset.act.split(":")[1])));
   const n=S.interests.length;
@@ -798,13 +953,20 @@ $("phone").addEventListener("click",e=>{
     case "voiceClose": closeModal(); break;
     case "phrase": choosePhrase(+arg); break;
     case "reset": stopPlayer(); try{ localStorage.removeItem(STORE); }catch(err){}
-      Object.assign(S,{onboarded:false,account:null,interests:[],saved:[],last:null,tab:"home",screen:"welcome",flow:null,backTo:null,filter:"para"}); render(); break;
-    case "scrollUp": content.scrollBy({top:-content.clientHeight*.65,behavior:"smooth"}); break;
-    case "scrollDown": content.scrollBy({top:content.clientHeight*.65,behavior:"smooth"}); break;
+      stopShorts(); Object.assign(S,{onboarded:false,account:null,interests:[],saved:[],last:null,tab:"home",screen:"welcome",flow:null,backTo:null,filter:"para"}); render(); break;
+    case "short": openShorts(arg); break;
+    case "stoggle": { const x=curShort(); if(S.st>=x.dur){ S.st=0; S.sPlaying=true; } else S.sPlaying=!S.sPlaying; updateShort(); break; }
+    case "srepeat": S.st=0; S.sPlaying=true; updateShort(); break;
+    case "snext": changeShort(1); break;
+    case "ssave": { const x=curShort(); if(!S.saved.includes(x.id)){ S.saved.push(x.id); persist(); toast("Listo. El short quedó en Guardados."); } else toast("Este short ya está en Guardados.");
+      const b=$("ssave"); b.classList.add("on"); b.innerHTML=`<span class="circ">${ic("heart","fill")}</span>Guardado`; break; }
+    case "scrollUp": if(S.screen==="shorts"){ changeShort(-1); break; } content.scrollBy({top:-content.clientHeight*.65,behavior:"smooth"}); break;
+    case "scrollDown": if(S.screen==="shorts"){ changeShort(1); break; } content.scrollBy({top:content.clientHeight*.65,behavior:"smooth"}); break;
   }
 });
 content.addEventListener("keydown",e=>{ if(e.key==="Enter"&&e.target.id==="nameInput"){ e.preventDefault(); $("nameNext").click(); } });
 function updateScrollBtns(){
+  if(S.screen==="shorts"){ $("upBtn").setAttribute("aria-disabled",S.sIdx===0); $("downBtn").setAttribute("aria-disabled",false); return; }
   const top=content.scrollTop<=2, bottom=content.scrollTop+content.clientHeight>=content.scrollHeight-2;
   $("upBtn").setAttribute("aria-disabled",top); $("downBtn").setAttribute("aria-disabled",bottom);
 }
