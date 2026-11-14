@@ -2,27 +2,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>AbueTV</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="theme-color" content="#F6F4EE">
+<meta name="theme-color" content="#F7F6F2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@600;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Figtree:wght@700;800&display=swap">
 <style>
-/* Layout: mobile-first. En el celular la app ocupa toda la pantalla; en computador se muestra dentro de un marco de teléfono.
-   Columna fija = barra de estado / encabezado / contenido con scroll / dock (subir-bajar + 3 pestañas).
-   Estilo: Tactile Neo-Brutalism accesible. Un solo tema claro deliberado (crema antirreflejo). Letra grande fija. */
+/* Layout: mobile-first, lenguaje de app de video (miniaturas de borde a borde, lista "siguiente", barra inferior).
+   Paleta fija "Sereno": verde azulado + arena + rojo solo para salir. Un solo tema claro deliberado. Letra grande fija. */
 :root{
-  --cream:#F6F4EE; --card:#FFFFFF; --ink:#0F172A; --muted:#334155;
-  --primary:#10B981; --primary-soft:#D1FAE5;
-  --voice:#FBBF24; --voice-soft:#FEF3C7;
-  --danger:#DC2626; --danger-soft:#FEE2E2;
-  --info-soft:#E0F2FE; --rose-soft:#FCE7F3; --lilac-soft:#EDE9FE; --peach-soft:#FFEDD5; --lime-soft:#ECFCCB;
-  --sub:#FDE047;
-  --on-primary:#0F172A; --on-voice:#0F172A; --on-danger:#FFFFFF;
-  --stage:#E4DFD3; --bezel:#16130F;
+  --bg:#F7F6F2; --surface:#FFFFFF; --ink:#1E293B; --muted:#4B5768; --line:#E2DED6; --chip:#ECEAE4;
+  --primary:#0F766E; --primary-press:#0B5E58; --primary-soft:#E2EFED;
+  --sand:#EADBB8; --sand-soft:#F6EFDF;
+  --danger:#B42318; --danger-soft:#FBE9E7;
+  --sub:#FDE68A; --stage:#DAD7CF; --bezel:#16130F;
   --f-body:"Atkinson Hyperlegible", "Verdana", "Segoe UI", system-ui, sans-serif;
-  --f-display:"Lexend", "Atkinson Hyperlegible", "Verdana", system-ui, sans-serif;
-  --shadow:0 6px 0 var(--ink);
-  --r:18px;
+  --f-display:"Figtree", "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --shadow:0 1px 2px rgba(30,41,59,.06), 0 6px 18px rgba(30,41,59,.07);
   color-scheme:light;
 }
 *{box-sizing:border-box}
@@ -31,250 +26,238 @@ html,body{height:100%}
 body{margin:0;background:var(--stage);color:var(--ink);font-family:var(--f-body);font-size:20px;line-height:1.4;
   padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
 button,input{font:inherit;color:inherit}
-button{cursor:pointer}
-:focus-visible{outline:4px dashed var(--ink);outline-offset:4px}
+button{cursor:pointer;-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:3px solid var(--primary);outline-offset:3px}
+.ic{width:1.25em;height:1.25em;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ic.fill{fill:currentColor}
 
 /* ---------- marco (solo computador) ---------- */
 .stage{min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding-block:20px}
-.phone{position:relative;width:min(412px,100%);height:min(880px, calc(100vh - 80px));min-height:640px;background:var(--bezel);border-radius:52px;padding:12px;
-  box-shadow:0 0 0 2px #3a342b, 0 30px 60px rgba(15,23,42,.35)}
-.screen{position:relative;width:100%;height:100%;background:var(--cream);border-radius:40px;overflow:hidden;display:flex;flex-direction:column}
+.phone{position:relative;width:min(412px,100%);height:min(880px, calc(100vh - 80px));min-height:640px;background:var(--bezel);border-radius:50px;padding:11px;box-shadow:0 30px 60px rgba(15,23,42,.3)}
+.screen{position:relative;width:100%;height:100%;background:var(--bg);border-radius:40px;overflow:hidden;display:flex;flex-direction:column}
 .stage-note{margin:0;font-size:16px;color:var(--muted);text-align:center;max-width:420px}
+.statusbar{flex:none;height:32px;display:flex;align-items:center;justify-content:space-between;padding:0 26px;font-size:15px;font-weight:700;background:var(--surface)}
 @media (max-width:520px){
-  body{padding-left:0;padding-right:0;background:var(--cream)}
+  body{padding-left:0;padding-right:0;background:var(--bg)}
   .stage{padding-block:0;gap:0}
   .stage-note,.statusbar{display:none}
-  .phone{width:100%;height:100vh;height:100dvh;min-height:0;border-radius:0;padding:0;box-shadow:none;background:var(--cream)}
+  .phone{width:100%;height:100vh;height:100dvh;min-height:0;border-radius:0;padding:0;box-shadow:none;background:var(--bg)}
   .screen{border-radius:0}
 }
-.statusbar{flex:none;height:34px;display:flex;align-items:center;justify-content:space-between;padding:0 26px;font-size:16px;font-weight:700;position:relative}
-.statusbar .cam{position:absolute;left:50%;top:9px;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:var(--bezel)}
-.batt{display:inline-block;width:26px;height:13px;border:2px solid var(--ink);border-radius:3px;position:relative;vertical-align:-1px}
-.batt::after{content:"";position:absolute;inset:1px 5px 1px 1px;background:var(--ink)}
 
-/* ---------- encabezado ---------- */
-.apphead{flex:none;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 14px 10px;border-bottom:3px solid var(--ink);background:var(--cream)}
-.logo{display:flex;align-items:center;gap:2px;font-family:var(--f-display);font-weight:800;font-size:31px;letter-spacing:-.5px;line-height:1;flex:none}
-.logo .tv{display:inline-flex;align-items:center;margin-left:4px;padding:4px 8px 5px;background:var(--primary);color:var(--on-primary);border:3px solid var(--ink);border-radius:10px;box-shadow:0 3px 0 var(--ink);position:relative}
-.logo .tv::before,.logo .tv::after{content:"";position:absolute;top:-10px;width:3px;height:10px;background:var(--ink)}
-.logo .tv::before{left:30%;transform:rotate(-25deg)}.logo .tv::after{right:30%;transform:rotate(25deg)}
-.who{min-width:0;font-size:18px;font-weight:700;padding:6px 12px;border:3px solid var(--ink);border-radius:999px;background:var(--card);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* ---------- barra superior ---------- */
+.topbar{flex:none;display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:64px;padding:8px 14px;background:var(--surface);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:8px;font-family:var(--f-display);font-weight:800;font-size:27px;letter-spacing:-.6px;line-height:1}
+.logo .mark{display:grid;place-items:center;width:42px;height:30px;border-radius:9px;background:var(--primary)}
+.logo .mark .ic{width:16px;height:16px;stroke-width:0;fill:#fff}
+.me{display:flex;align-items:center;gap:8px;min-height:48px;max-width:60%;padding:4px 14px 4px 4px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-weight:700;font-size:18px}
+.me .av{flex:none;width:40px;height:40px;border-radius:50%;background:var(--primary);color:#fff;display:grid;place-items:center;font-family:var(--f-display);font-size:20px}
+.me .av .ic{width:22px;height:22px}
+.me span:last-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
 /* ---------- contenido ---------- */
-.content{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:18px 14px 28px;scroll-behavior:smooth}
-.content::-webkit-scrollbar{width:10px}.content::-webkit-scrollbar-thumb{background:var(--ink);border-radius:10px;border:2px solid var(--cream)}
-.stack{display:flex;flex-direction:column;gap:20px}
-h2.sec{font-family:var(--f-display);font-weight:800;font-size:28px;line-height:1.15;margin:0;text-wrap:balance}
-p.lead{margin:0;font-size:20px;color:var(--muted)}
+.content{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scroll-behavior:smooth}
+.pad{padding:20px 16px 28px}
+.col{display:flex;flex-direction:column;gap:18px}
+h1.big{margin:0;font-family:var(--f-display);font-weight:800;font-size:32px;line-height:1.12;letter-spacing:-.5px;text-wrap:balance}
+p.sub{margin:0;font-size:20px;color:var(--muted)}
+.shelf{margin:0;padding:0 16px;font-family:var(--f-display);font-weight:800;font-size:24px;letter-spacing:-.3px}
 
-/* ---------- botón físico ---------- */
-.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:68px;padding:12px 16px;
-  border:3px solid var(--ink);border-radius:var(--r);background:var(--card);box-shadow:var(--shadow);
-  font-weight:700;font-size:23px;line-height:1.15;text-align:center;transition:transform .08s ease, box-shadow .08s ease;
-  -webkit-tap-highlight-color:transparent;user-select:none}
-.btn:active{transform:translateY(5px);box-shadow:0 1px 0 var(--ink)}
-.btn .ico{font-size:1.25em;line-height:1;flex:none}
+/* ---------- botones ---------- */
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:62px;padding:10px 22px;border:0;border-radius:999px;font-weight:700;font-size:21px;line-height:1.15;text-align:center;transition:transform .1s ease, background .15s}
+.btn:active{transform:scale(.98)}
+.btn.primary{background:var(--primary);color:#fff}
+.btn.primary:active{background:var(--primary-press)}
+.btn.ghost{background:var(--surface);color:var(--ink);box-shadow:inset 0 0 0 2px var(--line)}
+.btn.danger{background:var(--danger);color:#fff}
+.btn.xl{min-height:68px;font-size:22px}
 .btn[aria-disabled="true"]{opacity:.45}
-.b-green{background:var(--primary);color:var(--on-primary)} .b-amber{background:var(--voice);color:var(--on-voice)} .b-red{background:var(--danger);color:var(--on-danger)} .b-ink{background:var(--ink);color:#fff}
-.b-big{min-height:84px;font-size:26px}
-.b-proto{background:transparent;border-style:dashed;box-shadow:none;font-size:18px;min-height:56px;color:var(--muted)}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.proto{width:100%;min-height:52px;border:2px dashed var(--line);border-radius:14px;background:transparent;color:var(--muted);font-size:16px;font-weight:700}
+
+/* ---------- miniaturas ---------- */
+.thumb{position:relative;display:grid;place-items:center;aspect-ratio:16/9;max-width:100%;background:var(--g);overflow:hidden;color:#fff}
+.thumb::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 38%,rgba(255,255,255,.2),transparent 62%),linear-gradient(to top,rgba(0,0,0,.42),transparent 50%)}
+.thumb .art{position:relative;z-index:1;font-size:78px;line-height:1;filter:drop-shadow(0 10px 18px rgba(0,0,0,.35))}
+.thumb .ph{position:absolute;z-index:2;top:10px;left:10px;font-size:15px;font-weight:700;background:rgba(0,0,0,.42);border:1.5px dashed rgba(255,255,255,.65);border-radius:6px;padding:1px 8px}
+.thumb .dur{position:absolute;z-index:2;right:10px;bottom:10px;background:rgba(0,0,0,.82);font-weight:700;font-size:18px;padding:2px 8px;border-radius:6px;font-variant-numeric:tabular-nums}
+.thumb .go{position:absolute;z-index:2;left:10px;bottom:10px;display:flex;align-items:center;gap:6px;background:#fff;color:var(--ink);font-weight:700;font-size:18px;padding:5px 14px 5px 10px;border-radius:999px;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.thumb .go .ic{width:16px;height:16px;fill:var(--ink);stroke-width:0}
+.thumb.sm .art{font-size:40px}
+.thumb.sm .dur{font-size:16px;right:6px;bottom:6px;padding:1px 6px}
+.thumb .bar{position:absolute;z-index:2;left:0;right:0;bottom:0;height:6px;background:rgba(255,255,255,.45)}
+.thumb .bar i{display:block;height:100%;background:var(--primary)}
 
 /* ---------- bienvenida ---------- */
-.welcome{min-height:100%;display:flex;flex-direction:column;justify-content:center;gap:22px;text-align:center}
-.hero-tv{align-self:center;position:relative;width:210px;height:150px;margin-top:22px;background:var(--card);border:4px solid var(--ink);border-radius:28px;box-shadow:var(--shadow);display:grid;place-items:center}
-.hero-tv::before,.hero-tv::after{content:"";position:absolute;top:-30px;width:5px;height:34px;background:var(--ink);border-radius:3px}
-.hero-tv::before{left:38%;transform:rotate(-28deg)}.hero-tv::after{right:38%;transform:rotate(28deg)}
-.hero-tv .scr{width:170px;height:110px;border:4px solid var(--ink);border-radius:16px;background:var(--primary);display:grid;place-items:center;font-size:52px}
-.hero-tv .feet{position:absolute;bottom:-18px;width:120px;height:14px;border:4px solid var(--ink);border-top:0;border-radius:0 0 10px 10px;background:var(--card)}
-.welcome h1{margin:0;font-family:var(--f-display);font-weight:800;font-size:44px;line-height:1}
-.welcome h1 .tv{background:var(--primary);color:var(--on-primary);border:4px solid var(--ink);border-radius:12px;padding:0 10px;box-shadow:0 4px 0 var(--ink)}
-.welcome .tagline{margin:0;font-size:24px;font-weight:700;text-wrap:balance}
-.welcome .fine{margin:0;font-size:18px;color:var(--muted)}
+.collage{display:grid;grid-template-columns:1fr 1fr;gap:10px;transform:rotate(-2deg);margin:6px 4px 18px}
+.collage .thumb{border-radius:16px;box-shadow:var(--shadow)}
+.collage .thumb .art{font-size:46px}
+.collage .thumb:nth-child(2),.collage .thumb:nth-child(4){transform:translateY(14px)}
+.fine{margin:0;font-size:18px;color:var(--muted);text-align:center}
 
 /* ---------- pasos ---------- */
-.steps{display:flex;flex-direction:column;gap:8px}
-.steps b{font-size:20px}
-.steps .bar{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
-.steps .bar i{display:block;height:14px;border:3px solid var(--ink);border-radius:999px;background:var(--card)}
-.steps .bar i.on{background:var(--primary)}
+.stepbar{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.back{display:flex;align-items:center;gap:4px;min-height:52px;padding:0 18px 0 10px;border:0;border-radius:999px;background:var(--danger-soft);color:var(--danger);font-weight:700;font-size:20px}
+.stepbar span{font-weight:700;font-size:19px;color:var(--muted)}
+.progress{height:8px;border-radius:999px;background:var(--chip);overflow:hidden}
+.progress i{display:block;height:100%;background:var(--primary);border-radius:999px}
 .field{display:flex;flex-direction:column;gap:8px}
-.field label{font-weight:700;font-size:22px}
-.field input{width:100%;min-height:76px;border:3px solid var(--ink);border-radius:16px;background:var(--card);padding:10px 16px;font-size:28px;font-weight:700;box-shadow:inset 0 4px 0 rgba(15,23,42,.08)}
-.field input::placeholder{color:#64748B;font-weight:400}
-.field small{font-size:18px;color:var(--muted)}
-
-/* países */
+.field label{font-weight:700;font-size:20px}
+.input{width:100%;min-height:74px;border:2px solid var(--line);border-radius:16px;background:var(--surface);padding:0 18px;font-size:26px;font-weight:700}
+.input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 4px var(--primary-soft)}
+.input::placeholder{color:#7A8494;font-weight:400}
 .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.ctile{display:flex;align-items:center;gap:10px;min-height:70px;padding:8px 10px;border:3px solid var(--ink);border-radius:16px;background:var(--card);box-shadow:0 4px 0 var(--ink);font-weight:700;font-size:20px;text-align:left;line-height:1.15}
-.ctile .flag{font-size:32px;flex:none}
-.ctile[aria-pressed="true"]{background:var(--ink);color:#fff;transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+.country{display:flex;align-items:center;gap:10px;min-height:66px;padding:0 12px;border-radius:16px;border:2px solid var(--line);background:var(--surface);font-weight:700;font-size:19px;line-height:1.15;text-align:left}
+.country .flag{font-size:28px;flex:none}
+.country[aria-pressed="true"]{border-color:var(--primary);background:var(--primary-soft)}
 
-/* temas de interés (estilo "elige lo que te gusta") */
-.igrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.itile{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:138px;padding:12px 8px;
-  border:3px solid var(--ink);border-radius:20px;background:var(--tile,var(--tint,#fff));box-shadow:var(--shadow);font-weight:700;font-size:21px;line-height:1.15;text-align:center;transition:transform .08s, box-shadow .08s}
-.itile .em{font-size:46px;line-height:1}
-.itile:active{transform:translateY(5px);box-shadow:0 1px 0 var(--ink)}
-.itile[aria-pressed="true"]{background:var(--ink);color:#fff;transform:translateY(4px);box-shadow:0 2px 0 var(--ink)}
-.itile .chk{position:absolute;top:8px;right:8px;width:34px;height:34px;border-radius:50%;border:3px solid var(--ink);background:var(--card);display:grid;place-items:center;font-size:18px;color:var(--ink)}
-.itile[aria-pressed="true"] .chk{background:var(--primary);color:var(--on-primary)}
-.picked{position:sticky;bottom:-28px;margin:0 -14px -28px;padding:12px 14px 16px;background:var(--cream);border-top:3px solid var(--ink);display:flex;flex-direction:column;gap:10px}
-.picked p{margin:0;font-size:20px;font-weight:700;text-align:center}
+/* temas (estilo "elija lo que le gusta") */
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.tile{position:relative;aspect-ratio:1/1.08;border:0;border-radius:20px;overflow:hidden;padding:0;background:var(--g);color:#fff;text-align:left;transition:transform .12s, box-shadow .15s}
+.tile:active{transform:scale(.97)}
+.tile .art{position:absolute;top:18%;left:50%;transform:translateX(-50%);font-size:60px;line-height:1;filter:drop-shadow(0 8px 14px rgba(0,0,0,.3))}
+.tile .lbl{position:absolute;left:0;right:0;bottom:0;padding:30px 12px 12px;background:linear-gradient(transparent,rgba(0,0,0,.62));font-weight:700;font-size:20px;line-height:1.15}
+.tile .ck{position:absolute;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:2.5px solid #fff;background:rgba(0,0,0,.18);display:grid;place-items:center}
+.tile .ck .ic{width:22px;height:22px;stroke-width:3;opacity:0}
+.tile[aria-pressed="true"]{box-shadow:0 0 0 4px var(--bg),0 0 0 8px var(--primary)}
+.tile[aria-pressed="true"] .ck{background:var(--primary)}
+.tile[aria-pressed="true"] .ck .ic{opacity:1}
+.picked{position:sticky;bottom:0;margin:6px -16px -28px;padding:12px 16px 18px;background:rgba(247,246,242,.96);border-top:1px solid var(--line);display:flex;flex-direction:column;gap:10px;backdrop-filter:blur(8px)}
+.picked p{margin:0;font-size:19px;font-weight:700;text-align:center}
 
 /* ---------- inicio ---------- */
-.hello{display:flex;align-items:center;gap:12px;font-size:19px}
-.hello .em{font-size:40px;line-height:1}
-.hello b{display:block;font-family:var(--f-display);font-weight:800;font-size:26px;line-height:1.15}
-.voicebtn{justify-content:flex-start;text-align:left;gap:14px;padding:14px 16px;min-height:96px}
-.voicebtn .mic{flex:none;width:62px;height:62px;border-radius:50%;background:var(--card);border:3px solid var(--ink);display:grid;place-items:center;font-size:32px}
-.voicebtn b{display:block;font-size:24px}
-.voicebtn small{display:block;font-size:18px;font-weight:700}
-.resume{background:var(--primary-soft);border:3px solid var(--ink);border-radius:20px;padding:14px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow)}
-.resume .lbl{font-weight:700;font-size:19px;margin:0}
-.resume h3{margin:0;font-family:var(--f-display);font-weight:800;font-size:23px;line-height:1.2}
-.filters{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.filters .btn{min-height:64px;font-size:20px;padding:8px 10px}
-.filters .btn[aria-pressed="true"]{background:var(--ink);color:#fff;box-shadow:0 2px 0 var(--ink);transform:translateY(4px)}
-.tipcard{background:var(--voice-soft);border:3px solid var(--ink);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:10px}
-.tipcard p{margin:0;font-weight:700;font-size:20px}
-
-/* tarjeta de video */
-.vcard{background:var(--card);border:3px solid var(--ink);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
-.f169{position:relative;aspect-ratio:16/9;max-width:100%;border-bottom:3px solid var(--ink);display:grid;place-items:center;
-  background:
-   linear-gradient(to top right, transparent calc(50% - 1.5px), rgba(15,23,42,.22) 50%, transparent calc(50% + 1.5px)),
-   linear-gradient(to bottom right, transparent calc(50% - 1.5px), rgba(15,23,42,.22) 50%, transparent calc(50% + 1.5px)),
-   var(--tile,var(--tint,#E2E8F0))}
-.f169::before{content:"";position:absolute;inset:10px;border:3px dashed rgba(15,23,42,.45);border-radius:10px}
-.f169 .ph{position:relative;background:var(--card);border:3px solid var(--ink);border-radius:10px;padding:6px 12px;font-weight:700;font-size:18px;display:flex;flex-direction:column;align-items:center;gap:2px}
-.f169 .ph .em{font-size:34px;line-height:1.1}
-.f169 .dur{position:absolute;right:14px;bottom:14px;background:var(--ink);color:#fff;font-weight:700;font-size:22px;padding:4px 10px;border-radius:8px;font-variant-numeric:tabular-nums}
-.vbody{padding:16px;display:flex;flex-direction:column;gap:10px}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{font-size:18px;font-weight:700;border:2px solid var(--ink);border-radius:999px;padding:3px 12px;background:var(--cream)}
-.chip.ai{background:var(--voice-soft)}
-.vbody h3{margin:0;font-family:var(--f-display);font-weight:800;font-size:25px;line-height:1.2;text-wrap:balance}
-.vbody p{margin:0;font-size:19px;color:var(--muted)}
-.meta{font-size:20px;font-weight:700;display:flex;flex-direction:column;gap:2px}
+.home{display:flex;flex-direction:column;gap:18px;padding:18px 0 28px}
+.greet{padding:0 16px}
+.greet b{display:block;font-family:var(--f-display);font-weight:800;font-size:27px;letter-spacing:-.4px;line-height:1.15}
+.greet span{font-size:19px;color:var(--muted)}
+.voice{margin:0 16px;display:flex;align-items:center;gap:14px;min-height:82px;padding:10px 18px 10px 10px;border:0;border-radius:999px;background:var(--surface);box-shadow:inset 0 0 0 2px var(--line), var(--shadow);text-align:left}
+.voice .mic{flex:none;width:60px;height:60px;border-radius:50%;background:var(--primary);color:#fff;display:grid;place-items:center}
+.voice .mic .ic{width:28px;height:28px}
+.voice b{display:block;font-size:22px}
+.voice small{display:block;font-size:18px;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;padding:0 16px}
+.chip{min-height:52px;padding:0 18px;border:0;border-radius:12px;background:var(--chip);font-weight:700;font-size:19px}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fff}
+.resume{margin:0 16px;display:grid;grid-template-columns:138px 1fr;gap:14px;align-items:center;padding:10px;border:0;border-radius:20px;background:var(--surface);box-shadow:var(--shadow);text-align:left}
+.resume .thumb{border-radius:12px}
+.resume small{display:block;font-weight:700;font-size:18px;color:var(--primary)}
+.resume b{display:block;font-size:20px;line-height:1.2;margin:2px 0}
+.resume .when{display:block;font-size:18px;color:var(--muted)}
+.tip{margin:0 16px;padding:16px;border-radius:20px;background:var(--sand-soft);display:flex;flex-direction:column;gap:12px}
+.tip p{margin:0;font-size:20px;font-weight:700}
+.feed{display:flex;flex-direction:column;gap:10px}
+.vc{background:var(--surface)}
+.vc-hit{display:block;width:100%;padding:0;border:0;background:none;text-align:left}
+.vc-meta{display:flex;gap:12px;padding:12px 16px 18px}
+.chan{flex:none;width:46px;height:46px;border-radius:50%;background:var(--primary-soft);display:grid;place-items:center}
+.chan .ic{width:18px;height:18px;fill:var(--primary);stroke-width:0}
+.vc-title{display:block;font-size:21px;font-weight:700;line-height:1.25}
+.vc-line{display:block;font-size:18px;color:var(--muted);margin-top:4px}
+.vc-line .ic{width:16px;height:16px;vertical-align:-2px}
+.endnote{margin:0;padding:0 16px;font-size:19px;color:var(--muted);text-align:center}
 
 /* ---------- reproductor ---------- */
-.player-title{font-family:var(--f-display);font-weight:800;font-size:24px;line-height:1.2;margin:0;text-wrap:balance}
-.screen169{position:relative;aspect-ratio:16/9;max-width:100%;border:3px solid var(--ink);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);
-  background:radial-gradient(circle at 30% 30%, var(--tint2,#065F46), #0F172A 75%);color:#fff}
-.screen169 .ph{position:absolute;top:10px;left:10px;right:10px;text-align:center;font-weight:700;font-size:16px;border:2px dashed rgba(255,255,255,.55);border-radius:8px;padding:3px 6px}
-.screen169 .em{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);font-size:48px}
-.eq{position:absolute;left:12px;top:38%;display:flex;gap:4px;align-items:flex-end;height:46px}
-.eq i{display:block;width:7px;height:20%;background:var(--sub);border-radius:2px;animation:eq 1s ease-in-out infinite}
-.eq i:nth-child(2){animation-delay:-.3s}.eq i:nth-child(3){animation-delay:-.6s}.eq i:nth-child(4){animation-delay:-.15s}.eq i:nth-child(5){animation-delay:-.45s}
+.exitbar{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:62px;border:0;background:var(--danger);color:#fff;font-weight:700;font-size:21px}
+.video{position:relative;aspect-ratio:16/9;max-width:100%;background:var(--g);overflow:hidden;color:#fff}
+.video::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 35%,rgba(255,255,255,.15),rgba(0,0,0,.45) 80%)}
+.video .art{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);font-size:64px;filter:drop-shadow(0 10px 18px rgba(0,0,0,.35))}
+.video .ph{position:absolute;top:10px;left:10px;font-size:15px;font-weight:700;background:rgba(0,0,0,.42);border:1.5px dashed rgba(255,255,255,.65);border-radius:6px;padding:1px 8px}
+.eq{position:absolute;right:12px;top:10px;display:flex;gap:3px;align-items:flex-end;height:24px}
+.eq i{display:block;width:5px;height:20%;background:#fff;border-radius:2px;animation:eq 1s ease-in-out infinite;opacity:.9}
+.eq i:nth-child(2){animation-delay:-.3s}.eq i:nth-child(3){animation-delay:-.6s}.eq i:nth-child(4){animation-delay:-.15s}
 .paused .eq i{animation-play-state:paused}
-@keyframes eq{0%,100%{height:15%}50%{height:100%}}
-.subs{position:absolute;left:8px;right:8px;bottom:8px;text-align:center;font-weight:700;font-size:20px;line-height:1.25;color:var(--sub);
-  background:rgba(0,0,0,.82);border-radius:8px;padding:5px 8px;min-height:2.7em;display:flex;align-items:center;justify-content:center}
-.pausebadge{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);background:var(--card);color:var(--ink);border:3px solid var(--ink);border-radius:12px;padding:6px 14px;font-weight:800;font-size:22px;white-space:nowrap}
-.timetext{display:flex;justify-content:space-between;font-weight:700;font-size:22px;font-variant-numeric:tabular-nums}
-.timetext span:last-child{color:var(--muted)}
-.track{height:26px;border:3px solid var(--ink);border-radius:999px;background:var(--card);overflow:hidden}
-.track i{display:block;height:100%;width:0;background:var(--primary);border-right:3px solid var(--ink);transition:width .9s linear}
-.resume .track{height:18px}.resume .track i{transition:none}
-.timebox{display:flex;flex-direction:column;gap:8px}
-.panel{background:var(--card);border:3px solid var(--ink);border-radius:20px;padding:14px;display:flex;flex-direction:column;gap:12px}
-.panel h3{margin:0;font-size:22px}
-.volbars{display:flex;gap:8px;align-items:flex-end;justify-content:center;height:64px}
-.volbars i{display:block;width:36px;border:3px solid var(--ink);border-radius:6px;background:var(--cream)}
-.volbars i.on{background:var(--primary)}
-.volbars i:nth-child(1){height:20%}.volbars i:nth-child(2){height:40%}.volbars i:nth-child(3){height:60%}.volbars i:nth-child(4){height:80%}.volbars i:nth-child(5){height:100%}
-.voltext{text-align:center;font-weight:700;font-size:20px;margin:0}
-.btn.saved{background:var(--danger-soft)}
-.aiwhy{margin:0;font-size:18px;color:var(--muted);background:var(--voice-soft);border:2px solid var(--ink);border-radius:12px;padding:8px 12px}
-
-/* fin del video: el abuelo elige el siguiente */
-.endpanel{background:var(--primary-soft);border:3px solid var(--ink);border-radius:22px;box-shadow:var(--shadow);padding:16px;display:flex;flex-direction:column;gap:14px}
-.endpanel h3{margin:0;font-family:var(--f-display);font-weight:800;font-size:27px;line-height:1.15}
-.endpanel p{margin:0;font-size:20px;font-weight:700}
-.mini{display:grid;grid-template-columns:118px 1fr;gap:12px;align-items:center;text-align:left;padding:10px;min-height:0}
-.mini .th{aspect-ratio:16/9;border:3px solid var(--ink);border-radius:10px;display:grid;place-items:center;font-size:32px;background:var(--tile,var(--tint,#E2E8F0));position:relative}
-.mini .th::after{content:"▶";position:absolute;right:4px;bottom:2px;font-size:14px;background:var(--ink);color:#fff;border-radius:4px;padding:0 4px}
-.mini b{display:block;font-size:20px;line-height:1.2}
-.mini small{display:block;font-size:18px;font-weight:700;color:var(--muted);margin-top:4px}
+@keyframes eq{0%,100%{height:20%}50%{height:100%}}
+.subs{position:absolute;left:10px;right:10px;bottom:10px;text-align:center;font-weight:700;font-size:20px;line-height:1.25;color:var(--sub);background:rgba(0,0,0,.78);border-radius:8px;padding:6px 10px}
+.pausebadge{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.95);color:var(--ink);border-radius:999px;padding:8px 18px;font-weight:700;font-size:20px;white-space:nowrap}
+.pbody{display:flex;flex-direction:column;gap:16px;padding:14px 16px 28px}
+.time{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;font-weight:700;font-size:19px;font-variant-numeric:tabular-nums}
+.time span:last-child{color:var(--muted)}
+.track{height:10px;border-radius:999px;background:var(--chip);overflow:hidden}
+.track i{display:block;height:100%;width:0;background:var(--primary);border-radius:999px;transition:width .9s linear}
+.ptitle{margin:0;font-family:var(--f-display);font-weight:800;font-size:25px;line-height:1.2;letter-spacing:-.3px;text-wrap:balance}
+.pmeta{margin:-8px 0 0;font-size:18px;color:var(--muted)}
+.pmeta .ic{width:16px;height:16px;vertical-align:-2px}
+.actions{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.actions button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:94px;padding:8px 4px;border:0;border-radius:18px;background:var(--chip);font-weight:700;font-size:18px;line-height:1.15;text-align:center}
+.actions button .ic{width:30px;height:30px}
+.actions button:active{transform:scale(.97)}
+.actions button.on{background:var(--primary-soft);color:var(--primary)}
+.vol{background:var(--surface);border-radius:20px;box-shadow:var(--shadow);padding:14px;display:flex;flex-direction:column;gap:10px}
+.vol p{margin:0;font-weight:700;font-size:19px;text-align:center}
+.volrow{display:grid;grid-template-columns:84px 1fr 84px;gap:10px;align-items:center}
+.volrow button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:72px;border:0;border-radius:16px;background:var(--chip);font-weight:700;font-size:18px}
+.volrow button .ic{width:26px;height:26px}
+.bars{display:flex;gap:6px;align-items:flex-end;justify-content:center;height:50px}
+.bars i{display:block;flex:1;max-width:28px;border-radius:6px;background:var(--chip)}
+.bars i.on{background:var(--primary)}
+.bars i:nth-child(1){height:24%}.bars i:nth-child(2){height:42%}.bars i:nth-child(3){height:60%}.bars i:nth-child(4){height:80%}.bars i:nth-child(5){height:100%}
+.ended{display:flex;gap:12px;align-items:flex-start;padding:16px;border-radius:20px;background:var(--primary-soft)}
+.ended .ic{width:30px;height:30px;color:var(--primary);stroke-width:2.8}
+.ended b{display:block;font-family:var(--f-display);font-size:23px;line-height:1.15}
+.ended span{font-size:19px}
+.h3{margin:4px 0 0;font-family:var(--f-display);font-weight:800;font-size:23px}
+.rows{display:flex;flex-direction:column;gap:4px;margin:0 -16px}
+.row{display:grid;grid-template-columns:148px 1fr;gap:14px;align-items:start;width:100%;padding:8px 16px;border:0;background:none;text-align:left}
+.row:active{background:var(--chip)}
+.row .thumb{border-radius:12px}
+.row b{display:block;font-size:19px;line-height:1.22}
+.row small{display:block;font-size:18px;color:var(--muted);margin-top:2px}
+.row .see{display:inline-flex;align-items:center;gap:6px;margin-top:6px;padding:4px 12px 4px 8px;border-radius:999px;background:var(--primary-soft);color:var(--primary);font-weight:700;font-size:18px}
+.row .see .ic{width:14px;height:14px;fill:var(--primary);stroke-width:0}
+.aiwhy{margin:0;display:flex;gap:8px;align-items:flex-start;font-size:18px;color:var(--muted);background:var(--sand-soft);border-radius:14px;padding:10px 12px}
+.aiwhy .ic{width:20px;height:20px;margin-top:2px}
 
 /* ---------- guardados / mis gustos ---------- */
-.guest{background:var(--info-soft);border:3px solid var(--ink);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:10px}
-.guest p{margin:0;font-size:20px;font-weight:700}
-.guest small{font-size:18px;font-weight:400;color:var(--muted)}
-.empty{background:var(--card);border:3px dashed var(--ink);border-radius:20px;padding:20px;text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center}
-.empty .em{font-size:52px}
-.confirm{background:var(--danger-soft);border:3px solid var(--ink);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:10px}
-.confirm p{margin:0;font-weight:700;font-size:21px}
-.profile{display:flex;align-items:center;gap:14px;background:var(--card);border:3px solid var(--ink);border-radius:20px;padding:14px;box-shadow:var(--shadow)}
-.avatar{flex:none;width:74px;height:74px;border-radius:50%;border:3px solid var(--ink);background:var(--primary);color:var(--on-primary);display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:34px}
-.profile b{display:block;font-size:25px;font-family:var(--f-display);line-height:1.15}
+.notice{padding:16px;border-radius:20px;background:var(--sand-soft);display:flex;flex-direction:column;gap:12px}
+.notice p{margin:0;font-size:20px;font-weight:700}
+.notice small{display:block;font-size:18px;font-weight:400;color:var(--muted);margin-top:4px}
+.saveditem{display:flex;flex-direction:column;gap:4px;padding-bottom:10px;border-bottom:1px solid var(--line);margin:0 -16px}
+.saveditem .rm{align-self:flex-end;margin-right:16px;display:flex;align-items:center;gap:6px;min-height:48px;padding:0 16px;border:0;border-radius:999px;background:transparent;color:var(--danger);font-weight:700;font-size:18px}
+.confirm{margin:0 16px;padding:14px;border-radius:16px;background:var(--danger-soft);display:flex;flex-direction:column;gap:10px}
+.confirm p{margin:0;font-weight:700;font-size:20px}
+.confirm .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.confirm .btn{min-height:56px;font-size:19px;padding:8px 10px}
+.empty{padding:24px 18px;border-radius:20px;background:var(--surface);box-shadow:var(--shadow);text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center}
+.empty > .ic{width:48px;height:48px;color:var(--primary)}
+.empty b{font-size:22px}
+.profile{display:flex;align-items:center;gap:14px}
+.profile .av{flex:none;width:76px;height:76px;border-radius:50%;background:var(--primary);color:#fff;display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:34px}
+.profile .av .ic{width:38px;height:38px}
+.profile b{display:block;font-family:var(--f-display);font-weight:800;font-size:26px;line-height:1.15}
 .profile span{font-size:19px;color:var(--muted)}
 
-/* ---------- dock ---------- */
-.dock{flex:none;border-top:3px solid var(--ink);background:var(--card);padding:10px 10px calc(8px + env(safe-area-inset-bottom, 0px));display:flex;flex-direction:column;gap:10px}
-.scrollrow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.scrollrow .btn{min-height:56px;font-size:21px;padding:6px 8px;background:var(--cream);box-shadow:0 4px 0 var(--ink)}
-.scrollrow .btn .ico{font-size:1.1em}
-.scrollrow .btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
-.nav{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.nav .btn{flex-direction:column;gap:2px;min-height:84px;padding:6px 2px;font-size:clamp(16px,4.6vw,19px);letter-spacing:-.3px;position:relative;overflow:hidden}
-.nav .btn .ico{font-size:30px}
-.nav .btn[aria-current="page"]{background:var(--ink);color:#fff;box-shadow:0 2px 0 var(--ink);transform:translateY(4px)}
-.nav .btn[aria-current="page"]::before{content:"";position:absolute;left:0;right:0;top:0;height:7px;background:var(--mod)}
+/* ---------- barra inferior ---------- */
+.dock{flex:none;background:var(--surface);border-top:1px solid var(--line);padding:8px 12px calc(4px + env(safe-area-inset-bottom, 0px))}
+.scroll{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.scroll button{display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;border:0;border-radius:999px;background:var(--chip);font-weight:700;font-size:19px}
+.scroll button .ic{width:22px;height:22px}
+.scroll button[aria-disabled="true"]{opacity:.4}
+.nav{display:grid;grid-template-columns:repeat(3,1fr);margin-top:6px}
+.nav button{display:flex;flex-direction:column;align-items:center;gap:4px;min-height:74px;padding:4px 2px;border:0;background:none;font-weight:700;font-size:18px;color:var(--muted)}
+.nav .pill{display:grid;place-items:center;width:66px;height:38px;border-radius:999px;transition:background .15s}
+.nav .pill .ic{width:26px;height:26px}
+.nav button[aria-current="page"]{color:var(--ink)}
+.nav button[aria-current="page"] .pill{background:var(--primary-soft);color:var(--primary)}
+.nav button[aria-current="page"] .ic{fill:currentColor}
 
-/* ---------- toast + modal de voz ---------- */
-.toast{position:absolute;left:14px;right:14px;top:150px;z-index:30;background:var(--ink);color:#fff;border-radius:16px;padding:14px 16px;font-size:21px;font-weight:700;
-  box-shadow:0 6px 0 rgba(15,23,42,.35);transition:opacity .25s, transform .25s;opacity:0;transform:translateY(-10px);pointer-events:none}
+/* ---------- aviso + búsqueda por voz ---------- */
+.toast{position:absolute;left:16px;right:16px;bottom:168px;z-index:30;background:#1E293B;color:#fff;border-radius:14px;padding:14px 16px;font-size:20px;font-weight:700;
+  box-shadow:0 10px 24px rgba(15,23,42,.3);transition:opacity .25s, transform .25s;opacity:0;transform:translateY(10px);pointer-events:none}
 .toast.show{opacity:1;transform:none}
-.modal{position:absolute;inset:0;z-index:40;background:var(--voice);color:var(--on-voice);display:flex;flex-direction:column;overflow-y:auto;padding:40px 16px 22px;gap:16px}
-.modal h2{margin:0;font-family:var(--f-display);font-weight:800;font-size:30px;text-align:center;line-height:1.15}
-.miczone{display:grid;place-items:center;padding:8px 0}
-.micbig{position:relative;width:132px;height:132px;border-radius:50%;background:var(--card);border:4px solid var(--ink);display:grid;place-items:center;font-size:62px;box-shadow:var(--shadow)}
-.micbig::before,.micbig::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:4px solid var(--ink);animation:ring 2s ease-out infinite;opacity:0}
-.micbig::after{animation-delay:1s}
-@keyframes ring{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.55);opacity:0}}
-.listening{text-align:center;font-size:24px;font-weight:700;margin:0}
+.modal{position:absolute;inset:0;z-index:40;background:var(--surface);display:flex;flex-direction:column;overflow-y:auto;padding:28px 16px 22px;gap:16px}
+.modal h2{margin:0;font-family:var(--f-display);font-weight:800;font-size:28px;text-align:center}
+.micwrap{display:grid;place-items:center;padding:16px 0 6px}
+.micbig{position:relative;isolation:isolate;width:132px;height:132px;border-radius:50%;background:var(--primary);color:#fff;display:grid;place-items:center}
+.micbig .ic{width:56px;height:56px}
+.micbig::before,.micbig::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--primary);opacity:0;animation:ring 2.2s ease-out infinite;z-index:-1}
+.micbig::after{animation-delay:1.1s}
+@keyframes ring{0%{transform:scale(1);opacity:.35}100%{transform:scale(1.7);opacity:0}}
+.listening{margin:0;text-align:center;font-size:23px;font-weight:700}
 .dots i{display:inline-block;font-style:normal;animation:blink 1.4s infinite}.dots i:nth-child(2){animation-delay:.2s}.dots i:nth-child(3){animation-delay:.4s}
 @keyframes blink{0%,80%,100%{opacity:.2}40%{opacity:1}}
-.modal .hint{margin:0;font-size:20px;font-weight:700;text-align:center}
-.phrase{justify-content:flex-start;text-align:left;font-size:22px;min-height:72px}
-.heard{background:var(--card);border:3px solid var(--ink);border-radius:16px;padding:14px;font-size:23px;font-weight:700;text-align:center}
-
-
-/* ---------- paletas para decidir (se aplican con data-palette) ---------- */
-[data-palette="vivo"]{--cream:#F6F4EE;--card:#FFFFFF;--ink:#0F172A;--muted:#334155;--primary:#10B981;--on-primary:#0F172A;--primary-soft:#D1FAE5;--voice:#FBBF24;--on-voice:#0F172A;--voice-soft:#FEF3C7;--danger:#DC2626;--on-danger:#FFFFFF;--danger-soft:#FEE2E2;--info-soft:#E0F2FE;--stage:#E4DFD3;--tile:initial}
-[data-palette="sereno"]{--cream:#F5F3EE;--card:#FFFFFF;--ink:#1E293B;--muted:#475569;--primary:#0F766E;--on-primary:#FFFFFF;--primary-soft:#E3F0EE;--voice:#EADBB8;--on-voice:#1E293B;--voice-soft:#F6EFDF;--danger:#B42318;--on-danger:#FFFFFF;--danger-soft:#FBE9E7;--info-soft:#EAEFF3;--stage:#DCD8CF;--tile:#ECE8E0}
-[data-palette="azul"]{--cream:#F3F5F9;--card:#FFFFFF;--ink:#0B1B3A;--muted:#3B4A63;--primary:#1D4ED8;--on-primary:#FFFFFF;--primary-soft:#E2E9FB;--voice:#F5D97A;--on-voice:#0B1B3A;--voice-soft:#FBF3D6;--danger:#B91C1C;--on-danger:#FFFFFF;--danger-soft:#FBE7E7;--info-soft:#E7EEF9;--stage:#D9DFEA;--tile:#E6EBF4}
-[data-palette="oliva"]{--cream:#F4F1EA;--card:#FFFDF8;--ink:#2A2418;--muted:#554B3A;--primary:#4D6B1F;--on-primary:#FFFFFF;--primary-soft:#E8EEDB;--voice:#E9C46A;--on-voice:#2A2418;--voice-soft:#F7EDD2;--danger:#9F1D1D;--on-danger:#FFFFFF;--danger-soft:#F6E3E0;--info-soft:#ECEBE3;--stage:#DDD6C8;--tile:#ECE6DA}
-[data-palette="contraste"]{--cream:#FFFFFF;--card:#FFFFFF;--ink:#000000;--muted:#1A1A1A;--primary:#000000;--on-primary:#FFFFFF;--primary-soft:#F0F0F0;--voice:#FFD60A;--on-voice:#000000;--voice-soft:#FFF4B0;--danger:#B00000;--on-danger:#FFFFFF;--danger-soft:#FFE5E5;--info-soft:#EEF3FF;--stage:#D4D4D4;--tile:#F2F2F2}
-
-/* barra de prototipo + panel de colores */
-.protobar{flex:none;display:grid;grid-template-columns:1fr auto;gap:8px;padding:6px 10px;background:var(--card);border-bottom:2px dashed var(--ink)}
-.protobar button{min-height:52px;border:2px dashed var(--ink);border-radius:12px;background:var(--cream);font-weight:700;font-size:18px;padding:4px 12px;display:flex;align-items:center;gap:8px;text-align:left;line-height:1.1}
-.protobar button small{display:block;font-size:15px;font-weight:400;color:var(--muted)}
-.protobar .sw{display:inline-flex;flex:none}
-.protobar .sw i{width:14px;height:24px;border:2px solid var(--ink);margin-left:-2px;background:var(--c)}
-.protobar .sw i:first-child{border-radius:6px 0 0 6px;margin-left:0}.protobar .sw i:last-child{border-radius:0 6px 6px 0}
-.modal.sheet{top:auto;height:74%;background:var(--cream);color:var(--ink);border-top:3px solid var(--ink);border-radius:26px 26px 0 0;box-shadow:0 -10px 30px rgba(15,23,42,.35);padding:12px 14px 18px;gap:12px}
-.sheet .grab{align-self:center;width:64px;height:6px;border-radius:6px;background:var(--ink);opacity:.4;flex:none}
-.sheet h2{font-size:26px}
-.sheet .hint{margin:0;text-align:center;font-size:18px;color:var(--muted)}
-.popt{display:grid;grid-template-columns:116px 1fr;gap:12px;align-items:center;width:100%;padding:10px;border:3px solid var(--ink);border-radius:18px;background:var(--cream);color:var(--ink);box-shadow:0 5px 0 var(--ink);text-align:left;flex:none}
-.popt[aria-pressed="true"]{outline:4px solid var(--ink);outline-offset:3px}
-.popt .pv{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:6px;border:2px solid var(--ink);border-radius:12px;background:var(--card)}
-.popt .pv span{display:grid;place-items:center;min-height:30px;border:2px solid var(--ink);border-radius:8px;font-size:14px;font-weight:700}
-.popt .pv-play{grid-column:1/-1;background:var(--primary);color:var(--on-primary)}
-.popt .pv-voice{background:var(--voice);color:var(--on-voice)}
-.popt .pv-tile{background:var(--tile,#FEF3C7)}
-.popt .pv-exit{grid-column:1/-1;background:var(--danger);color:var(--on-danger)}
-.popt b{display:block;font-size:21px;line-height:1.15}
-.popt em{display:inline-block;font-style:normal;font-size:15px;background:var(--voice);color:var(--on-voice);border:2px solid var(--ink);border-radius:999px;padding:0 8px;margin-top:4px}
-.popt small{display:block;font-size:17px;color:var(--muted);margin-top:4px;line-height:1.25}
-.popt .now{display:block;font-size:16px;font-weight:700;margin-top:4px}
-
-@media (max-width:520px){ .statusbar{display:none} }
-.welcome-mode .apphead{display:none}
+.modal .hint{margin:0;font-size:19px;color:var(--muted);text-align:center}
+.phrase{display:flex;align-items:center;gap:12px;min-height:68px;padding:0 18px;border:0;border-radius:16px;background:var(--chip);font-weight:700;font-size:21px;text-align:left}
+.phrase .ic{color:var(--primary)}
+.heard{padding:16px;border-radius:16px;background:var(--primary-soft);font-size:22px;font-weight:700;text-align:center}
 
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
@@ -284,27 +267,23 @@ p.lead{margin:0;font-size:20px;color:var(--muted)}
 <div class="stage">
   <div class="phone" id="phone">
     <div class="screen">
-      <div class="statusbar" aria-hidden="true"><span id="clock">9:41</span><span class="cam"></span><span>📶 <span class="batt"></span></span></div>
-      <div class="protobar" role="group" aria-label="Prototipo: probar colores">
-        <button data-act="palOpen"><span class="sw" id="palSw" aria-hidden="true"></span><span><small>🧪 Prototipo · probar colores</small><span id="palName">Vivo</span></span></button>
-        <button data-act="palNext" aria-label="Probar la siguiente paleta">➡️ Otra</button>
-      </div>
-      <header class="apphead">
-        <div class="logo" aria-label="AbueTV">Abue<span class="tv">TV</span></div>
-        <div class="who" id="who" hidden></div>
+      <div class="statusbar" aria-hidden="true"><span id="clock">9:41</span><span>●●● 🔋</span></div>
+      <header class="topbar">
+        <div class="logo" aria-label="AbueTV"><span class="mark"><svg class="ic" viewBox="0 0 24 24"><polygon points="7 4 20 12 7 20 7 4"/></svg></span>AbueTV</div>
+        <button class="me" id="me" data-act="tab:likes" hidden></button>
       </header>
 
       <main class="content" id="content" tabindex="-1"></main>
 
       <div class="dock">
-        <div class="scrollrow">
-          <button class="btn" data-act="scrollUp" id="upBtn"><span class="ico">⬆️</span>SUBIR LISTA</button>
-          <button class="btn" data-act="scrollDown" id="downBtn"><span class="ico">⬇️</span>BAJAR LISTA</button>
+        <div class="scroll">
+          <button data-act="scrollUp" id="upBtn"></button>
+          <button data-act="scrollDown" id="downBtn"></button>
         </div>
         <nav class="nav" id="nav" aria-label="Secciones principales">
-          <button class="btn" data-act="tab:home" style="--mod:var(--primary)"><span class="ico">📺</span>VER VIDEOS</button>
-          <button class="btn" data-act="tab:saved" style="--mod:var(--danger)"><span class="ico">❤️</span>GUARDADOS</button>
-          <button class="btn" data-act="tab:likes" style="--mod:var(--voice)"><span class="ico">⭐</span>MIS GUSTOS</button>
+          <button data-act="tab:home" id="navHome"></button>
+          <button data-act="tab:saved" id="navSaved"></button>
+          <button data-act="tab:likes" id="navLikes"></button>
         </nav>
       </div>
 
@@ -312,31 +291,56 @@ p.lead{margin:0;font-size:20px;color:var(--muted)}
       <div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle"></div>
     </div>
   </div>
-  <p class="stage-note">AbueTV v0.3 · prototipo para celular. Ábralo en el teléfono para verlo a pantalla completa.</p>
+  <p class="stage-note">AbueTV v0.4 · prototipo para celular. Ábralo en el teléfono para verlo a pantalla completa.</p>
 </div>
 
 <script>
 (function(){
 "use strict";
 
-/* ================= TEMAS DE INTERÉS ================= */
-const TOPICS = [
-  {id:"boleros",   em:"🎶", label:"Boleros y baladas",        tint:"#D1FAE5", mood:"musica"},
-  {id:"rancheras", em:"🤠", label:"Rancheras y mariachi",     tint:"#FFEDD5", mood:"musica"},
-  {id:"tropical",  em:"💃", label:"Salsa, cumbia y merengue", tint:"#FCE7F3", mood:"fiesta"},
-  {id:"tango",     em:"🎻", label:"Tango y folclor",          tint:"#EDE9FE", mood:"musica"},
-  {id:"cocina",    em:"🍲", label:"Cocina de la abuela",      tint:"#FEF3C7", mood:"cocina"},
-  {id:"fe",        em:"🙏", label:"Fe y oración",             tint:"#E0F2FE", mood:"oracion"},
-  {id:"plantas",   em:"🌿", label:"Plantas y jardín",         tint:"#ECFCCB", mood:"calma"},
-  {id:"animales",  em:"🐶", label:"Animales",                 tint:"#FEF9C3", mood:"calma"},
-  {id:"viajes",    em:"🌎", label:"Paseos por Latinoamérica", tint:"#CCFBF1", mood:"calma"},
-  {id:"recuerdos", em:"📻", label:"Recuerdos de antes",       tint:"#F5F5F4", mood:"musica"},
-  {id:"humor",     em:"😄", label:"Humor sano",               tint:"#FFE4E6", mood:"fiesta"},
-  {id:"ejercicio", em:"🧘", label:"Ejercicio suave",          tint:"#DBEAFE", mood:"calma"}
-];
-const TOP = Object.fromEntries(TOPICS.map(t=>[t.id,t]));
+/* ================= ÍCONOS (de línea, siempre acompañados de texto) ================= */
+const I={
+  play:'<polygon points="6 4 20 12 6 20 6 4"/>',
+  pause:'<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>',
+  heart:'<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>',
+  star:'<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',
+  home:'<path d="M3 10l9-7 9 7v10a2 2 0 0 1-2 2h-4v-7H9v7H5a2 2 0 0 1-2-2z"/>',
+  mic:'<path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/>',
+  left:'<polyline points="15 18 9 12 15 6"/>',
+  right:'<line x1="4" y1="12" x2="20" y2="12"/><polyline points="13 5 20 12 13 19"/>',
+  arrowL:'<line x1="20" y1="12" x2="4" y2="12"/><polyline points="11 19 4 12 11 5"/>',
+  up:'<line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/>',
+  down:'<line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>',
+  rew:'<polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>',
+  again:'<polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>',
+  skip:'<polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/>',
+  vol1:'<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>',
+  vol2:'<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>',
+  check:'<polyline points="20 6 9 17 4 12"/>',
+  user:'<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+  pin:'<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
+  spark:'<path d="M12 3l1.8 4.7 4.7 1.8-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/>',
+  trash:'<polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>'
+};
+const ic=(n,cls)=>`<svg class="ic ${cls||""}" viewBox="0 0 24 24" aria-hidden="true">${I[n]}</svg>`;
 
-const COUNTRIES = [
+/* ================= TEMAS ================= */
+const TOPICS=[
+  {id:"boleros",   em:"🎸", label:"Boleros y baladas",        grad:"linear-gradient(135deg,#12403C,#2F7A6E)", mood:"musica"},
+  {id:"rancheras", em:"🤠", label:"Rancheras y mariachi",     grad:"linear-gradient(135deg,#5A2E14,#B5652E)", mood:"musica"},
+  {id:"tropical",  em:"💃", label:"Salsa, cumbia y merengue", grad:"linear-gradient(135deg,#5B1E3A,#B04A6E)", mood:"fiesta"},
+  {id:"tango",     em:"🎻", label:"Tango y folclor",          grad:"linear-gradient(135deg,#2B2145,#5E4B8B)", mood:"musica"},
+  {id:"cocina",    em:"🍲", label:"Cocina de la abuela",      grad:"linear-gradient(135deg,#6B4A12,#C08A2E)", mood:"cocina"},
+  {id:"fe",        em:"🙏", label:"Fe y oración",             grad:"linear-gradient(135deg,#1B2F52,#4F6FA8)", mood:"oracion"},
+  {id:"plantas",   em:"🌿", label:"Plantas y jardín",         grad:"linear-gradient(135deg,#1F4020,#4E8A45)", mood:"calma"},
+  {id:"animales",  em:"🐶", label:"Animales",                 grad:"linear-gradient(135deg,#4A3B12,#9A8235)", mood:"calma"},
+  {id:"viajes",    em:"🌎", label:"Paseos por Latinoamérica", grad:"linear-gradient(135deg,#0F3D45,#2E8794)", mood:"calma"},
+  {id:"recuerdos", em:"📻", label:"Recuerdos de antes",       grad:"linear-gradient(135deg,#3A3530,#7A6E62)", mood:"musica"},
+  {id:"humor",     em:"😄", label:"Humor sano",               grad:"linear-gradient(135deg,#5C2430,#B5566A)", mood:"fiesta"},
+  {id:"ejercicio", em:"🧘", label:"Ejercicio suave",          grad:"linear-gradient(135deg,#1A3557,#3F74B0)", mood:"calma"}
+];
+const TOP=Object.fromEntries(TOPICS.map(t=>[t.id,t]));
+const COUNTRIES=[
   ["🇦🇷","Argentina"],["🇧🇴","Bolivia"],["🇨🇱","Chile"],["🇨🇴","Colombia"],["🇨🇷","Costa Rica"],["🇨🇺","Cuba"],
   ["🇪🇨","Ecuador"],["🇸🇻","El Salvador"],["🇬🇹","Guatemala"],["🇭🇳","Honduras"],["🇲🇽","México"],["🇳🇮","Nicaragua"],
   ["🇵🇦","Panamá"],["🇵🇾","Paraguay"],["🇵🇪","Perú"],["🇵🇷","Puerto Rico"],["🇩🇴","Rep. Dominicana"],["🇺🇾","Uruguay"],
@@ -344,102 +348,88 @@ const COUNTRIES = [
 ];
 
 /* ================= CATÁLOGO PROPIO (videos creados con IA por AbueTV) ================= */
-const VIDEOS = [
-  {id:"v01", topic:"boleros", em:"🎶", from:"🇲🇽 México", dur:214, tint2:"#065F46",
-   title:"Boleros para el corazón", desc:"Guitarra, voz y recuerdos. Canciones lentas para escuchar con calma.",
+const VIDEOS=[
+  {id:"v01",topic:"boleros",em:"🎸",from:"México",dur:214,title:"Boleros para el corazón",
    subs:["🎵 Suena una guitarra suave…","«Desde aquel día en la plaza del pueblo…»","«…tu sonrisa se volvió mi canción.»","🎵 Entra el requinto…","«Aunque pasen los años, te sigo esperando.»"]},
-  {id:"v02", topic:"rancheras", em:"🤠", from:"🇲🇽 México", dur:185, tint2:"#9A3412",
-   title:"Mariachi en la plaza del pueblo", desc:"Trompetas, violines y un cielo de domingo.",
+  {id:"v02",topic:"rancheras",em:"🤠",from:"México",dur:185,title:"Mariachi en la plaza del pueblo",
    subs:["🎺 Empiezan las trompetas…","«Ay, mi tierra querida…»","«…donde nací y donde canto.»","🎻 Los violines responden.","«¡Que viva la alegría!»"]},
-  {id:"v03", topic:"tropical", em:"💃", from:"🇨🇴 Colombia", dur:168, tint2:"#831843",
-   title:"Cumbia para mover los pies sentado", desc:"Música alegre para bailar desde la silla, sin riesgo.",
+  {id:"v03",topic:"tropical",em:"💃",from:"Colombia",dur:168,title:"Cumbia para mover los pies sentado",
    subs:["🥁 Suena el tambor…","Mueva los pies al ritmo: uno, dos.","Ahora las manos, despacito.","¡Muy bien! Siga el compás.","Respire hondo. ¡Qué alegría!"]},
-  {id:"v04", topic:"tango", em:"🎻", from:"🇦🇷 Argentina", dur:228, tint2:"#4C1D95",
-   title:"Tango y bandoneón", desc:"Orquesta típica y recuerdos de los bailes de salón.",
+  {id:"v04",topic:"tango",em:"🎻",from:"Argentina",dur:228,title:"Tango y bandoneón",
    subs:["🎵 Suena el bandoneón…","«En el barrio de mi infancia…»","«…bailábamos hasta el amanecer.»","🎹 Entra el piano.","«Volver a casa, volver a ti.»"]},
-  {id:"v05", topic:"cocina", em:"🫔", from:"🇲🇽 México", dur:260, tint2:"#713F12",
-   title:"Tamales de la abuela", desc:"Masa, hoja de maíz y paciencia. Paso a paso y sin prisa.",
+  {id:"v05",topic:"cocina",em:"🫔",from:"México",dur:260,title:"Tamales de la abuela, paso a paso",
    subs:["Hoy hacemos tamales, como en casa.","Remojamos las hojas de maíz en agua tibia.","Batimos la masa hasta que esté esponjosa.","Ponemos el relleno y envolvemos con cariño.","Al vapor por una hora. ¡Y a compartir!"]},
-  {id:"v06", topic:"cocina", em:"🥟", from:"🇦🇷 Argentina", dur:210, tint2:"#9A3412",
-   title:"Empanadas caseras paso a paso", desc:"La receta de siempre, con letras grandes en pantalla.",
+  {id:"v06",topic:"cocina",em:"🥟",from:"Argentina",dur:210,title:"Empanadas caseras",
    subs:["Preparamos el relleno con cebolla y carne.","Estiramos la masa con el rodillo.","Cortamos círculos del tamaño de un plato chico.","Rellenamos y hacemos el repulgue.","Al horno hasta que estén doraditas."]},
-  {id:"v07", topic:"cocina", em:"🌽", from:"🇨🇴 Colombia · 🇻🇪 Venezuela", dur:185, tint2:"#713F12",
-   title:"Arepas sencillas para el desayuno", desc:"Harina de maíz, agua y sal. Fácil para hacer con los nietos.",
+  {id:"v07",topic:"cocina",em:"🌽",from:"Colombia y Venezuela",dur:185,title:"Arepas sencillas para el desayuno",
    subs:["Necesitamos harina de maíz, agua y sal.","Mezclamos con las manos hasta que no se pegue.","Hacemos bolitas y las aplastamos.","Las asamos hasta que estén doraditas.","¡Con queso quedan deliciosas!"]},
-  {id:"v08", topic:"fe", em:"📿", from:"🌎 Latinoamérica", dur:330, tint2:"#1E3A8A",
-   title:"Santo Rosario de la tarde", desc:"Rezo pausado y acompañado, para seguirlo con calma desde casa.",
+  {id:"v08",topic:"fe",em:"📿",from:"Latinoamérica",dur:330,title:"Santo Rosario de la tarde",
    subs:["Nos ponemos en presencia de Dios.","Primer misterio: la Anunciación.","Dios te salve, María, llena eres de gracia…","Gloria al Padre, al Hijo y al Espíritu Santo.","Amén. Que tenga una tarde en paz."]},
-  {id:"v09", topic:"fe", em:"🌅", from:"🌎 Latinoamérica", dur:140, tint2:"#0C4A6E",
-   title:"Oración de la mañana para dar gracias", desc:"Pocos minutos para empezar el día con gratitud.",
+  {id:"v09",topic:"fe",em:"🌅",from:"Latinoamérica",dur:140,title:"Oración de la mañana para dar gracias",
    subs:["Buenos días, Señor.","Gracias por un nuevo día de vida.","Bendice a mi familia y a mis vecinos.","Dame paciencia y alegría hoy.","Amén."]},
-  {id:"v10", topic:"plantas", em:"🪴", from:"🌎 Latinoamérica", dur:190, tint2:"#14532D",
-   title:"Cómo cuidar la sábila y los geranios", desc:"Cuánta agua, cuánto sol y cuándo cambiarlas de maceta.",
+  {id:"v10",topic:"plantas",em:"🪴",from:"Latinoamérica",dur:190,title:"Cómo cuidar la sábila y los geranios",
    subs:["La sábila necesita poca agua.","Riéguela una vez por semana.","Al geranio le gusta el sol de la mañana.","Quite las hojas secas con cuidado.","¡Sus plantas se lo van a agradecer!"]},
-  {id:"v11", topic:"animales", em:"🐦", from:"🇨🇷 Costa Rica", dur:160, tint2:"#065F46",
-   title:"Los colibríes del jardín", desc:"Pajaritos de colores visitando las flores. Puro descanso.",
+  {id:"v11",topic:"animales",em:"🐦",from:"Costa Rica",dur:160,title:"Los colibríes del jardín",
    subs:["🐦 Llega un colibrí a la flor…","Aletea más de cincuenta veces por segundo.","Le encanta el néctar de las flores rojas.","Mire sus plumas verdes y brillantes.","🌺 Se despide y vuela lejos."]},
-  {id:"v12", topic:"viajes", em:"🏘️", from:"🇵🇪 Perú · 🇨🇴 Colombia", dur:240, tint2:"#115E59",
-   title:"Paseo por pueblos de colores", desc:"Calles empedradas, balcones con flores y mercados.",
+  {id:"v12",topic:"viajes",em:"🏘️",from:"Perú y Colombia",dur:240,title:"Paseo por pueblos de colores",
    subs:["Hoy paseamos sin salir de casa.","Mire esas casas pintadas de colores.","En el mercado venden frutas y flores.","Suenan las campanas de la iglesia.","¿Le recuerda a su pueblo?"]},
-  {id:"v13", topic:"recuerdos", em:"📻", from:"🌎 Latinoamérica", dur:200, tint2:"#44403C",
-   title:"La radio de antes: radionovelas", desc:"Voces, música y suspenso como en los años cincuenta.",
+  {id:"v13",topic:"recuerdos",em:"📻",from:"Latinoamérica",dur:200,title:"La radio de antes: radionovelas",
    subs:["📻 Sintonizamos la radio…","«Y ahora, el capítulo de hoy…»","«…Ella abrió la carta con las manos temblando.»","🎵 Música de suspenso.","«No se pierda el próximo capítulo.»"]},
-  {id:"v14", topic:"humor", em:"😄", from:"🌎 Latinoamérica", dur:150, tint2:"#9F1239",
-   title:"Chistes sanos de la abuela", desc:"Risas para toda la familia, sin groserías.",
+  {id:"v14",topic:"humor",em:"😄",from:"Latinoamérica",dur:150,title:"Chistes sanos de la abuela",
    subs:["¿Qué le dijo una uva verde a una morada?","¡Respira, respira!","¿Por qué el libro de matemáticas está triste?","¡Porque tiene muchos problemas!","😄 ¡Ja, ja, ja!"]},
-  {id:"v15", topic:"ejercicio", em:"🧘", from:"🌎 Latinoamérica", dur:240, tint2:"#1E40AF",
-   title:"Estiramientos suaves en la silla", desc:"Ejercicios sentados, despacio y seguros. Pare si siente molestia.",
+  {id:"v15",topic:"ejercicio",em:"🧘",from:"Latinoamérica",dur:240,title:"Estiramientos suaves en la silla",
    subs:["Siéntese derecho, con los pies en el piso.","Suba los hombros… y bájelos despacio.","Gire la cabeza a un lado y al otro.","Estire los brazos hacia adelante.","¡Muy bien! Tome un poco de agua."]}
 ];
-const VID = Object.fromEntries(VIDEOS.map(v=>[v.id,v]));
+const VID=Object.fromEntries(VIDEOS.map(v=>[v.id,v]));
 
-const PHRASES = [
-  {ico:"🎶", text:"Quiero escuchar boleros",        go:()=>filterTo("boleros")},
-  {ico:"🤠", text:"Pon música de mariachi",          go:()=>filterTo("rancheras")},
-  {ico:"🫔", text:"¿Cómo se hacen los tamales?",     go:()=>openPlayer("v05")},
-  {ico:"🙏", text:"Quiero rezar el rosario",         go:()=>openPlayer("v08")},
-  {ico:"🐶", text:"Quiero ver animalitos",           go:()=>filterTo("animales")}
+const PHRASES=[
+  {text:"Quiero escuchar boleros",       go:()=>filterTo("boleros")},
+  {text:"Pon música de mariachi",         go:()=>filterTo("rancheras")},
+  {text:"¿Cómo se hacen los tamales?",    go:()=>openPlayer("v05")},
+  {text:"Quiero rezar el rosario",        go:()=>openPlayer("v08")},
+  {text:"Quiero ver animalitos",          go:()=>filterTo("animales")}
 ];
 
-/* ================= ESTADO + MEMORIA LOCAL (caché del teléfono) ================= */
+/* ================= ESTADO + MEMORIA DEL TELÉFONO ================= */
 const STORE="abuetv-v3";
-function load(){
-  try{ const o=JSON.parse(localStorage.getItem(STORE)||"null"); if(o&&typeof o==="object") return o; }catch(e){}
-  return null;
-}
-const saved0=load()||{};
+let saved0={};
+try{ const o=JSON.parse(localStorage.getItem(STORE)||"null"); if(o&&typeof o==="object") saved0=o; }catch(e){}
 const S={
-  onboarded: !!saved0.onboarded,
-  account: saved0.account||null,              // null = invitado (sin cuenta)
-  interests: Array.isArray(saved0.interests)?saved0.interests.filter(id=>TOP[id]):[],
-  saved: Array.isArray(saved0.saved)?saved0.saved.filter(id=>VID[id]):[],
-  last: saved0.last&&VID[saved0.last.id]?saved0.last:null,
-  // navegación
-  tab:"home", screen: saved0.onboarded?"home":"welcome",
+  onboarded:!!saved0.onboarded,
+  account:saved0.account||null,
+  interests:Array.isArray(saved0.interests)?saved0.interests.filter(id=>TOP[id]):[],
+  saved:Array.isArray(saved0.saved)?saved0.saved.filter(id=>VID[id]):[],
+  last:saved0.last&&VID[saved0.last.id]?saved0.last:null,
+  tab:"home", screen:saved0.onboarded?"home":"welcome",
   flow:null, draftName:"", draftCountry:null, backTo:null,
-  filter:"para", vid:null, t:0, playing:false, vol:3, endShown:false,
-  confirmUnsave:null
+  filter:"para", vid:null, t:0, playing:false, vol:3, endShown:false, confirmUnsave:null
 };
-function persist(){
-  try{ localStorage.setItem(STORE, JSON.stringify({onboarded:S.onboarded,account:S.account,interests:S.interests,saved:S.saved,last:S.last})); }catch(e){}
-}
+function persist(){ try{ localStorage.setItem(STORE,JSON.stringify({onboarded:S.onboarded,account:S.account,interests:S.interests,saved:S.saved,last:S.last})); }catch(e){} }
 
 /* ================= UTILIDADES ================= */
 const $=id=>document.getElementById(id);
 const content=$("content");
 const mmss=s=>Math.floor(s/60)+":"+String(Math.floor(s%60)).padStart(2,"0");
-function durWords(s){const m=Math.floor(s/60), r=s%60; return "Dura "+m+(m===1?" minuto":" minutos")+(r?" y "+r+" segundos":"");}
+const mins=s=>{const m=Math.round(s/60); return m+(m===1?" minuto":" minutos");};
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
 let toastTimer=null, tick=null, voiceTimer=null;
-function toast(text){ const t=$("toast"); t.textContent=text; t.classList.add("show"); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove("show"),2600); }
+function toast(t){ const el=$("toast"); el.textContent=t; el.classList.add("show"); clearTimeout(toastTimer); toastTimer=setTimeout(()=>el.classList.remove("show"),2600); }
 const firstName=()=>S.account&&S.account.name?S.account.name.trim():"";
-
-/* recomendación simple: primero los temas elegidos, luego el mismo país */
 function forYou(){
   const country=S.account&&S.account.country;
   const score=v=>(S.interests.includes(v.topic)?10:0)+(country&&v.from.includes(country)?2:0);
   const list=S.interests.length?VIDEOS.filter(v=>S.interests.includes(v.topic)):VIDEOS.slice();
   return list.sort((a,b)=>score(b)-score(a));
+}
+function thumb(v,o){
+  o=o||{};
+  return `<span class="thumb ${o.sm?"sm":""}" style="--g:${TOP[v.topic].grad}">
+    <span class="art" aria-hidden="true">${v.em}</span>
+    ${o.ph?'<span class="ph">Imagen del video</span>':""}
+    ${o.go?`<span class="go">${ic("play")}Ver video</span>`:""}
+    ${o.noDur?"":`<span class="dur">${mmss(v.dur)}</span>`}
+    ${o.bar!=null?`<span class="bar"><i style="width:${o.bar}%"></i></span>`:""}
+  </span>`;
 }
 
 /* ================= SONIDO DE PRUEBA DEL REPRODUCTOR ================= */
@@ -447,264 +437,207 @@ let AC=null, musicTimer=null, noteIdx=0;
 function ac(){ try{ if(!AC){ const C=window.AudioContext||window.webkitAudioContext; if(!C) return null; AC=new C(); } if(AC.state==="suspended") AC.resume(); return AC; }catch(e){ return null; } }
 function tone(f,dur,type,vol){
   const c=ac(); if(!c) return;
-  try{ const t=c.currentTime, o=c.createOscillator(), g=c.createGain(); o.type=type; o.frequency.value=f;
+  try{ const t=c.currentTime,o=c.createOscillator(),g=c.createGain(); o.type=type; o.frequency.value=f;
     g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(vol,t+.02); g.gain.exponentialRampToValueAtTime(.0001,t+dur);
     o.connect(g); g.connect(c.destination); o.start(t); o.stop(t+dur+.05); }catch(e){}
 }
 const MOODS={
-  musica:{notes:[392,440,494,523,587,523,494,440], step:430, type:"triangle"},
-  fiesta:{notes:[523,659,784,659,523,587,698,587], step:260, type:"square"},
-  cocina:{notes:[523,659,784,659,587,698,880,698], step:320, type:"sine"},
-  oracion:{notes:[262,330,392,330,294,349,440,349], step:950, type:"sine"},
-  calma:{notes:[330,392,440,392,349,440,523,440], step:700, type:"sine"}
+  musica:{notes:[392,440,494,523,587,523,494,440],step:430,type:"triangle"},
+  fiesta:{notes:[523,659,784,659,523,587,698,587],step:260,type:"triangle"},
+  cocina:{notes:[523,659,784,659,587,698,880,698],step:320,type:"sine"},
+  oracion:{notes:[262,330,392,330,294,349,440,349],step:950,type:"sine"},
+  calma:{notes:[330,392,440,392,349,440,523,440],step:700,type:"sine"}
 };
 const musicOn=()=>S.screen==="player"&&S.playing&&S.vol>0;
 function musicUpdate(){
   if(musicOn()&&!musicTimer){
     const m=MOODS[TOP[VID[S.vid].topic].mood]; noteIdx=0;
-    const vol=m.type==="square"?.012:.03;
-    const play=()=>{ if(!musicOn()){ stopMusic(); return; } tone(m.notes[noteIdx++%m.notes.length], m.step/1000*1.6, m.type, vol*S.vol); };
+    const play=()=>{ if(!musicOn()){ stopMusic(); return; } tone(m.notes[noteIdx++%m.notes.length],m.step/1000*1.6,m.type,.03*S.vol); };
     play(); musicTimer=setInterval(play,m.step);
   } else if(!musicOn()) stopMusic();
 }
 function stopMusic(){ clearInterval(musicTimer); musicTimer=null; }
 
-/* ================= PALETAS DE COLOR (decisión de diseño) ================= */
-const PALETTES=[
-  {id:"vivo",      name:"Vivo (original)",   desc:"Un color fuerte por cada tema. Mucha energía.",            sw:["#10B981","#FBBF24","#DC2626","#FCE7F3"]},
-  {id:"sereno",    name:"Sereno",            desc:"Verde azulado y tonos suaves. Transmite calma.", rec:true, sw:["#0F766E","#EADBB8","#B42318","#ECE8E0"]},
-  {id:"azul",      name:"Azul confianza",    desc:"Azul profundo, como un médico o un banco de confianza.",   sw:["#1D4ED8","#F5D97A","#B91C1C","#E6EBF4"]},
-  {id:"oliva",     name:"Tierra y oliva",    desc:"Cálido y natural, como una casa de campo.",                sw:["#4D6B1F","#E9C46A","#9F1D1D","#ECE6DA"]},
-  {id:"contraste", name:"Alto contraste",    desc:"Blanco y negro con amarillo. Para vista muy cansada.",    sw:["#000000","#FFD60A","#B00000","#F2F2F2"]}
-];
-let PAL="vivo";
-try{ const x=localStorage.getItem("abuetv-palette"); if(PALETTES.some(p=>p.id===x)) PAL=x; }catch(e){}
-function applyPalette(id){
-  PAL=id; document.documentElement.setAttribute("data-palette",id);
-  try{ localStorage.setItem("abuetv-palette",id); }catch(e){}
-  const i=PALETTES.findIndex(p=>p.id===id), P=PALETTES[i];
-  $("palName").textContent=`${P.name} · ${i+1} de ${PALETTES.length}`;
-  $("palSw").innerHTML=P.sw.map(c=>`<i style="--c:${c}"></i>`).join("");
-  try{ document.querySelector('meta[name="theme-color"]').setAttribute("content",getComputedStyle(document.documentElement).getPropertyValue("--cream").trim()); }catch(e){}
-  if(!$("modal").hidden && $("modal").classList.contains("sheet")) drawPalettes();
-}
-function drawPalettes(){
-  const m=$("modal");
-  m.innerHTML=`<span class="grab" aria-hidden="true"></span>
-    <h2 id="modalTitle">🎨 Elija los colores</h2>
-    <p class="hint">Toque una opción: la app de arriba cambia al instante.</p>
-    ${PALETTES.map(p=>`<button class="popt" data-palette="${p.id}" data-act="pal:${p.id}" aria-pressed="${PAL===p.id}">
-      <span class="pv" aria-hidden="true"><span class="pv-play">▶️ VER</span><span class="pv-voice">🎤</span><span class="pv-tile">🍲</span><span class="pv-exit">⬅️ SALIR</span></span>
-      <span><b>${p.name}</b>${p.rec?'<em>⭐ Recomendado</em>':""}<small>${p.desc}</small>${PAL===p.id?'<span class="now">✔ Puesto ahora</span>':""}</span>
-    </button>`).join("")}
-    <button class="btn b-green b-big" data-act="palClose"><span class="ico">✅</span>USAR ESTOS COLORES</button>`;
-}
-function openPalettes(){ closeVoice(); const m=$("modal"); m.classList.add("sheet"); drawPalettes(); m.hidden=false; m.scrollTop=0; }
+/* ================= ESTRUCTURA FIJA ================= */
+$("upBtn").innerHTML=ic("up")+"Subir lista";
+$("downBtn").innerHTML=ic("down")+"Bajar lista";
+$("navHome").innerHTML=`<span class="pill">${ic("home")}</span>Videos`;
+$("navSaved").innerHTML=`<span class="pill">${ic("heart")}</span>Guardados`;
+$("navLikes").innerHTML=`<span class="pill">${ic("star")}</span>Mis gustos`;
 
-/* ================= RENDER GENERAL ================= */
 function render(keepScroll){
   const inApp=S.onboarded;
-  document.querySelector(".screen").classList.toggle("welcome-mode",S.screen==="welcome");
   $("nav").hidden=!inApp;
-  const who=$("who");
-  who.hidden=!inApp;
-  if(inApp) who.textContent=firstName()?"👤 "+firstName():"👤 Invitado";
-  document.querySelectorAll(".nav .btn").forEach(b=>{
-    if(b.dataset.act==="tab:"+S.tab) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current");
-  });
+  const me=$("me"); me.hidden=!inApp;
+  if(inApp){ const n=firstName(); me.innerHTML=n?`<span class="av">${esc(n.charAt(0).toUpperCase())}</span><span>${esc(n)}</span>`:`<span class="av">${ic("user")}</span><span>Invitado</span>`; me.setAttribute("aria-label","Mis gustos y mi cuenta"); }
+  document.querySelectorAll(".nav button").forEach(b=>{ if(b.dataset.act==="tab:"+S.tab) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
   const views={welcome:vWelcome,name:vName,country:vCountry,interests:vInterests,home:vHome,player:vPlayer,saved:vSaved,likes:vLikes};
   content.innerHTML=views[S.screen]();
   if(!keepScroll){ content.style.scrollBehavior="auto"; content.scrollTop=0; content.style.scrollBehavior=""; }
   if(S.screen==="player") updatePlayer();
-  if(S.screen==="name"){ const i=$("nameInput"); if(i){ i.addEventListener("input",()=>{ S.draftName=i.value; $("nameNext").setAttribute("aria-disabled", String(!i.value.trim())); }); } }
+  if(S.screen==="name"){ const i=$("nameInput"); i.addEventListener("input",()=>{ S.draftName=i.value; $("nameNext").setAttribute("aria-disabled",String(!i.value.trim())); }); }
   updateScrollBtns();
 }
 
-/* ================= ONBOARDING ================= */
+/* ================= BIENVENIDA Y REGISTRO ================= */
 function vWelcome(){
-  return `<div class="welcome">
-    <div class="hero-tv" aria-hidden="true"><div class="scr">▶️</div><div class="feet"></div></div>
-    <h1>Abue<span class="tv">TV</span></h1>
-    <p class="tagline">Videos bonitos y tranquilos, hechos para usted.</p>
-    <button class="btn b-green b-big" data-act="startGuest"><span class="ico">▶️</span>EMPEZAR A VER</button>
-    <button class="btn" data-act="startSignup"><span class="ico">👤</span>CREAR MI CUENTA</button>
+  return `<div class="pad col">
+    <div class="collage" aria-hidden="true">${["v01","v05","v11","v08"].map(id=>thumb(VID[id],{noDur:true})).join("")}</div>
+    <h1 class="big">Videos para disfrutar con calma</h1>
+    <p class="sub">Música, recetas, fe y recuerdos de toda Latinoamérica, con letra grande y botones claros.</p>
+    <button class="btn primary xl" data-act="startGuest">${ic("play","fill")}Empezar a ver</button>
+    <button class="btn ghost xl" data-act="startSignup">${ic("user")}Crear mi cuenta</button>
     <p class="fine">No necesita cuenta para ver videos. Si no crea una, sus gustos y guardados se quedan en este teléfono.</p>
   </div>`;
 }
-function steps(n){
-  return `<div class="steps"><b>Paso ${n} de 3</b><div class="bar" aria-hidden="true">${[1,2,3].map(i=>`<i class="${i<=n?"on":""}"></i>`).join("")}</div></div>`;
+function stepHead(n){
+  return `<div class="stepbar"><button class="back" data-act="back">${ic("left")}Volver</button>${n?`<span>Paso ${n} de 3</span>`:""}</div>
+    ${n?`<div class="progress" aria-hidden="true"><i style="width:${n/3*100}%"></i></div>`:""}`;
 }
 function vName(){
   const ok=!!S.draftName.trim();
-  return `<div class="stack">
-    <button class="btn b-red" data-act="back"><span class="ico">⬅️</span>VOLVER</button>
-    ${steps(1)}
-    <h2 class="sec">¿Cómo le gusta que le digan?</h2>
+  return `<div class="pad col">
+    ${stepHead(1)}
+    <h1 class="big">¿Cómo le gusta que le digan?</h1>
     <div class="field">
-      <label for="nameInput">Escriba su nombre</label>
-      <input id="nameInput" type="text" autocomplete="given-name" maxlength="30" placeholder="Ej.: Doña Rosa" value="${esc(S.draftName)}">
-      <small>Así le vamos a saludar cada día.</small>
+      <label for="nameInput">Su nombre</label>
+      <input class="input" id="nameInput" type="text" autocomplete="given-name" maxlength="30" placeholder="Ej.: Doña Rosa" value="${esc(S.draftName)}">
+      <p class="sub" style="font-size:18px">Así le vamos a saludar cada día.</p>
     </div>
-    <button class="btn b-green b-big" data-act="nameNext" id="nameNext" aria-disabled="${!ok}"><span class="ico">➡️</span>CONTINUAR</button>
+    <button class="btn primary xl" data-act="nameNext" id="nameNext" aria-disabled="${!ok}">Continuar${ic("right")}</button>
   </div>`;
 }
 function vCountry(){
-  return `<div class="stack">
-    <button class="btn b-red" data-act="back"><span class="ico">⬅️</span>VOLVER</button>
-    ${steps(2)}
-    <h2 class="sec">¿De qué país es usted?</h2>
-    <p class="lead">Así le mostramos primero música y recetas de su tierra.</p>
+  return `<div class="pad col">
+    ${stepHead(2)}
+    <h1 class="big">¿De qué país es usted?</h1>
+    <p class="sub">Así le mostramos primero música y recetas de su tierra.</p>
     <div class="cgrid" role="group" aria-label="Países">
-      ${COUNTRIES.map(([f,n])=>`<button class="ctile" data-act="country:${n}" aria-pressed="${S.draftCountry===n}"><span class="flag" aria-hidden="true">${f}</span>${n}</button>`).join("")}
+      ${COUNTRIES.map(([f,n])=>`<button class="country" data-act="country:${n}" aria-pressed="${S.draftCountry===n}"><span class="flag" aria-hidden="true">${f}</span>${n}</button>`).join("")}
     </div>
   </div>`;
 }
-function interestGrid(){
-  return `<div class="igrid" role="group" aria-label="Temas">
-    ${TOPICS.map(t=>{ const on=S.interests.includes(t.id);
-      return `<button class="itile" data-act="topic:${t.id}" aria-pressed="${on}" style="--tint:${t.tint}">
-        <span class="chk" aria-hidden="true">${on?"✔":""}</span><span class="em" aria-hidden="true">${t.em}</span>${t.label}</button>`; }).join("")}
+function topicGrid(){
+  return `<div class="tgrid" role="group" aria-label="Temas">
+    ${TOPICS.map(t=>`<button class="tile" data-act="topic:${t.id}" aria-pressed="${S.interests.includes(t.id)}" style="--g:${t.grad}">
+      <span class="ck" aria-hidden="true">${ic("check")}</span><span class="art" aria-hidden="true">${t.em}</span><span class="lbl">${t.label}</span></button>`).join("")}
   </div>`;
 }
+const pickedText=n=>n?`Eligió ${n} ${n===1?"tema":"temas"}`:"Todavía no eligió ningún tema";
 function vInterests(){
-  const n=S.interests.length, signup=S.flow==="signup";
-  return `<div class="stack">
-    <button class="btn b-red" data-act="back"><span class="ico">⬅️</span>VOLVER</button>
-    ${signup?steps(3):""}
-    <h2 class="sec">¿Qué le gusta ver?</h2>
-    <p class="lead">Toque todos los temas que quiera. Puede cambiarlos cuando quiera en <b>⭐ MIS GUSTOS</b>.</p>
-    ${interestGrid()}
+  const n=S.interests.length;
+  return `<div class="pad col">
+    ${stepHead(S.flow==="signup"?3:0)}
+    <h1 class="big">¿Qué le gusta ver?</h1>
+    <p class="sub">Toque todos los temas que quiera. Puede cambiarlos después en <b>Mis gustos</b>.</p>
+    ${topicGrid()}
     <div class="picked">
-      <p id="pickedCount">${n?`Eligió ${n} ${n===1?"tema":"temas"} ✔`:"Todavía no eligió ningún tema"}</p>
-      <button class="btn b-green b-big" data-act="finish"><span class="ico">✅</span>${n?"LISTO, VER MIS VIDEOS":"VER TODOS LOS VIDEOS"}</button>
+      <p id="pickedCount">${pickedText(n)}</p>
+      <button class="btn primary xl" data-act="finish" id="finishBtn">${n?"Listo, ver mis videos":"Ver todos los videos"}</button>
     </div>
   </div>`;
 }
 function finishOnboarding(){
-  if(S.flow==="signup") S.account={name:S.draftName.trim(), country:S.draftCountry};
-  const wasIn=S.onboarded;
+  const created=S.flow==="signup";
+  if(created) S.account={name:S.draftName.trim(),country:S.draftCountry};
   S.onboarded=true; S.flow=null; persist();
-  S.tab=S.backTo==="likes"?"likes":"home"; S.screen=S.tab==="likes"?"likes":"home"; S.backTo=null; S.filter="para";
+  S.tab=S.backTo==="likes"?"likes":"home"; S.screen=S.tab; S.backTo=null; S.filter="para";
   render();
-  if(S.account&&!wasIn) toast(`👋 ¡Le damos la bienvenida, ${firstName()}!`);
-  else if(S.account) toast("✅ Listo. Su cuenta quedó creada.");
-  else toast("👋 ¡Le damos la bienvenida a AbueTV!");
+  toast(created?`¡Le damos la bienvenida, ${firstName()}!`:"¡Le damos la bienvenida a AbueTV!");
 }
 
 /* ================= INICIO ================= */
 function greeting(){
-  const d=new Date(), h=d.getHours();
-  const g=h<12?["☀️","¡Buenos días"]:h<19?["🌤️","¡Buenas tardes"]:["🌙","¡Buenas noches"];
+  const d=new Date(),h=d.getHours();
+  const g=h<12?"Buenos días":h<19?"Buenas tardes":"Buenas noches";
   let date=""; try{ date=d.toLocaleDateString("es-419",{weekday:"long",day:"numeric",month:"long"}); }catch(e){}
-  const nm=firstName();
-  return `<div class="hello"><span class="em" aria-hidden="true">${g[0]}</span><div><b>${g[1]}${nm?", "+esc(nm):""}!</b>${date?`<span>Hoy es ${esc(date)}</span>`:""}</div></div>`;
+  const n=firstName();
+  return `<div class="greet"><b>${g}${n?", "+esc(n):""}</b>${date?`<span>Hoy es ${esc(date)}</span>`:""}</div>`;
 }
 function resumeCard(){
   const l=S.last; if(!l||!VID[l.id]) return "";
   const v=VID[l.id];
-  return `<section class="resume" aria-label="Seguir viendo">
-    <p class="lbl">⏯️ Usted estaba viendo:</p>
-    <h3>${v.em} ${esc(v.title)}</h3>
-    <div class="track" aria-hidden="true"><i style="width:${l.t/v.dur*100}%"></i></div>
-    <p class="lbl">Va en el minuto ${mmss(l.t)} de ${mmss(v.dur)}</p>
-    <button class="btn b-green" data-act="resume"><span class="ico">▶️</span>SEGUIR VIENDO DONDE IBA</button>
-  </section>`;
+  return `<button class="resume" data-act="resume">
+    ${thumb(v,{sm:true,noDur:true,bar:l.t/v.dur*100})}
+    <span><small>Seguir viendo</small><b>${esc(v.title)}</b><span class="when">Va en ${mmss(l.t)} de ${mmss(v.dur)}</span></span>
+  </button>`;
 }
 function videoCard(v){
-  const t=TOP[v.topic];
-  return `<article class="vcard">
-    <div class="f169" style="--tint:${t.tint}">
-      <span class="ph"><span class="em" aria-hidden="true">${v.em}</span>[ AQUÍ VA EL VIDEO ]</span>
-      <span class="dur" aria-hidden="true">⏱️ ${mmss(v.dur)}</span>
-    </div>
-    <div class="vbody">
-      <div class="chips"><span class="chip">${t.em} ${t.label}</span><span class="chip ai">🤖 Hecho con IA</span></div>
-      <h3>${esc(v.title)}</h3>
-      <p>${esc(v.desc)}</p>
-      <div class="meta"><span>⏱️ ${durWords(v.dur)}</span><span>📍 De: ${v.from}</span></div>
-      <button class="btn b-green b-big" data-act="play:${v.id}"><span class="ico">▶️</span>VER ESTE VIDEO AHORA</button>
-    </div>
-  </article>`;
+  return `<article class="vc"><button class="vc-hit" data-act="play:${v.id}">
+    ${thumb(v,{ph:true,go:true})}
+    <span class="vc-meta"><span class="chan" aria-hidden="true">${ic("play")}</span>
+      <span><span class="vc-title">${esc(v.title)}</span>
+      <span class="vc-line">AbueTV · ${TOP[v.topic].label} · ${mins(v.dur)}</span>
+      <span class="vc-line">${ic("spark")} Hecho con IA · ${ic("pin")} ${v.from}</span></span></span>
+  </button></article>`;
 }
 function vHome(){
   const has=S.interests.length>0;
   const keys=["para","todo"].concat(S.interests);
   if(TOP[S.filter]&&!keys.includes(S.filter)) keys.push(S.filter);
-  const label=k=>k==="para"?"⭐ Para usted":k==="todo"?"📺 Todo":TOP[k].em+" "+TOP[k].label;
+  const label=k=>k==="para"?"Para usted":k==="todo"?"Todo":TOP[k].label;
   const list=S.filter==="para"?forYou():S.filter==="todo"?VIDEOS:VIDEOS.filter(v=>v.topic===S.filter);
-  const title=S.filter==="para"?(has?"⭐ Elegidos para usted":"📺 Videos para usted"):S.filter==="todo"?"📺 Todos los videos":label(S.filter);
-  return `<div class="stack">
+  const title=S.filter==="para"?(has?"Elegidos para usted":"Videos para usted"):S.filter==="todo"?"Todos los videos":label(S.filter);
+  return `<div class="home">
     ${greeting()}
-    <button class="btn b-amber voicebtn" data-act="voice">
-      <span class="mic" aria-hidden="true">🎤</span>
-      <span><b>BUSCAR CON LA VOZ</b><small>Toque aquí y diga qué quiere ver</small></span>
-    </button>
+    <button class="voice" data-act="voice"><span class="mic">${ic("mic")}</span><span><b>Buscar con la voz</b><small>Toque aquí y diga qué quiere ver</small></span></button>
+    <div class="chips" role="group" aria-label="Qué mostrar">${keys.map(k=>`<button class="chip" data-act="filter:${k}" aria-pressed="${S.filter===k}">${label(k)}</button>`).join("")}</div>
     ${resumeCard()}
-    ${has?"":`<div class="tipcard"><p>⭐ Cuéntenos qué le gusta y le mostraremos primero esos videos.</p>
-      <button class="btn" data-act="tab:likes"><span class="ico">⭐</span>ELEGIR MIS GUSTOS</button></div>`}
-    <div class="filters" role="group" aria-label="Qué mostrar">
-      ${keys.map(k=>`<button class="btn" data-act="filter:${k}" aria-pressed="${S.filter===k}">${label(k)}</button>`).join("")}
-    </div>
-    <h2 class="sec" id="listTitle">${title}</h2>
-    ${list.map(videoCard).join("")}
-    <p class="lead" style="text-align:center">Eso es todo por aquí. Toque <b>⬆️ SUBIR LISTA</b> para volver arriba.</p>
+    ${has?"":`<div class="tip"><p>Cuéntenos qué le gusta y le mostraremos primero esos videos.</p><button class="btn primary" data-act="tab:likes">${ic("star")}Elegir mis gustos</button></div>`}
+    <h2 class="shelf" id="listTitle">${title}</h2>
+    <div class="feed">${list.map(videoCard).join("")}</div>
+    <p class="endnote">Ya vio toda la lista. Toque <b>Subir lista</b> para volver arriba.</p>
   </div>`;
 }
-function filterTo(id){ S.tab="home"; S.screen="home"; S.filter=id; render(); const h=$("listTitle"); if(h) h.scrollIntoView({block:"start"}); toast(TOP[id].em+" Aquí tiene: "+TOP[id].label); }
+function filterTo(id){ S.tab="home"; S.screen="home"; S.filter=id; render(); const h=$("listTitle"); if(h) h.scrollIntoView({block:"start"}); toast("Aquí tiene: "+TOP[id].label); }
 
 /* ================= REPRODUCTOR ================= */
-function vPlayer(){
-  const v=VID[S.vid], isSaved=S.saved.includes(v.id);
-  return `<div class="stack">
-    <button class="btn b-red b-big" data-act="exitPlayer"><span class="ico">⬅️</span>SALIR DEL VIDEO Y VOLVER</button>
-    <h2 class="player-title">${v.em} ${esc(v.title)}</h2>
-    <div class="screen169" id="pscreen" style="--tint2:${v.tint2}">
-      <span class="ph">[ AQUÍ VA EL VIDEO EN PANTALLA ]</span>
-      <span class="em" aria-hidden="true">${v.em}</span>
-      <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
-      <span class="pausebadge" id="pbadge" hidden>⏸️ EN PAUSA</span>
-      <div class="subs" id="psubs" aria-live="polite"></div>
-    </div>
-    <div class="timebox">
-      <div class="timetext"><span id="tnow">0:00</span><span>de ${mmss(v.dur)}</span></div>
-      <div class="track" role="progressbar" aria-label="Avance del video" aria-valuemin="0" aria-valuemax="${v.dur}" id="ptrack"><i id="pfill"></i></div>
-    </div>
-    <div id="endzone"></div>
-    <button class="btn b-green b-big" data-act="toggle" id="ptoggle"></button>
-    <button class="btn" data-act="rew"><span class="ico">⏪</span>REPETIR 10 SEGUNDOS</button>
-    <div class="panel">
-      <h3>🔊 Volumen</h3>
-      <div class="volbars" id="volbars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-      <p class="voltext" id="voltext"></p>
-      <div class="row2">
-        <button class="btn" data-act="volDown"><span class="ico">🔉</span>BAJAR</button>
-        <button class="btn" data-act="volUp"><span class="ico">🔊</span>SUBIR</button>
-      </div>
-    </div>
-    <button class="btn ${isSaved?"saved":""}" data-act="save" id="psave">${isSaved?'<span class="ico">✅</span>YA ESTÁ EN GUARDADOS':'<span class="ico">❤️</span>GUARDAR VIDEO'}</button>
-    <button class="btn b-ink" data-act="next"><span class="ico">⏭️</span>OTRO VIDEO</button>
-    <p class="aiwhy">🤖 Este video fue creado con inteligencia artificial por el equipo de AbueTV. 📍 ${v.from}</p>
-    <button class="btn b-proto" data-act="skipEnd">🧪 Solo en el prototipo: saltar al final</button>
-  </div>`;
-}
-function suggestions(v){
+function suggestions(v,n){
   const pool=VIDEOS.filter(x=>x.id!==v.id);
-  const same=pool.filter(x=>x.topic===v.topic);
-  const liked=pool.filter(x=>S.interests.includes(x.topic)&&x.topic!==v.topic);
-  const rest=pool.filter(x=>!same.includes(x)&&!liked.includes(x));
-  const out=[]; [same,liked,rest].forEach(g=>g.forEach(x=>{ if(out.length<3&&!out.includes(x)) out.push(x); }));
+  const same=pool.filter(x=>x.topic===v.topic), liked=pool.filter(x=>S.interests.includes(x.topic)&&x.topic!==v.topic);
+  const out=[]; [same,liked,pool].forEach(g=>g.forEach(x=>{ if(out.length<n&&!out.includes(x)) out.push(x); }));
   return out;
 }
-function endPanel(v){
-  return `<section class="endpanel" aria-live="polite">
-    <h3>✅ Terminó el video</h3>
-    <p>¿Qué quiere ver ahora? Toque uno:</p>
-    ${suggestions(v).map(s=>`<button class="btn mini" data-act="play:${s.id}">
-      <span class="th" style="--tint:${TOP[s.topic].tint}" aria-hidden="true">${s.em}</span>
-      <span><b>${esc(s.title)}</b><small>⏱️ Dura ${mmss(s.dur)}</small><small>▶️ Toque para verlo</small></span></button>`).join("")}
-    <button class="btn" data-act="toggle"><span class="ico">🔁</span>VER ESTE VIDEO DE NUEVO</button>
-    <button class="btn" data-act="tab:home"><span class="ico">🏠</span>VOLVER AL INICIO</button>
-  </section>`;
+function rowItem(v){
+  return `<button class="row" data-act="play:${v.id}">${thumb(v,{sm:true})}
+    <span><b>${esc(v.title)}</b><small>${TOP[v.topic].label}</small><span class="see">${ic("play")}Ver</span></span></button>`;
+}
+function vPlayer(){
+  const v=VID[S.vid], isSaved=S.saved.includes(v.id);
+  return `<div>
+    <button class="exitbar" data-act="exitPlayer">${ic("arrowL")}Salir del video y volver</button>
+    <div class="video" id="pscreen" style="--g:${TOP[v.topic].grad}">
+      <span class="ph">Aquí va el video</span>
+      <span class="art" aria-hidden="true">${v.em}</span>
+      <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="pausebadge" id="pbadge" hidden>${ic("pause","fill")}En pausa</span>
+      <div class="subs" id="psubs" aria-live="polite"></div>
+    </div>
+    <div class="pbody">
+      <div class="time"><span id="tnow">0:00</span><div class="track" role="progressbar" aria-label="Avance del video" aria-valuemin="0" aria-valuemax="${v.dur}" id="ptrack"><i id="pfill"></i></div><span>${mmss(v.dur)}</span></div>
+      <h2 class="ptitle">${esc(v.title)}</h2>
+      <p class="pmeta">AbueTV · ${TOP[v.topic].label} · ${ic("pin")} ${v.from}</p>
+      <div id="endzone"></div>
+      <button class="btn primary xl" data-act="toggle" id="ptoggle"></button>
+      <div class="actions">
+        <button data-act="rew">${ic("rew")}<span>Repetir<br>10 segundos</span></button>
+        <button data-act="save" id="psave" class="${isSaved?"on":""}">${ic("heart",isSaved?"fill":"")}<span>${isSaved?"Guardado":"Guardar"}</span></button>
+        <button data-act="next">${ic("skip")}<span>Otro<br>video</span></button>
+      </div>
+      <div class="vol">
+        <p id="voltext"></p>
+        <div class="volrow">
+          <button data-act="volDown">${ic("vol1")}Bajar</button>
+          <div class="bars" id="volbars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+          <button data-act="volUp">${ic("vol2")}Subir</button>
+        </div>
+      </div>
+      <h3 class="h3" id="nextTitle">Siguiente para usted</h3>
+      <div class="rows">${suggestions(v,5).map(rowItem).join("")}</div>
+      <p class="aiwhy">${ic("spark")}<span>Este video fue creado con inteligencia artificial por el equipo de AbueTV.</span></p>
+      <button class="proto" data-act="skipEnd">Solo en el prototipo: saltar al final</button>
+    </div>
+  </div>`;
 }
 function updatePlayer(){
   const v=VID[S.vid]; if(!v||S.screen!=="player") return;
@@ -715,15 +648,20 @@ function updatePlayer(){
   $("pscreen").classList.toggle("paused",!S.playing);
   $("pbadge").hidden=S.playing||done;
   const idx=Math.min(v.subs.length-1,Math.floor(S.t/(v.dur/v.subs.length)));
-  const line=done?"✅ El video terminó. Elija otro aquí abajo.":v.subs[idx];
+  const line=done?"Terminó el video":v.subs[idx];
   const subs=$("psubs"); if(subs.textContent!==line) subs.textContent=line;
-  $("ptoggle").innerHTML=S.playing?'<span class="ico">⏸️</span>PAUSAR':(done?'<span class="ico">🔁</span>VER DE NUEVO':'<span class="ico">▶️</span>CONTINUAR');
+  $("ptoggle").innerHTML=S.playing?ic("pause","fill")+"Pausar":(done?ic("again")+"Ver de nuevo":ic("play","fill")+"Continuar");
   $("volbars").querySelectorAll("i").forEach((b,i)=>b.classList.toggle("on",i<S.vol));
-  const vt=["Sin sonido","Muy bajito","Bajito","Normal","Fuerte","Muy fuerte"];
-  $("voltext").textContent="Volumen: "+S.vol+" de 5 · "+vt[S.vol];
+  const vt=["sin sonido","muy bajito","bajito","normal","fuerte","muy fuerte"];
+  $("voltext").textContent=`Volumen: ${vt[S.vol]} (${S.vol} de 5)`;
   const ez=$("endzone");
-  if(done&&!S.endShown){ S.endShown=true; ez.innerHTML=endPanel(v); setTimeout(()=>ez.scrollIntoView({behavior:"smooth",block:"start"}),150); }
-  if(!done&&S.endShown){ S.endShown=false; ez.innerHTML=""; }
+  if(done&&!S.endShown){
+    S.endShown=true;
+    ez.innerHTML=`<div class="ended" role="status">${ic("check")}<span><b>Terminó el video</b><span>¿Qué quiere ver ahora? Elija uno de la lista de abajo.</span></span></div>`;
+    $("nextTitle").textContent="Elija qué ver ahora";
+    setTimeout(()=>ez.scrollIntoView({behavior:"smooth",block:"start"}),150);
+  }
+  if(!done&&S.endShown){ S.endShown=false; ez.innerHTML=""; $("nextTitle").textContent="Siguiente para usted"; }
   musicUpdate();
 }
 function saveLast(){
@@ -734,7 +672,7 @@ function saveLast(){
 }
 function openPlayer(id,from){
   if(S.screen==="player") saveLast();
-  stopMusic(); closeVoice();
+  stopMusic(); closeModal();
   S.tab="home"; S.screen="player"; S.vid=id; S.t=from||0; S.playing=true; S.endShown=false;
   render();
   clearInterval(tick);
@@ -746,30 +684,25 @@ function openPlayer(id,from){
 function stopPlayer(){ if(S.screen==="player") saveLast(); clearInterval(tick); S.playing=false; stopMusic(); }
 
 /* ================= GUARDADOS ================= */
-function guestBox(text){
+function guestNotice(text){
   if(S.account) return "";
-  return `<div class="guest"><p>👋 Está usando AbueTV sin cuenta.<br><small>${text}</small></p>
-    <button class="btn" data-act="signupFromApp"><span class="ico">👤</span>CREAR MI CUENTA</button></div>`;
+  return `<div class="notice"><p>Está usando AbueTV sin cuenta.<small>${text}</small></p>
+    <button class="btn ghost" data-act="signupFromApp">${ic("user")}Crear mi cuenta</button></div>`;
 }
 function vSaved(){
   const list=S.saved.map(id=>VID[id]).filter(Boolean);
-  const head=`<h2 class="sec">❤️ Mis videos guardados</h2>${guestBox("Sus guardados se quedan en este teléfono. Con una cuenta no los pierde si cambia de celular.")}`;
-  if(!list.length){
-    return `<div class="stack">${head}
-      <div class="empty"><span class="em" aria-hidden="true">💌</span>
-        <p style="margin:0;font-size:22px;font-weight:700">Todavía no hay videos guardados.</p>
-        <p class="lead">Cuando vea un video que le guste, toque <b>❤️ GUARDAR VIDEO</b> y aparecerá aquí.</p>
-        <button class="btn b-green" data-act="tab:home"><span class="ico">📺</span>IR A VER VIDEOS</button></div></div>`;
-  }
-  return `<div class="stack">${head}
-    <p class="lead">Tiene ${list.length} ${list.length===1?"video guardado":"videos guardados"}.</p>
-    ${list.map(v=>{
-      const extra=S.confirmUnsave===v.id
-        ? `<div class="confirm"><p>¿Quiere quitar este video de Guardados?</p><div class="row2">
-             <button class="btn b-red" data-act="unsaveYes:${v.id}">SÍ, QUITAR</button><button class="btn" data-act="unsaveNo">NO, DEJARLO</button></div></div>`
-        : `<button class="btn" data-act="unsave:${v.id}"><span class="ico">💔</span>QUITAR DE GUARDADOS</button>`;
-      return videoCard(v).replace(/<\/div>\s*<\/article>$/, extra+"</div></article>");
-    }).join("")}
+  const head=`<h1 class="big">Mis guardados</h1>${guestNotice("Sus guardados se quedan en este teléfono. Con una cuenta no los pierde si cambia de celular.")}`;
+  if(!list.length) return `<div class="pad col">${head}
+    <div class="empty">${ic("heart")}<b>Todavía no hay videos guardados</b>
+      <p class="sub">Cuando un video le guste, toque <b>Guardar</b> y aparecerá aquí.</p>
+      <button class="btn primary" data-act="tab:home">${ic("home")}Ir a ver videos</button></div></div>`;
+  return `<div class="pad col">${head}
+    <p class="sub">Tiene ${list.length} ${list.length===1?"video guardado":"videos guardados"}.</p>
+    <div class="col" style="gap:8px">${list.map(v=>`<div class="saveditem">${rowItem(v)}
+      ${S.confirmUnsave===v.id
+        ?`<div class="confirm"><p>¿Quitar este video de sus guardados?</p><div class="two"><button class="btn danger" data-act="unsaveYes:${v.id}">Sí, quitar</button><button class="btn ghost" data-act="unsaveNo">No, dejarlo</button></div></div>`
+        :`<button class="rm" data-act="unsave:${v.id}">${ic("trash")}Quitar de guardados</button>`}
+    </div>`).join("")}</div>
   </div>`;
 }
 
@@ -777,137 +710,110 @@ function vSaved(){
 function vLikes(){
   const a=S.account;
   const flag=a&&a.country?(COUNTRIES.find(c=>c[1]===a.country)||["🌎"])[0]:"";
-  return `<div class="stack">
-    <h2 class="sec">⭐ Mis gustos</h2>
-    <div class="profile">
-      <span class="avatar" aria-hidden="true">${a?esc(a.name.trim().charAt(0).toUpperCase()):"👤"}</span>
-      <div><b>${a?esc(a.name):"Invitado"}</b><span>${a?(a.country?flag+" "+esc(a.country):"🌎 Latinoamérica"):"Sin cuenta · guardado en este teléfono"}</span></div>
-    </div>
-    ${guestBox("Sus gustos se guardan en este teléfono. Cree una cuenta para llevarlos a cualquier celular.")}
-    <h2 class="sec" style="font-size:24px">Temas que me gustan</h2>
-    <p class="lead">Toque para elegir o quitar. Los videos de <b>⭐ Para usted</b> cambian según lo que elija.</p>
-    ${interestGrid()}
-    <p class="lead" id="likesCount" style="text-align:center;font-weight:700;color:var(--ink)">${S.interests.length?`Tiene ${S.interests.length} ${S.interests.length===1?"tema elegido":"temas elegidos"} ✔`:"No tiene temas elegidos: verá todos los videos."}</p>
-    <button class="btn b-green b-big" data-act="tab:home"><span class="ico">📺</span>VER MIS VIDEOS</button>
-    <button class="btn b-proto" data-act="reset">🧪 Solo en el prototipo: empezar de nuevo desde la bienvenida</button>
+  const n=S.interests.length;
+  return `<div class="pad col">
+    <div class="profile"><span class="av">${a?esc(a.name.trim().charAt(0).toUpperCase()):ic("user")}</span>
+      <div><b>${a?esc(a.name):"Invitado"}</b><span>${a?(a.country?flag+" "+esc(a.country):"Latinoamérica"):"Sin cuenta · guardado en este teléfono"}</span></div></div>
+    ${guestNotice("Sus gustos se guardan en este teléfono. Cree una cuenta para llevarlos a cualquier celular.")}
+    <h2 class="h3">Temas que me gustan</h2>
+    <p class="sub">Toque para elegir o quitar. La lista <b>Para usted</b> cambia según lo que elija.</p>
+    ${topicGrid()}
+    <p class="sub" id="likesCount" style="text-align:center;font-weight:700;color:var(--ink)">${n?pickedText(n):"Sin temas elegidos: verá todos los videos."}</p>
+    <button class="btn primary xl" data-act="tab:home">${ic("home")}Ver mis videos</button>
+    <button class="proto" data-act="reset">Solo en el prototipo: empezar de nuevo desde la bienvenida</button>
   </div>`;
 }
 
-/* ================= MODAL DE VOZ ================= */
+/* ================= BÚSQUEDA POR VOZ ================= */
 function openVoice(){
   const m=$("modal");
-  m.innerHTML=`<h2 id="modalTitle">🎤 Buscar con la voz</h2>
-    <div class="miczone"><div class="micbig" aria-hidden="true">🎤</div></div>
+  m.innerHTML=`<h2 id="modalTitle">Buscar con la voz</h2>
+    <div class="micwrap"><div class="micbig" aria-hidden="true">${ic("mic")}</div></div>
     <p class="listening">Le estoy escuchando<span class="dots"><i>.</i><i>.</i><i>.</i></span></p>
     <p class="hint">Diga lo que quiere ver, o toque una de estas frases:</p>
-    ${PHRASES.map((p,i)=>`<button class="btn phrase" data-act="phrase:${i}"><span class="ico">${p.ico}</span>«${p.text}»</button>`).join("")}
-    <button class="btn b-red b-big" data-act="voiceClose"><span class="ico">⬅️</span>CERRAR Y VOLVER</button>`;
+    ${PHRASES.map((p,i)=>`<button class="phrase" data-act="phrase:${i}">${ic("mic")}«${p.text}»</button>`).join("")}
+    <button class="btn danger xl" data-act="voiceClose">${ic("arrowL")}Cerrar y volver</button>`;
   m.hidden=false; m.scrollTop=0;
 }
-function closeVoice(){ clearTimeout(voiceTimer); const m=$("modal"); m.hidden=true; m.innerHTML=""; m.classList.remove("sheet"); }
+function closeModal(){ clearTimeout(voiceTimer); const m=$("modal"); m.hidden=true; m.innerHTML=""; }
 function choosePhrase(i){
   const p=PHRASES[i], m=$("modal");
-  m.innerHTML=`<h2 id="modalTitle">🎤 Buscar con la voz</h2>
-    <div class="miczone"><div class="micbig" aria-hidden="true">✅</div></div>
-    <div class="heard" role="status">Entendí:<br>«${esc(p.text)}»</div>
+  m.innerHTML=`<h2 id="modalTitle">Buscar con la voz</h2>
+    <div class="micwrap"><div class="micbig" aria-hidden="true">${ic("check")}</div></div>
+    <div class="heard" role="status">Entendí: «${esc(p.text)}»</div>
     <p class="listening">Un momento, ya le muestro<span class="dots"><i>.</i><i>.</i><i>.</i></span></p>`;
-  voiceTimer=setTimeout(()=>{ closeVoice(); p.go(); },1300);
+  voiceTimer=setTimeout(()=>{ closeModal(); p.go(); },1300);
 }
 
-/* ================= NAVEGACIÓN ================= */
-function goTab(t){
-  stopPlayer(); closeVoice(); S.confirmUnsave=null;
-  S.tab=t; S.screen=t;
-  render();
-}
+/* ================= NAVEGACIÓN Y EVENTOS ================= */
+function goTab(t){ stopPlayer(); closeModal(); S.confirmUnsave=null; S.tab=t; S.screen=t; render(); }
 function syncTiles(){
-  document.querySelectorAll(".itile").forEach(b=>{
-    const id=b.dataset.act.split(":")[1], on=S.interests.includes(id);
-    b.setAttribute("aria-pressed",on); b.querySelector(".chk").textContent=on?"✔":"";
-  });
+  document.querySelectorAll(".tile").forEach(b=>b.setAttribute("aria-pressed",S.interests.includes(b.dataset.act.split(":")[1])));
   const n=S.interests.length;
-  const pc=$("pickedCount"); if(pc){ pc.textContent=n?`Eligió ${n} ${n===1?"tema":"temas"} ✔`:"Todavía no eligió ningún tema";
-    const f=document.querySelector('[data-act="finish"]'); if(f) f.innerHTML='<span class="ico">✅</span>'+(n?"LISTO, VER MIS VIDEOS":"VER TODOS LOS VIDEOS"); }
-  const lc=$("likesCount"); if(lc) lc.textContent=n?`Tiene ${n} ${n===1?"tema elegido":"temas elegidos"} ✔`:"No tiene temas elegidos: verá todos los videos.";
+  const pc=$("pickedCount"); if(pc){ pc.textContent=pickedText(n); $("finishBtn").textContent=n?"Listo, ver mis videos":"Ver todos los videos"; }
+  const lc=$("likesCount"); if(lc) lc.textContent=n?pickedText(n):"Sin temas elegidos: verá todos los videos.";
 }
 
 $("phone").addEventListener("click",e=>{
   const el=e.target.closest("[data-act]"); if(!el) return;
   if(el.getAttribute("aria-disabled")==="true"){
-    if(el.dataset.act==="nameNext"){ toast("✍️ Primero escriba su nombre, por favor."); $("nameInput")?.focus(); }
+    if(el.dataset.act==="nameNext"){ toast("Primero escriba su nombre, por favor."); $("nameInput").focus(); }
     return;
   }
-  try{ navigator.vibrate&&navigator.vibrate(12); }catch(err){}
-  const i=el.dataset.act.indexOf(":");
-  const act=i<0?el.dataset.act:el.dataset.act.slice(0,i), arg=i<0?"":el.dataset.act.slice(i+1);
+  try{ navigator.vibrate&&navigator.vibrate(10); }catch(err){}
+  const k=el.dataset.act.indexOf(":");
+  const act=k<0?el.dataset.act:el.dataset.act.slice(0,k), arg=k<0?"":el.dataset.act.slice(k+1);
   switch(act){
-    /* onboarding */
     case "startGuest": S.flow="guest"; S.screen="interests"; render(); break;
     case "startSignup": S.flow="signup"; S.draftName=""; S.draftCountry=null; S.screen="name"; render(); break;
     case "signupFromApp": stopPlayer(); S.backTo=S.tab; S.flow="signup"; S.draftName=""; S.draftCountry=null; S.onboarded=false; S.screen="name"; render(); break;
     case "nameNext": S.screen="country"; render(); break;
     case "country": S.draftCountry=arg; render(true); setTimeout(()=>{ S.screen="interests"; render(); },350); break;
-    case "topic": {
-      S.interests=S.interests.includes(arg)?S.interests.filter(x=>x!==arg):S.interests.concat(arg);
-      if(S.onboarded) persist();
-      syncTiles(); break;
-    }
+    case "topic": S.interests=S.interests.includes(arg)?S.interests.filter(x=>x!==arg):S.interests.concat(arg); if(S.onboarded) persist(); syncTiles(); break;
     case "finish": finishOnboarding(); break;
-    case "back": {
+    case "back":
       if(S.screen==="country") S.screen="name";
       else if(S.screen==="interests") S.screen=S.flow==="signup"?"country":"welcome";
-      else if(S.screen==="name"){
-        if(S.backTo){ S.onboarded=true; S.flow=null; S.tab=S.backTo; S.screen=S.backTo; S.backTo=null; }
-        else S.screen="welcome";
-      }
+      else if(S.screen==="name"){ if(S.backTo){ S.onboarded=true; S.flow=null; S.tab=S.backTo; S.screen=S.backTo; S.backTo=null; } else S.screen="welcome"; }
       render(); break;
-    }
-    /* app */
     case "tab": goTab(arg); break;
     case "filter": S.filter=arg; render(true); break;
     case "play": openPlayer(arg); break;
     case "resume": if(S.last) openPlayer(S.last.id,S.last.t); break;
     case "exitPlayer": goTab("home"); break;
     case "toggle": { const v=VID[S.vid]; if(S.t>=v.dur){ S.t=0; S.playing=true; content.scrollTop=0; } else S.playing=!S.playing; updatePlayer(); break; }
-    case "rew": S.t=Math.max(0,S.t-10); updatePlayer(); toast("⏪ Volvimos 10 segundos atrás."); break;
+    case "rew": S.t=Math.max(0,S.t-10); updatePlayer(); toast("Volvimos 10 segundos atrás."); break;
     case "skipEnd": S.t=VID[S.vid].dur; S.playing=false; updatePlayer(); break;
     case "volDown": S.vol=Math.max(0,S.vol-1); updatePlayer(); break;
     case "volUp": S.vol=Math.min(5,S.vol+1); updatePlayer(); break;
     case "save": {
-      if(!S.saved.includes(S.vid)){ S.saved.push(S.vid); persist(); toast("❤️ Listo. Este video quedó en GUARDADOS."); }
-      else toast("✅ Este video ya estaba en GUARDADOS.");
-      const b=$("psave"); b.classList.add("saved"); b.innerHTML='<span class="ico">✅</span>YA ESTÁ EN GUARDADOS'; break;
+      if(!S.saved.includes(S.vid)){ S.saved.push(S.vid); persist(); toast("Listo. El video quedó en Guardados."); } else toast("Este video ya está en Guardados.");
+      const b=$("psave"); b.classList.add("on"); b.innerHTML=ic("heart","fill")+"<span>Guardado</span>"; break;
     }
-    case "next": { const s=suggestions(VID[S.vid])[0]; openPlayer(s.id); toast("⏭️ Ahora vemos: "+s.title); break; }
+    case "next": { const s=suggestions(VID[S.vid],1)[0]; openPlayer(s.id); toast("Ahora vemos: "+s.title); break; }
     case "unsave": S.confirmUnsave=arg; render(true); break;
     case "unsaveNo": S.confirmUnsave=null; render(true); break;
-    case "unsaveYes": S.saved=S.saved.filter(id=>id!==arg); S.confirmUnsave=null; persist(); render(true); toast("Listo, se quitó de GUARDADOS."); break;
+    case "unsaveYes": S.saved=S.saved.filter(id=>id!==arg); S.confirmUnsave=null; persist(); render(true); toast("Listo, se quitó de Guardados."); break;
     case "voice": openVoice(); break;
-    case "palOpen": openPalettes(); break;
-    case "palClose": closeVoice(); toast("🎨 Colores: "+PALETTES.find(p=>p.id===PAL).name); break;
-    case "pal": applyPalette(arg); break;
-    case "palNext": { const i=PALETTES.findIndex(p=>p.id===PAL), n=PALETTES[(i+1)%PALETTES.length]; applyPalette(n.id); toast("🎨 "+n.name+": "+n.desc); break; }
-    case "voiceClose": closeVoice(); break;
+    case "voiceClose": closeModal(); break;
     case "phrase": choosePhrase(+arg); break;
     case "reset": stopPlayer(); try{ localStorage.removeItem(STORE); }catch(err){}
       Object.assign(S,{onboarded:false,account:null,interests:[],saved:[],last:null,tab:"home",screen:"welcome",flow:null,backTo:null,filter:"para"}); render(); break;
-    case "scrollUp": content.scrollBy({top:-content.clientHeight*0.65,behavior:"smooth"}); break;
-    case "scrollDown": content.scrollBy({top:content.clientHeight*0.65,behavior:"smooth"}); break;
+    case "scrollUp": content.scrollBy({top:-content.clientHeight*.65,behavior:"smooth"}); break;
+    case "scrollDown": content.scrollBy({top:content.clientHeight*.65,behavior:"smooth"}); break;
   }
 });
 content.addEventListener("keydown",e=>{ if(e.key==="Enter"&&e.target.id==="nameInput"){ e.preventDefault(); $("nameNext").click(); } });
-
 function updateScrollBtns(){
   const top=content.scrollTop<=2, bottom=content.scrollTop+content.clientHeight>=content.scrollHeight-2;
   $("upBtn").setAttribute("aria-disabled",top); $("downBtn").setAttribute("aria-disabled",bottom);
 }
 content.addEventListener("scroll",updateScrollBtns,{passive:true});
 window.addEventListener("resize",updateScrollBtns);
-document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&!$("modal").hidden) closeVoice(); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&!$("modal").hidden) closeModal(); });
 function clock(){ const d=new Date(); $("clock").textContent=d.getHours()+":"+String(d.getMinutes()).padStart(2,"0"); }
 clock(); setInterval(clock,20000);
 
-applyPalette(PAL);
 render();
 })();
 </script>
