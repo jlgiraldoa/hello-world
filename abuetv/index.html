@@ -72,7 +72,7 @@ p.sub{margin:0;font-size:20px;color:var(--muted)}
 .btn.danger{background:var(--danger);color:#fff}
 .btn.xl{min-height:68px;font-size:22px}
 .btn[aria-disabled="true"]{opacity:.45}
-.proto{width:100%;min-height:52px;border:2px dashed var(--line);border-radius:14px;background:transparent;color:var(--muted);font-size:16px;font-weight:700}
+.proto{width:100%;min-height:52px;border:2px dashed var(--line);border-radius:14px;background:transparent;color:var(--muted);font-size:18px;font-weight:700}
 
 /* ---------- miniaturas ---------- */
 .thumb{position:relative;display:grid;place-items:center;aspect-ratio:16/9;max-width:100%;background:var(--g);overflow:hidden;color:#fff}
@@ -83,7 +83,7 @@ p.sub{margin:0;font-size:20px;color:var(--muted)}
 .thumb .go{position:absolute;z-index:2;left:10px;bottom:10px;display:flex;align-items:center;gap:6px;background:#fff;color:var(--ink);font-weight:700;font-size:18px;padding:5px 14px 5px 10px;border-radius:999px;box-shadow:0 4px 12px rgba(0,0,0,.25)}
 .thumb .go .ic{width:16px;height:16px;fill:var(--ink);stroke-width:0}
 .thumb.sm .art{font-size:40px}
-.thumb.sm .dur{font-size:16px;right:6px;bottom:6px;padding:1px 6px}
+.thumb.sm .dur{font-size:18px;right:6px;bottom:6px;padding:1px 6px}
 .thumb .bar{position:absolute;z-index:2;left:0;right:0;bottom:0;height:6px;background:rgba(255,255,255,.45)}
 .thumb .bar i{display:block;height:100%;background:var(--primary)}
 
@@ -96,7 +96,7 @@ p.sub{margin:0;font-size:20px;color:var(--muted)}
 
 /* ---------- pasos ---------- */
 .stepbar{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.back{display:flex;align-items:center;gap:4px;min-height:52px;padding:0 18px 0 10px;border:0;border-radius:999px;background:var(--danger-soft);color:var(--danger);font-weight:700;font-size:20px}
+.back{display:flex;align-items:center;gap:4px;min-height:52px;padding:0 20px 0 12px;border:0;border-radius:999px;background:var(--danger);color:#fff;font-weight:700;font-size:20px}
 .stepbar span{font-weight:700;font-size:19px;color:var(--muted)}
 .progress{height:8px;border-radius:999px;background:var(--chip);overflow:hidden}
 .progress i{display:block;height:100%;background:var(--primary);border-radius:999px}
@@ -125,11 +125,11 @@ p.sub{margin:0;font-size:20px;color:var(--muted)}
 .picked p{margin:0;font-size:19px;font-weight:700;text-align:center}
 
 /* ---------- inicio ---------- */
-.home{display:flex;flex-direction:column;gap:18px;padding:18px 0 28px}
+.home{display:flex;flex-direction:column;gap:14px;padding:14px 0 28px}
 .greet{padding:0 16px}
-.greet b{display:block;font-family:var(--f-display);font-weight:800;font-size:27px;letter-spacing:-.4px;line-height:1.15}
+.greet b{display:block;font-family:var(--f-display);font-weight:800;font-size:24px;letter-spacing:-.4px;line-height:1.15}
 .greet span{font-size:19px;color:var(--muted)}
-.voice{margin:0 16px;display:flex;align-items:center;gap:14px;min-height:82px;padding:10px 18px 10px 10px;border:0;border-radius:999px;background:var(--surface);box-shadow:inset 0 0 0 2px var(--line), var(--shadow);text-align:left}
+.voice{margin:0 16px;display:flex;align-items:center;gap:14px;min-height:76px;padding:10px 18px 10px 10px;border:0;border-radius:999px;background:var(--surface);box-shadow:inset 0 0 0 2px var(--line), var(--shadow);text-align:left}
 .voice .mic{flex:none;width:60px;height:60px;border-radius:50%;background:var(--primary);color:#fff;display:grid;place-items:center}
 .voice .mic .ic{width:28px;height:28px}
 .voice b{display:block;font-size:22px}
@@ -230,9 +230,9 @@ p.sub{margin:0;font-size:20px;color:var(--muted)}
 .scroll{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .scroll button{display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;border:0;border-radius:999px;background:var(--chip);font-weight:700;font-size:19px}
 .scroll button .ic{width:22px;height:22px}
-.scroll button[aria-disabled="true"]{opacity:.4}
+.scroll button[aria-disabled="true"]{opacity:.6}
 .nav{display:grid;grid-template-columns:repeat(4,1fr);margin-top:6px}
-.nav button{display:flex;flex-direction:column;align-items:center;gap:4px;min-height:74px;padding:4px 0;border:0;background:none;font-weight:700;font-size:clamp(16px,4.3vw,18px);letter-spacing:-.2px;white-space:nowrap;color:var(--muted)}
+.nav button{display:flex;flex-direction:column;align-items:center;gap:4px;min-height:74px;padding:4px 0;border:0;background:none;font-weight:700;font-size:18px;letter-spacing:-.3px;white-space:nowrap;color:var(--muted)}
 .nav .pill{display:grid;place-items:center;width:58px;height:38px;border-radius:999px;transition:background .15s}
 .nav .pill .ic{width:26px;height:26px}
 .nav button[aria-current="page"]{color:var(--ink)}
@@ -243,7 +243,7 @@ p.sub{margin:0;font-size:20px;color:var(--muted)}
 .toast{position:absolute;left:16px;right:16px;bottom:168px;z-index:30;background:#1E293B;color:#fff;border-radius:14px;padding:14px 16px;font-size:20px;font-weight:700;
   box-shadow:0 10px 24px rgba(15,23,42,.3);transition:opacity .25s, transform .25s;opacity:0;transform:translateY(10px);pointer-events:none}
 .toast.show{opacity:1;transform:none}
-.modal{position:absolute;inset:0;z-index:40;background:var(--surface);display:flex;flex-direction:column;overflow-y:auto;padding:28px 16px 22px;gap:16px}
+.modal{position:absolute;inset:0;z-index:40;background:var(--surface);display:flex;flex-direction:column;overflow-y:auto;padding:0 16px 22px;gap:16px}
 .modal h2{margin:0;font-family:var(--f-display);font-weight:800;font-size:28px;text-align:center}
 .micwrap{display:grid;place-items:center;padding:16px 0 6px}
 .micbig{position:relative;isolation:isolate;width:132px;height:132px;border-radius:50%;background:var(--primary);color:#fff;display:grid;place-items:center}
@@ -268,9 +268,9 @@ p.sub{margin:0;font-size:20px;color:var(--muted)}
 .vthumb{position:relative;aspect-ratio:9/14;max-width:100%;border-radius:16px;background:var(--g);overflow:hidden;display:grid;place-items:center;color:#fff}
 .vthumb::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.45),transparent 45%)}
 .vthumb .art{position:relative;z-index:1;font-size:58px;filter:drop-shadow(0 8px 14px rgba(0,0,0,.35))}
-.vthumb .tag{position:absolute;z-index:2;top:8px;left:8px;display:flex;align-items:center;gap:4px;background:rgba(0,0,0,.55);font-weight:700;font-size:16px;padding:2px 8px;border-radius:999px}
+.vthumb .tag{position:absolute;z-index:2;top:8px;left:8px;display:flex;align-items:center;gap:4px;background:rgba(0,0,0,.55);font-weight:700;font-size:18px;padding:2px 8px;border-radius:999px}
 .vthumb .tag .ic{width:15px;height:15px}
-.vthumb .dur{position:absolute;z-index:2;right:8px;bottom:8px;background:rgba(0,0,0,.82);font-weight:700;font-size:17px;padding:1px 7px;border-radius:6px}
+.vthumb .dur{position:absolute;z-index:2;right:8px;bottom:8px;background:rgba(0,0,0,.82);font-weight:700;font-size:18px;padding:1px 7px;border-radius:6px}
 .scard b{font-size:19px;line-height:1.22;padding:0 2px}
 .sshelf .btn{width:auto;margin:0 16px}
 .content.dark{overflow:hidden;background:#000}
@@ -308,7 +308,7 @@ p.sub{margin:0;font-size:20px;color:var(--muted)}
 .gart{position:relative;aspect-ratio:16/7;max-width:100%;background:var(--g);display:grid;place-items:center;color:#fff}
 .gart::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(255,255,255,.18),transparent 62%)}
 .gart .art{position:relative;z-index:1;font-size:64px;line-height:1;filter:drop-shadow(0 10px 18px rgba(0,0,0,.35))}
-.gart .tag{position:absolute;z-index:2;top:10px;left:10px;font-size:16px;font-weight:700;background:rgba(0,0,0,.45);padding:3px 10px;border-radius:999px}
+.gart .tag{position:absolute;z-index:2;top:10px;left:10px;font-size:18px;font-weight:700;background:rgba(0,0,0,.45);padding:3px 10px;border-radius:999px}
 .gbody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px}
 .gbody small{font-weight:700;font-size:18px;color:var(--primary)}
 .gbody b{font-family:var(--f-display);font-weight:800;font-size:24px;line-height:1.15}
@@ -336,13 +336,13 @@ p.sub{margin:0;font-size:20px;color:var(--muted)}
 .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;padding:4px}
 .face.back{background:linear-gradient(135deg,#2B2145,#5E4B8B);color:#fff;box-shadow:var(--shadow)}
 .face.back .qm{display:grid;place-items:center;width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.18);font-family:var(--f-display);font-weight:800;font-size:28px}
-.face.back small{font-size:17px;font-weight:700;opacity:.9}
+.face.back small{font-size:18px;font-weight:700;opacity:.9}
 .face.front{background:var(--surface);transform:rotateY(180deg);box-shadow:inset 0 0 0 2px var(--line)}
 .face.front .em{font-size:46px;line-height:1.1}
 .mgrid.easy .face.front .em{font-size:56px}
 .face.front small{font-size:18px;font-weight:700}
 .mcard.done .face.front{background:var(--primary-soft);box-shadow:none}
-.mcard.done .face.front::after{content:"✓ Pareja";font-size:16px;font-weight:700;color:#fff;background:var(--primary);border-radius:999px;padding:0 8px}
+.mcard.done .face.front::after{content:"✓ Pareja";font-size:18px;font-weight:700;color:#fff;background:var(--primary);border-radius:999px;padding:0 8px}
 .qcard{padding:22px 18px 18px;border-radius:22px;background:var(--surface);box-shadow:var(--shadow);text-align:center;display:flex;flex-direction:column;gap:12px}
 .qcard .lbl{margin:0;font-size:18px;font-weight:700;color:var(--muted)}
 .qcard .q{margin:0;font-family:var(--f-display);font-weight:800;font-size:30px;line-height:1.2;text-wrap:balance}
@@ -362,7 +362,7 @@ p.sub{margin:0;font-size:20px;color:var(--muted)}
 .cell{aspect-ratio:1;border:0;border-radius:16px;background:var(--surface);font-family:var(--f-display);font-weight:800;font-size:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-variant-numeric:tabular-nums}
 .cell:active{transform:scale(.96)}
 .cell.mark{background:var(--primary);color:#fff}
-.cell.mark small{font-family:var(--f-body);font-size:17px;font-weight:700}
+.cell.mark small{font-family:var(--f-body);font-size:18px;font-weight:700}
 .cell.call{background:var(--sand);animation:callpulse 1.1s ease-in-out infinite}
 @keyframes callpulse{0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}50%{box-shadow:0 0 0 6px rgba(255,255,255,.9)}}
 .history{margin:0;font-size:18px;color:var(--muted)}
@@ -372,6 +372,27 @@ p.sub{margin:0;font-size:20px;color:var(--muted)}
 .win .wico .ic{width:38px;height:38px}
 .win b{font-family:var(--f-display);font-weight:800;font-size:28px}
 .win p{margin:0;font-size:20px}
+
+/* ---------- v0.7: salida única, video fijo, inicio compacto ---------- */
+.exitpill{display:inline-flex;align-items:center;gap:6px;min-height:52px;padding:0 20px 0 12px;border:0;border-radius:999px;background:var(--danger);color:#fff;font-weight:700;font-size:20px;box-shadow:0 4px 12px rgba(0,0,0,.18);flex:none}
+.exitpill .ic{width:22px;height:22px}
+.exitpill.onvideo{position:absolute;z-index:3;top:10px;left:10px}
+.pstick{position:sticky;top:0;z-index:6;background:#000}
+.vtap{position:absolute;inset:0;display:block;padding:0;border:0;background:none;color:#fff}
+.video .ph{left:auto;right:10px}
+.video .eq{top:44px}
+.video .ph,.video .eq,.video .subs,.video .pausebadge{pointer-events:none}
+.gtop{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:12px;padding:10px 16px;background:rgba(247,246,242,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.gname{font-family:var(--f-display);font-weight:800;font-size:21px;line-height:1.15}
+.mtop{position:sticky;top:0;z-index:2;margin:0 -16px;padding:12px 16px;background:var(--surface)}
+.chip{display:inline-flex;align-items:center;gap:6px}
+.chip .ic{width:20px;height:20px}
+.chip[aria-expanded="true"] .ic{transform:rotate(180deg)}
+.topicpick{margin:0 16px;padding:14px;border-radius:18px;background:var(--surface);box-shadow:var(--shadow);display:flex;flex-wrap:wrap;gap:10px}
+.topicpick p{width:100%;margin:0;font-weight:700;font-size:19px}
+.sside .circ{background:rgba(0,0,0,.42)}
+.sside .lb{background:rgba(0,0,0,.62);padding:1px 10px;border-radius:999px}
+.toast.show{pointer-events:auto;cursor:pointer}
 
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
@@ -402,11 +423,11 @@ p.sub{margin:0;font-size:20px;color:var(--muted)}
         </nav>
       </div>
 
-      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      <div class="toast" id="toast" role="status" aria-live="polite" data-act="toastClose"></div>
       <div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle"></div>
     </div>
   </div>
-  <p class="stage-note">AbueTV v0.6 · prototipo para celular. Ábralo en el teléfono para verlo a pantalla completa.</p>
+  <p class="stage-note">AbueTV v0.7 · prototipo para celular. Ábralo en el teléfono para verlo a pantalla completa.</p>
 </div>
 
 <script>
@@ -477,7 +498,7 @@ const VIDEOS=[
    subs:["🥁 Suena el tambor…","Mueva los pies al ritmo: uno, dos.","Ahora las manos, despacito.","¡Muy bien! Siga el compás.","Respire hondo. ¡Qué alegría!"]},
   {id:"v04",topic:"tango",em:"🎻",from:"Argentina",dur:228,title:"Tango y bandoneón",
    subs:["🎵 Suena el bandoneón…","«En el barrio de mi infancia…»","«…bailábamos hasta el amanecer.»","🎹 Entra el piano.","«Volver a casa, volver a ti.»"]},
-  {id:"v05",topic:"cocina",em:"🫔",from:"México",dur:260,title:"Tamales de la abuela, paso a paso",
+  {id:"v05",topic:"cocina",em:"🍲",from:"México",dur:260,title:"Tamales de la abuela, paso a paso",
    subs:["Hoy hacemos tamales, como en casa.","Remojamos las hojas de maíz en agua tibia.","Batimos la masa hasta que esté esponjosa.","Ponemos el relleno y envolvemos con cariño.","Al vapor por una hora. ¡Y a compartir!"]},
   {id:"v06",topic:"cocina",em:"🥟",from:"Argentina",dur:210,title:"Empanadas caseras",
    subs:["Preparamos el relleno con cebolla y carne.","Estiramos la masa con el rodillo.","Cortamos círculos del tamaño de un plato chico.","Rellenamos y hacemos el repulgue.","Al horno hasta que estén doraditas."]},
@@ -487,7 +508,7 @@ const VIDEOS=[
    subs:["Nos ponemos en presencia de Dios.","Primer misterio: la Anunciación.","Dios te salve, María, llena eres de gracia…","Gloria al Padre, al Hijo y al Espíritu Santo.","Amén. Que tenga una tarde en paz."]},
   {id:"v09",topic:"fe",em:"🌅",from:"Latinoamérica",dur:140,title:"Oración de la mañana para dar gracias",
    subs:["Buenos días, Señor.","Gracias por un nuevo día de vida.","Bendice a mi familia y a mis vecinos.","Dame paciencia y alegría hoy.","Amén."]},
-  {id:"v10",topic:"plantas",em:"🪴",from:"Latinoamérica",dur:190,title:"Cómo cuidar la sábila y los geranios",
+  {id:"v10",topic:"plantas",em:"🌿",from:"Latinoamérica",dur:190,title:"Cómo cuidar la sábila y los geranios",
    subs:["La sábila necesita poca agua.","Riéguela una vez por semana.","Al geranio le gusta el sol de la mañana.","Quite las hojas secas con cuidado.","¡Sus plantas se lo van a agradecer!"]},
   {id:"v11",topic:"animales",em:"🐦",from:"Costa Rica",dur:160,title:"Los colibríes del jardín",
    subs:["🐦 Llega un colibrí a la flor…","Aletea más de cincuenta veces por segundo.","Le encanta el néctar de las flores rojas.","Mire sus plumas verdes y brillantes.","🌺 Se despide y vuela lejos."]},
@@ -510,7 +531,7 @@ const SHORTS=[
   {id:"s04",topic:"ejercicio",em:"🖐️",dur:35,title:"Tres ejercicios para las manos",subs:["Abra y cierre las manos diez veces.","Ahora toque cada dedo con el pulgar.","Gire las muñecas despacio. ¡Muy bien!"]},
   {id:"s05",topic:"recuerdos",em:"📜",dur:20,title:"El refrán del día",subs:["«Al que madruga…»","«…Dios lo ayuda.»","¿Lo sabía? ¡Seguro que sí!"]},
   {id:"s06",topic:"fe",em:"🌙",dur:30,title:"Oración corta para dormir en paz",subs:["Gracias, Señor, por este día.","Cuida a mi familia esta noche.","Amén. Que descanse."]},
-  {id:"s07",topic:"cocina",em:"🥭",dur:25,title:"Cómo saber si un mango está maduro",subs:["Tóquelo suavecito.","Si cede un poquito, está listo.","Y huela el tallo: debe oler dulce."]},
+  {id:"s07",topic:"cocina",em:"🍍",dur:25,title:"Cómo saber si una piña está madura",subs:["Huela la base: debe oler dulce.","Jale una hoja del centro: si sale fácil, está lista.","¡Y a disfrutarla!"]},
   {id:"s08",topic:"humor",em:"😄",dur:20,title:"El chiste del día",subs:["¿Qué hace una abeja en el gimnasio?","¡Zum-ba!","😄 ¡Ja, ja, ja!"]},
   {id:"s09",topic:"viajes",em:"🌄",dur:30,title:"Atardecer en el lago Titicaca",subs:["Estamos entre Perú y Bolivia.","El sol se esconde detrás de las montañas.","Respire hondo y disfrute."]},
   {id:"s10",topic:"plantas",em:"🌱",dur:25,title:"La matica de albahaca",subs:["La albahaca quiere sol y agua seguida.","Corte las puntas para que crezca más.","¡Y úsela en la cocina!"]},
@@ -552,7 +573,7 @@ const mmss=s=>Math.floor(s/60)+":"+String(Math.floor(s%60)).padStart(2,"0");
 const mins=s=>{const m=Math.round(s/60); return m+(m===1?" minuto":" minutos");};
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
 let toastTimer=null, tick=null, voiceTimer=null;
-function toast(t){ const el=$("toast"); el.textContent=t; el.classList.add("show"); clearTimeout(toastTimer); toastTimer=setTimeout(()=>el.classList.remove("show"),2600); }
+function toast(t){ const el=$("toast"); el.textContent=t; el.classList.add("show"); clearTimeout(toastTimer); toastTimer=setTimeout(()=>el.classList.remove("show"),5500); }
 const firstName=()=>S.account&&S.account.name?S.account.name.trim():"";
 function forYou(){
   const country=S.account&&S.account.country;
@@ -616,8 +637,6 @@ function render(keepScroll){
   content.innerHTML=views[S.screen]();
   const sh=S.screen==="shorts";
   content.classList.toggle("dark",sh);
-  $("upBtn").innerHTML=ic("up")+(sh?"Short anterior":"Subir lista");
-  $("downBtn").innerHTML=ic("down")+(sh?"Siguiente short":"Bajar lista");
   if(sh) updateShort();
   if(!keepScroll){ content.style.scrollBehavior="auto"; content.scrollTop=0; content.style.scrollBehavior=""; }
   if(S.screen==="player") updatePlayer();
@@ -661,6 +680,7 @@ function vCountry(){
     <div class="cgrid" role="group" aria-label="Países">
       ${COUNTRIES.map(([f,n])=>`<button class="country" data-act="country:${n}" aria-pressed="${S.draftCountry===n}"><span class="flag" aria-hidden="true">${f}</span>${n}</button>`).join("")}
     </div>
+    <div class="picked"><p>${S.draftCountry?"Eligió: "+S.draftCountry:"Toque su país"}</p><button class="btn primary xl" data-act="countryNext" aria-disabled="${!S.draftCountry}">Continuar${ic("right")}</button></div>
   </div>`;
 }
 function topicGrid(){
@@ -719,15 +739,20 @@ function videoCard(v){
 }
 function vHome(){
   const has=S.interests.length>0;
-  const keys=["para","todo"].concat(S.interests);
-  if(TOP[S.filter]&&!keys.includes(S.filter)) keys.push(S.filter);
+  const topicOn=!!TOP[S.filter];
+  const order=TOPICS.slice().sort((a,b)=>(S.interests.includes(b.id)?1:0)-(S.interests.includes(a.id)?1:0));
   const label=k=>k==="para"?"Para usted":k==="todo"?"Todo":TOP[k].label;
   const list=S.filter==="para"?forYou():S.filter==="todo"?VIDEOS:VIDEOS.filter(v=>v.topic===S.filter);
   const title=S.filter==="para"?(has?"Elegidos para usted":"Videos para usted"):S.filter==="todo"?"Todos los videos":label(S.filter);
   return `<div class="home">
     ${greeting()}
     <button class="voice" data-act="voice"><span class="mic">${ic("mic")}</span><span><b>Buscar con la voz</b><small>Toque aquí y diga qué quiere ver</small></span></button>
-    <div class="chips" role="group" aria-label="Qué mostrar">${keys.map(k=>`<button class="chip" data-act="filter:${k}" aria-pressed="${S.filter===k}">${label(k)}</button>`).join("")}</div>
+    <div class="chips" role="group" aria-label="Qué mostrar">
+      <button class="chip" data-act="filter:para" aria-pressed="${S.filter==="para"}">Para usted</button>
+      <button class="chip" data-act="filter:todo" aria-pressed="${S.filter==="todo"}">Todo</button>
+      <button class="chip" data-act="topics" aria-pressed="${topicOn}" aria-expanded="${!!S.showTopics}">${topicOn?TOP[S.filter].label:"Por tema"}${ic("down")}</button>
+    </div>
+    ${S.showTopics?`<div class="topicpick" role="group" aria-label="Elegir un tema"><p>Elija un tema:</p>${order.map(t=>`<button class="chip" data-act="filter:${t.id}" aria-pressed="${S.filter===t.id}">${t.label}</button>`).join("")}</div>`:""}
     ${resumeCard()}
     ${has?"":`<div class="tip"><p>Cuéntenos qué le gusta y le mostraremos primero esos videos.</p><button class="btn primary" data-act="tab:likes">${ic("star")}Elegir mis gustos</button></div>`}
     <h2 class="shelf" id="listTitle">${title}</h2>
@@ -756,7 +781,7 @@ function feedWithShelf(list){
   }
   return cards.join("");
 }
-function filterTo(id){ S.tab="home"; S.screen="home"; S.filter=id; render(); const h=$("listTitle"); if(h) h.scrollIntoView({block:"start"}); toast("Aquí tiene: "+TOP[id].label); }
+function filterTo(id){ S.tab="home"; S.screen="home"; S.filter=id; S.showTopics=false; render(); const h=$("listTitle"); if(h) h.scrollIntoView({block:"start"}); toast("Aquí tiene: "+TOP[id].label); }
 
 /* ================= REPRODUCTOR ================= */
 function suggestions(v,n){
@@ -772,14 +797,14 @@ function rowItem(v){
 function vPlayer(){
   const v=VID[S.vid], isSaved=S.saved.includes(v.id);
   return `<div>
-    <button class="exitbar" data-act="exitPlayer">${ic("arrowL")}Salir del video y volver</button>
-    <div class="video" id="pscreen" style="--g:${TOP[v.topic].grad}">
+    <div class="pstick"><div class="video" id="pscreen" style="--g:${TOP[v.topic].grad}">
+      <button class="vtap" data-act="toggle" aria-label="Pausar o continuar el video"><span class="art" aria-hidden="true">${v.em}</span></button>
+      <button class="exitpill onvideo" data-act="exitPlayer">${ic("arrowL")}Salir</button>
       <span class="ph">Aquí va el video</span>
-      <span class="art" aria-hidden="true">${v.em}</span>
       <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-      <span class="pausebadge" id="pbadge" hidden>${ic("pause","fill")}En pausa</span>
+      <span class="pausebadge" id="pbadge" hidden>${ic("pause","fill")}En pausa · toque para seguir</span>
       <div class="subs" id="psubs" aria-live="polite"></div>
-    </div>
+    </div></div>
     <div class="pbody">
       <div class="time"><span id="tnow">0:00</span><div class="track" role="progressbar" aria-label="Avance del video" aria-valuemin="0" aria-valuemax="${v.dur}" id="ptrack"><i id="pfill"></i></div><span>${mmss(v.dur)}</span></div>
       <h2 class="ptitle">${esc(v.title)}</h2>
@@ -838,6 +863,7 @@ function saveLast(){
   persist();
 }
 function openPlayer(id,from){
+  if(S.screen!=="player") S.ret=S.tab;
   if(S.screen==="player") saveLast();
   stopShorts();
   stopMusic(); closeModal();
@@ -859,14 +885,14 @@ function vShorts(){
   return `<div class="shorts" style="--g:${TOP[x.topic].grad}">
     <button class="stap" data-act="stoggle" aria-label="Pausar o continuar"><span class="art" aria-hidden="true">${x.em}</span></button>
     <div class="sbar" aria-hidden="true"><i id="sfill"></i></div>
-    <div class="stop"><button class="sexit" data-act="tab:home">${ic("arrowL")}Salir</button><span class="scount">Short ${S.sIdx+1} de ${S.sOrder.length}</span></div>
+    <div class="stop"><button class="exitpill" data-act="exitShorts">${ic("arrowL")}Salir</button><span class="scount">Short ${S.sIdx+1} de ${S.sOrder.length}</span></div>
     <span class="sph">Aquí va el short (video vertical)</span>
-    <span class="spause" id="spause" hidden>${ic("pause","fill")}En pausa</span>
+    <span class="spause" id="spause" hidden>${ic("pause","fill")}En pausa · toque para seguir</span>
     <div class="ssubs" id="ssubs" aria-live="polite"></div>
     <div class="sinfo"><b>${esc(x.title)}</b><span>AbueTV · ${ic("spark")} Hecho con IA · ${mmss(x.dur)}</span></div>
     <div class="sside">
-      <button data-act="ssave" id="ssave" class="${saved?"on":""}"><span class="circ">${ic("heart",saved?"fill":"")}</span>${saved?"Guardado":"Guardar"}</button>
-      <button data-act="srepeat"><span class="circ">${ic("again")}</span>Repetir</button>
+      <button data-act="ssave" id="ssave" class="${saved?"on":""}"><span class="circ">${ic("heart",saved?"fill":"")}</span><span class="lb">${saved?"Guardado":"Guardar"}</span></button>
+      <button data-act="srepeat"><span class="circ">${ic("again")}</span><span class="lb">Repetir</span></button>
       <button data-act="stoggle" id="stog"></button>
     </div>
     <div class="send" id="send" hidden>
@@ -883,11 +909,12 @@ function updateShort(){
   const idx=Math.min(x.subs.length-1,Math.floor(S.st/(x.dur/x.subs.length)));
   const sb=$("ssubs"); if(sb.textContent!==x.subs[idx]) sb.textContent=x.subs[idx];
   $("spause").hidden=S.sPlaying||done;
-  $("stog").innerHTML=`<span class="circ">${ic(S.sPlaying?"pause":"play","fill")}</span>${S.sPlaying?"Pausar":"Seguir"}`;
+  $("stog").innerHTML=`<span class="circ">${ic(S.sPlaying?"pause":"play","fill")}</span><span class="lb">${S.sPlaying?"Pausar":"Seguir"}</span>`;
   $("send").hidden=!done;
   musicUpdate();
 }
 function openShorts(id){
+  if(S.screen!=="shorts") S.ret=S.tab;
   stopPlayer(); closeModal(); stopMusic();
   S.sOrder=shortsForYou().map(x=>x.id);
   if(id){ S.sIdx=Math.max(0,S.sOrder.indexOf(id)); } else if(S.sIdx>=S.sOrder.length) S.sIdx=0;
@@ -924,7 +951,7 @@ const GAMES=[
 const GAME=Object.fromEntries(GAMES.map(g=>[g.id,g]));
 const FIGURES=[
   {k:"manzana",em:"🍎",name:"Manzana"},{k:"girasol",em:"🌻",name:"Girasol"},{k:"guitarra",em:"🎸",name:"Guitarra"},{k:"platano",em:"🍌",name:"Plátano"},
-  {k:"rosa",em:"🌹",name:"Rosa"},{k:"trompeta",em:"🎺",name:"Trompeta"},{k:"mango",em:"🥭",name:"Mango"},{k:"colibri",em:"🐦",name:"Colibrí"}
+  {k:"rosa",em:"🌹",name:"Rosa"},{k:"trompeta",em:"🎺",name:"Trompeta"},{k:"pina",em:"🍍",name:"Piña"},{k:"colibri",em:"🐦",name:"Colibrí"}
 ];
 const REFRANES=[
   {q:"Al que madruga…",ok:"…Dios lo ayuda.",no:"…se le enfría el café."},
@@ -997,7 +1024,7 @@ function vGames(){
     ${GAMES.filter(g=>g.id!==d.id).map(g=>gameCard(g)).join("")}
   </div>`;
 }
-const gameShell=(g,inner)=>`<div><button class="exitbar" data-act="exitGame">${ic("arrowL")}Salir del juego</button><div class="pad col"><h1 class="big">${g.title}</h1>${inner}</div></div>`;
+const gameShell=(g,inner)=>`<div><div class="gtop"><button class="exitpill" data-act="exitGame">${ic("arrowL")}Salir</button><span class="gname">${g.title}</span></div><div class="pad col" style="padding-top:16px">${inner}</div></div>`;
 function startGame(id){
   stopPlayer(); stopShorts(); closeModal(); hush(); clearTimeout(memTimer);
   S.tab="games"; S.screen=id;
@@ -1158,7 +1185,7 @@ function vSaved(){
       <p class="sub">Cuando un video le guste, toque <b>Guardar</b> y aparecerá aquí.</p>
       <button class="btn primary" data-act="tab:home">${ic("home")}Ir a ver videos</button></div></div>`;
   return `<div class="pad col">${head}
-    <p class="sub">Tiene ${list.length} ${list.length===1?"video guardado":"videos guardados"}.</p>
+    <p class="sub">Tiene ${list.length} ${list.length===1?"guardado":"guardados"}.</p>
     <div class="col" style="gap:8px">${list.map(v=>`<div class="saveditem">${VID[v.id]?rowItem(v):sRow(v)}
       ${S.confirmUnsave===v.id
         ?`<div class="confirm"><p>¿Quitar este video de sus guardados?</p><div class="two"><button class="btn danger" data-act="unsaveYes:${v.id}">Sí, quitar</button><button class="btn ghost" data-act="unsaveNo">No, dejarlo</button></div></div>`
@@ -1188,18 +1215,17 @@ function vLikes(){
 /* ================= BÚSQUEDA POR VOZ ================= */
 function openVoice(){
   const m=$("modal");
-  m.innerHTML=`<h2 id="modalTitle">Buscar con la voz</h2>
+  m.innerHTML=`<div class="mtop"><button class="exitpill" data-act="voiceClose">${ic("arrowL")}Salir</button></div><h2 id="modalTitle">Buscar con la voz</h2>
     <div class="micwrap"><div class="micbig" aria-hidden="true">${ic("mic")}</div></div>
     <p class="listening">Le estoy escuchando<span class="dots"><i>.</i><i>.</i><i>.</i></span></p>
     <p class="hint">Diga lo que quiere ver, o toque una de estas frases:</p>
-    ${PHRASES.map((p,i)=>`<button class="phrase" data-act="phrase:${i}">${ic("mic")}«${p.text}»</button>`).join("")}
-    <button class="btn danger xl" data-act="voiceClose">${ic("arrowL")}Cerrar y volver</button>`;
+    ${PHRASES.map((p,i)=>`<button class="phrase" data-act="phrase:${i}">${ic("mic")}«${p.text}»</button>`).join("")}`;
   m.hidden=false; m.scrollTop=0;
 }
 function closeModal(){ clearTimeout(voiceTimer); const m=$("modal"); m.hidden=true; m.innerHTML=""; }
 function choosePhrase(i){
   const p=PHRASES[i], m=$("modal");
-  m.innerHTML=`<h2 id="modalTitle">Buscar con la voz</h2>
+  m.innerHTML=`<h2 id="modalTitle" style="margin-top:28px">Buscar con la voz</h2>
     <div class="micwrap"><div class="micbig" aria-hidden="true">${ic("check")}</div></div>
     <div class="heard" role="status">Entendí: «${esc(p.text)}»</div>
     <p class="listening">Un momento, ya le muestro<span class="dots"><i>.</i><i>.</i><i>.</i></span></p>`;
@@ -1215,10 +1241,14 @@ function syncTiles(){
   const lc=$("likesCount"); if(lc) lc.textContent=n?pickedText(n):"Sin temas elegidos: verá todos los videos.";
 }
 
+let downPt=null;
+$("phone").addEventListener("pointerdown",e=>{ downPt={x:e.clientX,y:e.clientY}; },true);
 $("phone").addEventListener("click",e=>{
+  if(e.detail>0&&downPt&&Math.hypot(e.clientX-downPt.x,e.clientY-downPt.y)>14) return;
   const el=e.target.closest("[data-act]"); if(!el) return;
   if(el.getAttribute("aria-disabled")==="true"){
     if(el.dataset.act==="nameNext"){ toast("Primero escriba su nombre, por favor."); $("nameInput").focus(); }
+    if(el.dataset.act==="countryNext") toast("Primero toque su país, por favor.");
     return;
   }
   try{ navigator.vibrate&&navigator.vibrate(10); }catch(err){}
@@ -1229,7 +1259,7 @@ $("phone").addEventListener("click",e=>{
     case "startSignup": S.flow="signup"; S.draftName=""; S.draftCountry=null; S.screen="name"; render(); break;
     case "signupFromApp": stopPlayer(); S.backTo=S.tab; S.flow="signup"; S.draftName=""; S.draftCountry=null; S.onboarded=false; S.screen="name"; render(); break;
     case "nameNext": S.screen="country"; render(); break;
-    case "country": S.draftCountry=arg; render(true); setTimeout(()=>{ S.screen="interests"; render(); },350); break;
+    case "country": S.draftCountry=arg; render(true); break;
     case "topic": S.interests=S.interests.includes(arg)?S.interests.filter(x=>x!==arg):S.interests.concat(arg); if(S.onboarded) persist(); syncTiles(); break;
     case "finish": finishOnboarding(); break;
     case "back":
@@ -1238,10 +1268,14 @@ $("phone").addEventListener("click",e=>{
       else if(S.screen==="name"){ if(S.backTo){ S.onboarded=true; S.flow=null; S.tab=S.backTo; S.screen=S.backTo; S.backTo=null; } else S.screen="welcome"; }
       render(); break;
     case "tab": goTab(arg); break;
-    case "filter": S.filter=arg; render(true); break;
+    case "filter": S.filter=arg; S.showTopics=false; render(true); break;
+    case "topics": S.showTopics=!S.showTopics; render(true); break;
+    case "toastClose": clearTimeout(toastTimer); $("toast").classList.remove("show"); break;
+    case "countryNext": S.screen="interests"; render(); break;
+    case "exitShorts": goTab(S.ret&&S.ret!=="shorts"?S.ret:"home"); break;
     case "play": openPlayer(arg); break;
     case "resume": if(S.last) openPlayer(S.last.id,S.last.t); break;
-    case "exitPlayer": goTab("home"); break;
+    case "exitPlayer": goTab(S.ret||"home"); break;
     case "toggle": { const v=VID[S.vid]; if(S.t>=v.dur){ S.t=0; S.playing=true; content.scrollTop=0; } else S.playing=!S.playing; updatePlayer(); break; }
     case "rew": S.t=Math.max(0,S.t-10); updatePlayer(); toast("Volvimos 10 segundos atrás."); break;
     case "skipEnd": S.t=VID[S.vid].dur; S.playing=false; updatePlayer(); break;
@@ -1278,16 +1312,18 @@ $("phone").addEventListener("click",e=>{
     case "srepeat": S.st=0; S.sPlaying=true; updateShort(); break;
     case "snext": changeShort(1); break;
     case "ssave": { const x=curShort(); if(!S.saved.includes(x.id)){ S.saved.push(x.id); persist(); toast("Listo. El short quedó en Guardados."); } else toast("Este short ya está en Guardados.");
-      const b=$("ssave"); b.classList.add("on"); b.innerHTML=`<span class="circ">${ic("heart","fill")}</span>Guardado`; break; }
+      const b=$("ssave"); b.classList.add("on"); b.innerHTML=`<span class="circ">${ic("heart","fill")}</span><span class="lb">Guardado</span>`; break; }
     case "scrollUp": if(S.screen==="shorts"){ changeShort(-1); break; } content.scrollBy({top:-content.clientHeight*.65,behavior:"smooth"}); break;
     case "scrollDown": if(S.screen==="shorts"){ changeShort(1); break; } content.scrollBy({top:content.clientHeight*.65,behavior:"smooth"}); break;
   }
 });
 content.addEventListener("keydown",e=>{ if(e.key==="Enter"&&e.target.id==="nameInput"){ e.preventDefault(); $("nameNext").click(); } });
+function setBtn(b,dis,html){ b.setAttribute("aria-disabled",dis); if(b.dataset.h!==html){ b.innerHTML=html; b.dataset.h=html; } }
 function updateScrollBtns(){
-  if(S.screen==="shorts"){ $("upBtn").setAttribute("aria-disabled",S.sIdx===0); $("downBtn").setAttribute("aria-disabled",false); return; }
-  const top=content.scrollTop<=2, bottom=content.scrollTop+content.clientHeight>=content.scrollHeight-2;
-  $("upBtn").setAttribute("aria-disabled",top); $("downBtn").setAttribute("aria-disabled",bottom);
+  let up,down,ut,dt;
+  if(S.screen==="shorts"){ up=S.sIdx===0; down=false; ut=up?"Es el primero":"Short anterior"; dt="Siguiente short"; }
+  else { up=content.scrollTop<=2; down=content.scrollTop+content.clientHeight>=content.scrollHeight-2; ut=up?"Ya está arriba":"Subir lista"; dt=down?"Ya está al final":"Bajar lista"; }
+  setBtn($("upBtn"),up,ic(up?"check":"up")+ut); setBtn($("downBtn"),down,ic(down?"check":"down")+dt);
 }
 content.addEventListener("scroll",updateScrollBtns,{passive:true});
 window.addEventListener("resize",updateScrollBtns);

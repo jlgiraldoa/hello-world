@@ -1,6 +1,6 @@
 # AbueTV · Decisiones de producto y diseño
 
-Registro de lo que ya decidimos juntos. Prototipo actual: `abuetv/index.html` (v0.6).
+Registro de lo que ya decidimos juntos. Prototipo actual: `abuetv/index.html` (v0.7).
 
 ## Producto
 - **Qué es:** videos, shorts y juegos tranquilos para adultos mayores (75+).
@@ -19,6 +19,15 @@ Registro de lo que ya decidimos juntos. Prototipo actual: `abuetv/index.html` (v
   4. Lotería cantada (lee los números en voz alta)
 - **Barra de abajo:** Videos · Shorts · Juegos · Guardados. "Mis gustos" va en el botón de arriba a la derecha.
 - **Subir lista / Bajar lista:** botones siempre visibles. En Shorts cambian a "Short anterior" / "Siguiente short".
+
+## Patrones de uso (v0.7, después de la revisión de diseño)
+- **Una sola forma de salir:** botón rojo "← Salir" arriba a la izquierda, en el reproductor, Shorts, juegos y búsqueda por voz. Lleva de vuelta a la pantalla de donde se vino.
+- **El video queda fijo arriba** mientras se baja a ver los controles o la lista "Siguiente para usted".
+- **Tocar el video pausa o continúa**, igual en videos y en Shorts.
+- **Avisos de 5,5 segundos**, que se cierran al tocarlos.
+- **Mínimo 18 px** en todo texto de la app. Solo las etiquetas punteadas de prototipo son más pequeñas.
+- **Inicio compacto:** filtros "Para usted", "Todo" y "Por tema", para que el primer video se vea entero sin bajar.
+- **El país no avanza solo:** se marca y luego se toca "Continuar".
 
 ## Diseño
 - **Paleta "Sereno"** (fija): verde azulado `#0F766E` para la acción principal, arena para avisos suaves y rojo `#B42318` solo para salir o volver.
