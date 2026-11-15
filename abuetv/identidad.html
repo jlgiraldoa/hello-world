@@ -83,7 +83,7 @@ ol.steps{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
 
 <div class="wrap">
   <header style="display:flex;flex-direction:column;gap:12px">
-    <span class="eyebrow">AbueTV · identidad · propuesta</span>
+    <span class="eyebrow">AbueTV · identidad · decidido: AbueTV + Tele de antes</span>
     <h1>Nombre, logo e imágenes de temas</h1>
     <p class="lead">Tres decisiones para darle a la app una identidad propia, que ya no se parezca a YouTube. Elija un nombre y un logo, y use los prompts de abajo para crear las 12 imágenes de "¿Qué le gusta ver?".</p>
   </header>
@@ -93,7 +93,7 @@ ol.steps{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
     <h2>1 · El nombre</h2>
     <p class="lead">AbueTV ya funciona: es cálido, corto y dice qué es. El único riesgo es que no todas las personas mayores son abuelas o abuelos, y a algunas no les gusta que las llamen así. Por eso incluyo alternativas que no hablan de la edad.</p>
     <div class="names">
-      <div class="name pick"><b>AbueTV <span class="rec">Recomendado</span></b><span>El nombre actual</span>
+      <div class="name pick"><b>AbueTV <span class="rec">Elegido</span></b><span>El nombre actual</span>
         <p class="pro">Se entiende al instante y suena cariñoso</p><p class="pro">Ya está en todo el prototipo</p><p class="con">Puede excluir a quien no es abuelo o abuela</p></div>
       <div class="name"><b>Sobremesa</b><span>La charla tranquila después de comer</span>
         <p class="pro">Muy latinoamericano y sin mencionar la edad</p><p class="con">No dice que hay videos ni juegos</p></div>
@@ -123,13 +123,13 @@ ol.steps{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
     <h2>3 · Imágenes de "¿Qué le gusta ver?"</h2>
     <p class="lead">Hoy cada tema muestra un emoji sobre un fondo de color. Con estas 12 imágenes la pantalla se verá como una app terminada. Los prompts están en inglés porque las IA de imágenes responden mejor así; cada uno se explica en español.</p>
     <div class="card" style="display:flex;flex-direction:column;gap:12px">
-      <h3>Recomendación de estilo: ilustración cálida</h3>
-      <p>Recomiendo ilustración tipo gouache en vez de fotos. Las caras y manos hechas con IA en fotos suelen salir raras, y eso genera desconfianza. La ilustración se ve igual de bien en los 12 temas y combina con la etiqueta "Hecho con IA". Si prefieren fotos, más abajo hay un bloque de estilo alternativo.</p>
+      <h3>Estilo elegido: ilustración cálida</h3>
+      <p>Ilustración tipo gouache, igual en los 12 temas. Las personas que aparecen son adultos de 25 a 50 años: las imágenes muestran el tema con naturalidad, sin intentar representar a personas mayores. Más abajo queda un bloque de estilo foto por si algún día se necesita.</p>
       <div class="spec">
         <div><b>Tamaño</b>1080 × 1170 px (proporción 25:27)</div>
         <div><b>Formato</b>WebP o JPG, menos de 250 KB</div>
         <div><b>Composición</b>Lo importante arriba; el tercio inferior tranquilo, porque ahí va el texto</div>
-        <div><b>Personas</b>Mayores latinoamericanos de distintos tonos de piel, con dignidad y alegría</div>
+        <div><b>Personas</b>Adultos latinoamericanos de 25 a 50 años, de distintos tonos de piel; sin personas mayores</div>
       </div>
       <p class="note"><b>Cómo usarlos:</b> copie un prompt completo con el botón y péguelo en la IA de imágenes (ChatGPT, Midjourney, Ideogram, Firefly…). En Midjourney agregue al final <span class="file">--ar 25:27 --style raw</span>. Genere 2 o 3 versiones por tema y elija las que se vean más parecidas entre sí.</p>
     </div>
@@ -174,7 +174,7 @@ document.getElementById("logos").innerHTML=LOGOS.map((l,i)=>`
   <article class="card logo-card">
     <div class="big">${l.svg}</div>
     <div class="txt">
-      <h3>Opción ${String.fromCharCode(65+i)} · ${l.name}${l.rec?' <span class="rec">Recomendado</span>':""}</h3>
+      <h3>Opción ${String.fromCharCode(65+i)} · ${l.name}${l.rec?' <span class="rec">Elegido</span>':""}</h3>
       <p>${l.why}</p>
       <div class="uses">
         <div class="bar">${l.svg}<span class="word">${wordmark}</span></div>
@@ -190,22 +190,22 @@ cells.push(`<div class="app me">${LOGOS[2].svg}AbueTV C</div>`);
 document.getElementById("phoneHome").innerHTML=cells.join("");
 
 /* ---------- prompts de imágenes ---------- */
-const STYLE="Warm editorial illustration with a soft gouache texture, gentle natural light, muted harmonious palette of deep teal (#0F766E), warm sand (#EADBB8), cream and soft terracotta accents. Simple, uncluttered composition: the main subject sits in the upper two thirds and the bottom third stays calm and slightly darker so a text label can sit on top. Dignified, warm and joyful portrayal of Latin American older adults in their 70s, with diverse skin tones (mestizo, Afro-Latino, Indigenous, white). Vertical 25:27 format, 1080x1170 px.";
-const AVOID="Avoid: any text, letters, words, numbers, signs, logos, brand names, watermarks; distorted hands, extra fingers, deformed faces; harsh shadows, neon or oversaturated colors, childish cartoon style, stock-photo grins, clutter, gloomy mood.";
-const PHOTO="Warm documentary photograph, soft window light, shallow depth of field, natural slightly muted colors with teal and warm sand tones, candid and respectful, real Latin American older adults in their 70s with diverse skin tones. Main subject in the upper two thirds, calm darker bottom third for a text label. Vertical 25:27 format, 1080x1170 px.";
+const STYLE="Warm editorial illustration with a soft gouache texture, gentle natural light, muted harmonious palette of deep teal (#0F766E), warm sand (#EADBB8), cream and soft terracotta accents. Simple, uncluttered composition: the main subject sits in the upper two thirds and the bottom third stays calm and slightly darker so a text label can sit on top. When people appear, they are Latin American adults roughly 25 to 50 years old, with diverse skin tones (mestizo, Afro-Latino, Indigenous, white), shown warm, natural and joyful. Vertical 25:27 format, 1080x1170 px.";
+const AVOID="Avoid: elderly or gray-haired people; any text, letters, words, numbers, signs, logos, brand names, watermarks; distorted hands, extra fingers, deformed faces; harsh shadows, neon or oversaturated colors, childish cartoon style, stock-photo grins, clutter, gloomy mood.";
+const PHOTO="Warm documentary photograph, soft window light, shallow depth of field, natural slightly muted colors with teal and warm sand tones, candid and natural, Latin American adults roughly 25 to 50 years old with diverse skin tones. Main subject in the upper two thirds, calm darker bottom third for a text label. Vertical 25:27 format, 1080x1170 px.";
 const TOPICS=[
-  ["boleros","Boleros y baladas","Pareja mayor bailando lento en la sala, con radio antigua y guitarra.","An older couple slow-dancing cheek to cheek in a cozy living room at dusk, a vintage wooden radio and an acoustic guitar on a side table, a warm lamp glow."],
-  ["rancheras","Rancheras y mariachi","Mariachis en la plaza del pueblo al atardecer.","A small mariachi group in a colonial town plaza at golden hour, trumpet, violin and guitarrón, colorful papel picado garlands overhead without any lettering, an older man smiling and clapping in the foreground."],
-  ["tropical","Salsa, cumbia y merengue","Señora bailando feliz en un patio colorido.","A joyful older woman dancing in a colorful courtyard, her wide skirt swirling, an older man playing maracas nearby, tropical plants and warm afternoon light."],
-  ["tango","Tango y folclor","Bandoneón y pareja de tango en un café, con un poncho tejido.","An older couple dancing tango in a softly lit neighborhood café, a bandoneon resting on a wooden chair in the foreground, a hand-woven Andean poncho draped over the chair back."],
-  ["cocina","Cocina de la abuela","Manos de abuela preparando tamales y arepas.","Close view of an older woman's hands wrapping tamales in corn husks on a rustic wooden table, clay pots, a bowl of masa, gentle steam rising, morning light from a kitchen window."],
-  ["fe","Fe y oración","Rosario en manos mayores junto a una ventana con luz.","Older hands gently holding a wooden rosary near a sunlit window, a lit candle and a small vase of white flowers, a colonial church bell tower softly blurred outside."],
-  ["plantas","Plantas y jardín","Señor regando geranios y sábila en un balcón soleado.","An older man watering red geraniums and aloe vera in terracotta pots on a sunny balcony, a straw hat, green leaves and morning sunlight."],
-  ["animales","Animales","Colibrí en flores rojas y un perro tranquilo.","A hummingbird hovering at bright red flowers in a garden, while a calm, friendly dog rests at the feet of an older woman sitting on a garden bench."],
-  ["viajes","Paseos por Latinoamérica","Calle colonial de colores con montañas al fondo.","A colorful colonial street with flower-filled balconies and cobblestones, green Andean mountains in the distance, golden hour light, an older couple walking arm in arm."],
-  ["recuerdos","Recuerdos de antes","Radio antigua, fotos sepia y tocadiscos sobre mantel de encaje.","A still life of a vintage radio, a record player with a vinyl record, sepia family photographs in old frames and a lace tablecloth, nostalgic warm light."],
-  ["humor","Humor sano","Dos amigos mayores riendo en una banca del parque.","Two older friends laughing heartily together on a park bench under a shady tree, one gently touching the other's arm, warm afternoon light."],
-  ["ejercicio","Ejercicio suave","Señora haciendo estiramientos suaves sentada en una silla.","An older woman doing gentle seated stretches on a sturdy chair in a bright, airy room, arms raised calmly, a potted plant and a glass of water nearby."]
+  ["boleros","Boleros y baladas","Pareja de unos 30 años bailando lento en la sala, con radio antigua y guitarra.","A couple in their thirties slow-dancing cheek to cheek in a cozy living room at dusk, a vintage wooden radio and an acoustic guitar on a side table, a warm lamp glow."],
+  ["rancheras","Rancheras y mariachi","Mariachis jóvenes en la plaza del pueblo al atardecer.","A small group of young adult mariachi musicians in a colonial town plaza at golden hour, trumpet, violin and guitarrón, colorful papel picado garlands overhead without any lettering, festive and warm."],
+  ["tropical","Salsa, cumbia y merengue","Mujer de unos 30 años bailando feliz en un patio colorido.","A joyful woman in her thirties dancing in a colorful courtyard, her wide skirt swirling, a man playing maracas nearby, tropical plants and warm afternoon light."],
+  ["tango","Tango y folclor","Pareja de unos 40 años bailando tango en un café, con bandoneón y poncho.","A couple in their forties dancing tango in a softly lit neighborhood café, a bandoneon resting on a wooden chair in the foreground, a hand-woven Andean poncho draped over the chair back."],
+  ["cocina","Cocina de la abuela","Manos adultas preparando tamales en una mesa de madera.","Close view of adult hands wrapping tamales in corn husks on a rustic wooden table, clay pots, a bowl of masa, gentle steam rising, morning light from a kitchen window."],
+  ["fe","Fe y oración","Rosario en manos adultas junto a una ventana con luz.","Adult hands gently holding a wooden rosary near a sunlit window, a lit candle and a small vase of white flowers, a colonial church bell tower softly blurred outside."],
+  ["plantas","Plantas y jardín","Hombre de unos 30 años regando geranios y sábila en un balcón.","A man in his thirties watering red geraniums and aloe vera in terracotta pots on a sunny balcony, a straw hat, green leaves and morning sunlight."],
+  ["animales","Animales","Colibrí en flores rojas y un perro tranquilo junto a una mujer que lee.","A hummingbird hovering at bright red flowers in a garden, while a calm, friendly dog rests beside a woman in her thirties reading on a garden bench."],
+  ["viajes","Paseos por Latinoamérica","Calle colonial de colores con montañas y una pareja joven caminando.","A colorful colonial street with flower-filled balconies and cobblestones, green Andean mountains in the distance, golden hour light, a young couple walking arm in arm."],
+  ["recuerdos","Recuerdos de antes","Radio antigua, fotos sepia y tocadiscos sobre mantel de encaje (sin personas).","A still life of a vintage radio, a record player with a vinyl record, sepia family photographs in old frames and a lace tablecloth, nostalgic warm light, no people."],
+  ["humor","Humor sano","Dos amigos de unos 30 años riendo en una banca del parque.","Two friends in their thirties laughing heartily together on a park bench under a shady tree, one gently touching the other's arm, warm afternoon light."],
+  ["ejercicio","Ejercicio suave","Mujer de unos 40 años haciendo estiramientos suaves sentada en una silla.","A woman in her forties doing gentle seated stretches on a sturdy chair in a bright, airy room, arms raised calmly, a potted plant and a glass of water nearby."]
 ];
 const full=t=>`${t[3]}\n\nStyle: ${STYLE}\n\n${AVOID}`;
 const blocks=TOPICS.map((t,i)=>`
