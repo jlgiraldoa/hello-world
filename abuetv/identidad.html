@@ -1,0 +1,233 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Identidad AbueTV</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Figtree:wght@700;800&display=swap">
+<style>
+/* Layout: documento de decisión en una columna; cada propuesta de logo es una tarjeta con sus usos reales.
+   Tema claro único y deliberado: la paleta Sereno ya elegida para la app. */
+:root{
+  --bg:#F7F6F2; --surface:#FFFFFF; --ink:#1E293B; --muted:#4B5768; --line:#E2DED6; --chip:#ECEAE4;
+  --primary:#0F766E; --primary-soft:#E2EFED; --sand:#EADBB8; --sand-soft:#F6EFDF; --danger:#B42318;
+  --f-body:"Atkinson Hyperlegible","Verdana","Segoe UI",system-ui,sans-serif;
+  --f-display:"Figtree","Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --shadow:0 1px 2px rgba(30,41,59,.06),0 6px 18px rgba(30,41,59,.07);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:860px;margin:0 auto;padding-block:36px 64px;display:flex;flex-direction:column;gap:40px}
+h1{margin:0;font-family:var(--f-display);font-weight:800;font-size:clamp(30px,6vw,42px);line-height:1.08;letter-spacing:-.8px;text-wrap:balance}
+h2{margin:0 0 6px;font-family:var(--f-display);font-weight:800;font-size:26px;letter-spacing:-.4px}
+h3{margin:0;font-family:var(--f-display);font-weight:800;font-size:21px}
+p{margin:0}
+.lead{font-size:19px;color:var(--muted);max-width:62ch}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--primary)}
+section{display:flex;flex-direction:column;gap:16px}
+.card{background:var(--surface);border-radius:22px;box-shadow:var(--shadow);padding:20px}
+.rec{display:inline-block;font-size:13px;font-weight:700;color:#fff;background:var(--primary);border-radius:999px;padding:2px 10px;vertical-align:3px;margin-left:6px}
+
+/* nombres */
+.names{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.name{background:var(--surface);border-radius:18px;box-shadow:var(--shadow);padding:16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.name.pick{box-shadow:0 0 0 3px var(--primary),var(--shadow)}
+.name b{font-family:var(--f-display);font-size:24px;letter-spacing:-.4px}
+.name span{font-size:15px;color:var(--muted)}
+.name .rec{color:#fff;font-size:13px}
+.pro{font-size:15px}.pro::before{content:"+ ";color:var(--primary);font-weight:700}
+.con{font-size:15px}.con::before{content:"– ";color:var(--danger);font-weight:700}
+
+/* logos */
+.logos{display:flex;flex-direction:column;gap:18px}
+.logo-card{display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:start}
+.logo-card .big svg{width:150px;height:150px;border-radius:34px;box-shadow:0 10px 24px rgba(15,118,110,.22)}
+.logo-card .txt{display:flex;flex-direction:column;gap:10px;min-width:0}
+.uses{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:4px}
+.bar{display:flex;align-items:center;gap:10px;padding:10px 16px;border-radius:14px;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line)}
+.bar svg{width:40px;height:40px;border-radius:11px}
+.word{font-family:var(--f-display);font-weight:800;font-size:26px;letter-spacing:-.6px;line-height:1}
+.word em{font-style:normal;color:var(--primary)}
+.tiny{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted)}
+.tiny svg{width:28px;height:28px;border-radius:8px}
+@media (max-width:560px){ .logo-card{grid-template-columns:1fr} .logo-card .big svg{width:120px;height:120px;border-radius:28px} }
+
+/* pantalla de inicio del teléfono */
+.home{background:linear-gradient(160deg,#3B5B57,#22363F);border-radius:28px;padding:22px 18px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px 10px;max-width:420px}
+.app{display:flex;flex-direction:column;align-items:center;gap:6px;color:#fff;font-size:13px;text-align:center;min-width:0}
+.app i{display:block;width:56px;height:56px;border-radius:16px;background:var(--c)}
+.app svg{width:56px;height:56px;border-radius:16px;box-shadow:0 0 0 3px #fff}
+.app.me{font-weight:700}
+.note{font-size:15px;color:var(--muted)}
+
+/* imágenes de temas */
+.spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.spec div{background:var(--surface);border-radius:14px;padding:12px 14px;box-shadow:inset 0 0 0 1px var(--line)}
+.spec b{display:block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.prompt{background:var(--surface);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+.prompt header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.prompt header div{min-width:0}
+.prompt header small{display:block;font-size:14px;color:var(--muted)}
+.prompt pre{margin:0;padding:14px 16px;white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;font-size:14px;line-height:1.5;color:#2B3646;background:#FBFAF7}
+.copy{flex:none;min-height:44px;padding:0 16px;border:0;border-radius:999px;background:var(--primary);color:#fff;font:700 15px var(--f-body);cursor:pointer}
+.copy:active{transform:scale(.97)}
+.copy.done{background:var(--ink)}
+.copy:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.topics{display:flex;flex-direction:column;gap:12px}
+.file{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;background:var(--chip);border-radius:6px;padding:1px 6px}
+ol.steps{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header style="display:flex;flex-direction:column;gap:12px">
+    <span class="eyebrow">AbueTV · identidad · propuesta</span>
+    <h1>Nombre, logo e imágenes de temas</h1>
+    <p class="lead">Tres decisiones para darle a la app una identidad propia, que ya no se parezca a YouTube. Elija un nombre y un logo, y use los prompts de abajo para crear las 12 imágenes de "¿Qué le gusta ver?".</p>
+  </header>
+
+  <!-- ============ NOMBRE ============ -->
+  <section>
+    <h2>1 · El nombre</h2>
+    <p class="lead">AbueTV ya funciona: es cálido, corto y dice qué es. El único riesgo es que no todas las personas mayores son abuelas o abuelos, y a algunas no les gusta que las llamen así. Por eso incluyo alternativas que no hablan de la edad.</p>
+    <div class="names">
+      <div class="name pick"><b>AbueTV <span class="rec">Recomendado</span></b><span>El nombre actual</span>
+        <p class="pro">Se entiende al instante y suena cariñoso</p><p class="pro">Ya está en todo el prototipo</p><p class="con">Puede excluir a quien no es abuelo o abuela</p></div>
+      <div class="name"><b>Sobremesa</b><span>La charla tranquila después de comer</span>
+        <p class="pro">Muy latinoamericano y sin mencionar la edad</p><p class="con">No dice que hay videos ni juegos</p></div>
+      <div class="name"><b>Mecedora</b><span>El rato de descanso en casa</span>
+        <p class="pro">Transmite calma y hogar</p><p class="con">Puede sonar a "viejito"</p></div>
+      <div class="name"><b>Un Ratito</b><span>"Veamos un ratito"</span>
+        <p class="pro">Así se habla en la región; invita sin presión</p><p class="con">Difícil de registrar como marca</p></div>
+    </div>
+    <p class="note">Lema sugerido para cualquier nombre: <b>"Videos y juegos, con calma."</b></p>
+  </section>
+
+  <!-- ============ LOGO ============ -->
+  <section>
+    <h2>2 · El logo</h2>
+    <p class="lead">Tres símbolos propios en la paleta Sereno. Ninguno usa el botón de reproducir, para que nadie lo confunda con YouTube en la pantalla del celular.</p>
+    <div class="logos" id="logos"></div>
+  </section>
+
+  <section>
+    <h3>Así se encuentra en el celular</h3>
+    <p class="note">Una persona mayor busca la app por su forma y su color. Las tres opciones se distinguen bien de los íconos rojos, azules y verdes de otras apps.</p>
+    <div class="home" id="phoneHome"></div>
+  </section>
+
+  <!-- ============ IMÁGENES ============ -->
+  <section>
+    <h2>3 · Imágenes de "¿Qué le gusta ver?"</h2>
+    <p class="lead">Hoy cada tema muestra un emoji sobre un fondo de color. Con estas 12 imágenes la pantalla se verá como una app terminada. Los prompts están en inglés porque las IA de imágenes responden mejor así; cada uno se explica en español.</p>
+    <div class="card" style="display:flex;flex-direction:column;gap:12px">
+      <h3>Recomendación de estilo: ilustración cálida</h3>
+      <p>Recomiendo ilustración tipo gouache en vez de fotos. Las caras y manos hechas con IA en fotos suelen salir raras, y eso genera desconfianza. La ilustración se ve igual de bien en los 12 temas y combina con la etiqueta "Hecho con IA". Si prefieren fotos, más abajo hay un bloque de estilo alternativo.</p>
+      <div class="spec">
+        <div><b>Tamaño</b>1080 × 1170 px (proporción 25:27)</div>
+        <div><b>Formato</b>WebP o JPG, menos de 250 KB</div>
+        <div><b>Composición</b>Lo importante arriba; el tercio inferior tranquilo, porque ahí va el texto</div>
+        <div><b>Personas</b>Mayores latinoamericanos de distintos tonos de piel, con dignidad y alegría</div>
+      </div>
+      <p class="note"><b>Cómo usarlos:</b> copie un prompt completo con el botón y péguelo en la IA de imágenes (ChatGPT, Midjourney, Ideogram, Firefly…). En Midjourney agregue al final <span class="file">--ar 25:27 --style raw</span>. Genere 2 o 3 versiones por tema y elija las que se vean más parecidas entre sí.</p>
+    </div>
+    <div class="topics" id="prompts"></div>
+    <div class="card" style="display:flex;flex-direction:column;gap:10px">
+      <h3>Cuando tenga las imágenes</h3>
+      <ol class="steps">
+        <li>Nómbrelas con el código de cada tema, por ejemplo <span class="file">boleros.webp</span>, <span class="file">cocina.webp</span>.</li>
+        <li>Envíemelas o súbalas a la carpeta <span class="file">abuetv/img/temas/</span> del repositorio.</li>
+        <li>El prototipo ya está preparado: si un tema tiene imagen la muestra; si no, sigue con el emoji.</li>
+      </ol>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+"use strict";
+/* ---------- logos (SVG propios) ---------- */
+const LOGOS=[
+  {id:"tele",name:"Tele de antes",rec:true,why:"Un televisor con antenas, como el de la sala de la casa, con un corazón en la pantalla. Se entiende de inmediato que es para ver, y evoca recuerdos sin parecerse a ninguna app actual.",
+   svg:`<svg viewBox="0 0 120 120" role="img" aria-label="Logo: televisor de antes con un corazón"><rect width="120" height="120" rx="28" fill="#0F766E"/>
+     <g stroke="#F7F6F2" stroke-width="5" stroke-linecap="round"><line x1="60" y1="40" x2="45" y2="23"/><line x1="60" y1="40" x2="75" y2="23"/><line x1="40" y1="96" x2="36" y2="104"/><line x1="80" y1="96" x2="84" y2="104"/></g>
+     <circle cx="45" cy="22" r="4.5" fill="#EADBB8"/><circle cx="75" cy="22" r="4.5" fill="#EADBB8"/>
+     <rect x="22" y="40" width="76" height="57" rx="15" fill="#F7F6F2"/><rect x="31" y="49" width="58" height="39" rx="9" fill="#EADBB8"/>
+     <path d="M60 80c-11-7-14-15-8.5-19.5 3.3-2.6 6.8-1.4 8.5 1.6 1.7-3 5.2-4.2 8.5-1.6C74 65 71 73 60 80z" fill="#0F766E"/></svg>`},
+  {id:"abrazo",name:"Abrazo",why:"Una letra A que se cierra como un abrazo y sonríe en el centro. Es la opción más cercana y humana, aunque dice menos que es una app de videos.",
+   svg:`<svg viewBox="0 0 120 120" role="img" aria-label="Logo: letra A en forma de abrazo con sonrisa"><rect width="120" height="120" rx="28" fill="#0F766E"/>
+     <path d="M30 92 L60 28 L90 92" fill="none" stroke="#F7F6F2" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+     <path d="M45 72 Q60 86 75 72" fill="none" stroke="#EADBB8" stroke-width="9" stroke-linecap="round"/>
+     <circle cx="60" cy="28" r="7" fill="#EADBB8"/></svg>`},
+  {id:"sol",name:"Sol de la tarde",why:"Una ventana con el sol bajando entre los cerros: la hora tranquila del día. Es la opción más serena y elegante, y funciona con cualquiera de los nombres.",
+   svg:`<svg viewBox="0 0 120 120" role="img" aria-label="Logo: ventana con el sol de la tarde entre cerros"><rect width="120" height="120" rx="28" fill="#0F766E"/>
+     <defs><clipPath id="win"><rect x="22" y="24" width="76" height="72" rx="16"/></clipPath></defs>
+     <g clip-path="url(#win)"><rect x="22" y="24" width="76" height="72" fill="#F6EFDF"/>
+       <circle cx="60" cy="70" r="20" fill="#EADBB8"/><circle cx="60" cy="70" r="13" fill="#E3C98F"/>
+       <path d="M22 82 Q42 66 60 78 T98 74 V96 H22Z" fill="#0F766E" opacity=".55"/><path d="M22 90 Q48 76 72 88 T98 86 V96 H22Z" fill="#0B5E58"/></g>
+     <rect x="22" y="24" width="76" height="72" rx="16" fill="none" stroke="#F7F6F2" stroke-width="6"/></svg>`}
+];
+const wordmark='Abue<em>TV</em>';
+document.getElementById("logos").innerHTML=LOGOS.map((l,i)=>`
+  <article class="card logo-card">
+    <div class="big">${l.svg}</div>
+    <div class="txt">
+      <h3>Opción ${String.fromCharCode(65+i)} · ${l.name}${l.rec?' <span class="rec">Recomendado</span>':""}</h3>
+      <p>${l.why}</p>
+      <div class="uses">
+        <div class="bar">${l.svg}<span class="word">${wordmark}</span></div>
+        <span class="tiny">${l.svg}tamaño mínimo</span>
+      </div>
+    </div>
+  </article>`).join("");
+
+const others=[["Fotos","#F59E0B"],["WhatsApp","#25D366"],["Teléfono","#2563EB"],["Mensajes","#6366F1"],["Cámara","#475569"],["Videos","#DC2626"],["Radio","#9333EA"],["Reloj","#111827"]];
+const cells=[];
+others.forEach(([n,c],i)=>{ cells.push(`<div class="app"><i style="--c:${c}"></i>${n}</div>`); if(i===1||i===4) cells.push(`<div class="app me">${LOGOS[i===1?0:1].svg}AbueTV ${i===1?"A":"B"}</div>`); });
+cells.push(`<div class="app me">${LOGOS[2].svg}AbueTV C</div>`);
+document.getElementById("phoneHome").innerHTML=cells.join("");
+
+/* ---------- prompts de imágenes ---------- */
+const STYLE="Warm editorial illustration with a soft gouache texture, gentle natural light, muted harmonious palette of deep teal (#0F766E), warm sand (#EADBB8), cream and soft terracotta accents. Simple, uncluttered composition: the main subject sits in the upper two thirds and the bottom third stays calm and slightly darker so a text label can sit on top. Dignified, warm and joyful portrayal of Latin American older adults in their 70s, with diverse skin tones (mestizo, Afro-Latino, Indigenous, white). Vertical 25:27 format, 1080x1170 px.";
+const AVOID="Avoid: any text, letters, words, numbers, signs, logos, brand names, watermarks; distorted hands, extra fingers, deformed faces; harsh shadows, neon or oversaturated colors, childish cartoon style, stock-photo grins, clutter, gloomy mood.";
+const PHOTO="Warm documentary photograph, soft window light, shallow depth of field, natural slightly muted colors with teal and warm sand tones, candid and respectful, real Latin American older adults in their 70s with diverse skin tones. Main subject in the upper two thirds, calm darker bottom third for a text label. Vertical 25:27 format, 1080x1170 px.";
+const TOPICS=[
+  ["boleros","Boleros y baladas","Pareja mayor bailando lento en la sala, con radio antigua y guitarra.","An older couple slow-dancing cheek to cheek in a cozy living room at dusk, a vintage wooden radio and an acoustic guitar on a side table, a warm lamp glow."],
+  ["rancheras","Rancheras y mariachi","Mariachis en la plaza del pueblo al atardecer.","A small mariachi group in a colonial town plaza at golden hour, trumpet, violin and guitarrón, colorful papel picado garlands overhead without any lettering, an older man smiling and clapping in the foreground."],
+  ["tropical","Salsa, cumbia y merengue","Señora bailando feliz en un patio colorido.","A joyful older woman dancing in a colorful courtyard, her wide skirt swirling, an older man playing maracas nearby, tropical plants and warm afternoon light."],
+  ["tango","Tango y folclor","Bandoneón y pareja de tango en un café, con un poncho tejido.","An older couple dancing tango in a softly lit neighborhood café, a bandoneon resting on a wooden chair in the foreground, a hand-woven Andean poncho draped over the chair back."],
+  ["cocina","Cocina de la abuela","Manos de abuela preparando tamales y arepas.","Close view of an older woman's hands wrapping tamales in corn husks on a rustic wooden table, clay pots, a bowl of masa, gentle steam rising, morning light from a kitchen window."],
+  ["fe","Fe y oración","Rosario en manos mayores junto a una ventana con luz.","Older hands gently holding a wooden rosary near a sunlit window, a lit candle and a small vase of white flowers, a colonial church bell tower softly blurred outside."],
+  ["plantas","Plantas y jardín","Señor regando geranios y sábila en un balcón soleado.","An older man watering red geraniums and aloe vera in terracotta pots on a sunny balcony, a straw hat, green leaves and morning sunlight."],
+  ["animales","Animales","Colibrí en flores rojas y un perro tranquilo.","A hummingbird hovering at bright red flowers in a garden, while a calm, friendly dog rests at the feet of an older woman sitting on a garden bench."],
+  ["viajes","Paseos por Latinoamérica","Calle colonial de colores con montañas al fondo.","A colorful colonial street with flower-filled balconies and cobblestones, green Andean mountains in the distance, golden hour light, an older couple walking arm in arm."],
+  ["recuerdos","Recuerdos de antes","Radio antigua, fotos sepia y tocadiscos sobre mantel de encaje.","A still life of a vintage radio, a record player with a vinyl record, sepia family photographs in old frames and a lace tablecloth, nostalgic warm light."],
+  ["humor","Humor sano","Dos amigos mayores riendo en una banca del parque.","Two older friends laughing heartily together on a park bench under a shady tree, one gently touching the other's arm, warm afternoon light."],
+  ["ejercicio","Ejercicio suave","Señora haciendo estiramientos suaves sentada en una silla.","An older woman doing gentle seated stretches on a sturdy chair in a bright, airy room, arms raised calmly, a potted plant and a glass of water nearby."]
+];
+const full=t=>`${t[3]}\n\nStyle: ${STYLE}\n\n${AVOID}`;
+const blocks=TOPICS.map((t,i)=>`
+  <article class="prompt">
+    <header><div><h3>${t[1]}</h3><small>${t[2]} · archivo: <span class="file">${t[0]}.webp</span></small></div>
+      <button class="copy" type="button" data-i="${i}">Copiar prompt</button></header>
+    <pre id="p${i}">${full(t)}</pre>
+  </article>`);
+blocks.push(`
+  <article class="prompt">
+    <header><div><h3>Alternativa: estilo foto</h3><small>Reemplace el bloque "Style" de cualquier prompt por este</small></div>
+      <button class="copy" type="button" data-i="photo">Copiar estilo</button></header>
+    <pre id="pphoto">Style: ${PHOTO}\n\n${AVOID}</pre>
+  </article>`);
+document.getElementById("prompts").innerHTML=blocks.join("");
+
+document.getElementById("prompts").addEventListener("click",e=>{
+  const b=e.target.closest(".copy"); if(!b) return;
+  const pre=document.getElementById("p"+b.dataset.i), text=pre.textContent;
+  const ok=()=>{ b.textContent="Copiado ✓"; b.classList.add("done"); setTimeout(()=>{ b.textContent=b.dataset.i==="photo"?"Copiar estilo":"Copiar prompt"; b.classList.remove("done"); },2000); };
+  const fallback=()=>{ const r=document.createRange(); r.selectNodeContents(pre); const s=getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent="Texto seleccionado: cópielo"; };
+  try{ navigator.clipboard.writeText(text).then(ok,fallback); }catch(err){ fallback(); }
+});
+})();
+</script>

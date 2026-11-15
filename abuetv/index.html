@@ -373,6 +373,10 @@ p.sub{margin:0;font-size:20px;color:var(--muted)}
 .win b{font-family:var(--f-display);font-weight:800;font-size:28px}
 .win p{margin:0;font-size:20px}
 
+/* imágenes de temas (cuando existan) */
+.tile .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tile.hasphoto .art{display:none}
+
 /* ---------- v0.7: salida única, video fijo, inicio compacto ---------- */
 .exitpill{display:inline-flex;align-items:center;gap:6px;min-height:52px;padding:0 20px 0 12px;border:0;border-radius:999px;background:var(--danger);color:#fff;font-weight:700;font-size:20px;box-shadow:0 4px 12px rgba(0,0,0,.18);flex:none}
 .exitpill .ic{width:22px;height:22px}
@@ -481,6 +485,8 @@ const TOPICS=[
   {id:"ejercicio", em:"🧘", label:"Ejercicio suave",          grad:"linear-gradient(135deg,#1A3557,#3F74B0)", mood:"calma"}
 ];
 const TOP=Object.fromEntries(TOPICS.map(t=>[t.id,t]));
+/* Imágenes de temas: cuando existan, agregar aquí la ruta, p. ej. boleros:"img/temas/boleros.webp". Sin ruta se muestra el emoji. */
+const PHOTOS={};
 const COUNTRIES=[
   ["🇦🇷","Argentina"],["🇧🇴","Bolivia"],["🇨🇱","Chile"],["🇨🇴","Colombia"],["🇨🇷","Costa Rica"],["🇨🇺","Cuba"],
   ["🇪🇨","Ecuador"],["🇸🇻","El Salvador"],["🇬🇹","Guatemala"],["🇭🇳","Honduras"],["🇲🇽","México"],["🇳🇮","Nicaragua"],
@@ -685,8 +691,8 @@ function vCountry(){
 }
 function topicGrid(){
   return `<div class="tgrid" role="group" aria-label="Temas">
-    ${TOPICS.map(t=>`<button class="tile" data-act="topic:${t.id}" aria-pressed="${S.interests.includes(t.id)}" style="--g:${t.grad}">
-      <span class="ck" aria-hidden="true">${ic("check")}</span><span class="art" aria-hidden="true">${t.em}</span><span class="lbl">${t.label}</span></button>`).join("")}
+    ${TOPICS.map(t=>`<button class="tile ${PHOTOS[t.id]?"hasphoto":""}" data-act="topic:${t.id}" aria-pressed="${S.interests.includes(t.id)}" style="--g:${t.grad}">
+      ${PHOTOS[t.id]?`<img class="photo" src="${PHOTOS[t.id]}" alt="">`:""}<span class="ck" aria-hidden="true">${ic("check")}</span><span class="art" aria-hidden="true">${t.em}</span><span class="lbl">${t.label}</span></button>`).join("")}
   </div>`;
 }
 const pickedText=n=>n?`Eligió ${n} ${n===1?"tema":"temas"}`:"Todavía no eligió ningún tema";
