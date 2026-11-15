@@ -1,13 +1,15 @@
 # AbueTV · Decisiones de producto y diseño
 
-Registro de lo que ya decidimos juntos. Prototipo actual: `abuetv/index.html` (v0.8).
+Registro de lo que ya decidimos juntos. Prototipo actual: `abuetv/index.html` (v0.9).
 
 ## Producto
 - **Qué es:** videos, shorts y juegos tranquilos para adultos mayores (75+).
 - **Público:** toda Latinoamérica, en español neutro latinoamericano.
 - **Contenido:** catálogo propio con licencia. Se empieza con videos creados con IA, siempre marcados como "Hecho con IA". Más adelante se invitará a creadores de contenido.
-- **Cuentas:** se puede ver sin cuenta; los gustos y guardados quedan en la memoria del teléfono. Crear una cuenta toma 3 pasos: nombre, país y temas de interés.
+- **Sin cuentas en la primera versión:** no hay registro, contraseñas ni SMS. Se toca "Empezar" y en 2 pasos se dice el nombre (opcional) y se eligen los gustos. Todo se guarda en el teléfono. El nombre se cambia en "Mis gustos".
+- **Más adelante:** cuentas con código por SMS, cuando lleguen los creadores invitados o se necesite recuperar los datos al cambiar de celular.
 - **Temas de interés:** se eligen al estilo TikTok al entrar y se pueden cambiar en "Mis gustos".
+- **País:** se quitó la pregunta del país para tener menos pasos; el catálogo es para toda Latinoamérica.
 
 ## Experiencia
 - **Nada se reproduce solo:** al terminar un video o un short, la persona elige qué ver después.
@@ -27,7 +29,6 @@ Registro de lo que ya decidimos juntos. Prototipo actual: `abuetv/index.html` (v
 - **Avisos de 5,5 segundos**, que se cierran al tocarlos.
 - **Mínimo 18 px** en todo texto de la app. Solo las etiquetas punteadas de prototipo son más pequeñas.
 - **Inicio compacto:** filtros "Para usted", "Todo" y "Por tema", para que el primer video se vea entero sin bajar.
-- **El país no avanza solo:** se marca y luego se toca "Continuar".
 
 ## Diseño
 - **Nombre:** AbueTV. **Lema:** "Videos y juegos, con calma."
@@ -45,7 +46,6 @@ Registro de lo que ya decidimos juntos. Prototipo actual: `abuetv/index.html` (v
 - **Manejo remoto por familiares:** nadie administra la app desde otro teléfono (ni modo cuidador ni elegir contenido a distancia). La persona usa AbueTV por su cuenta.
 
 ## Pendiente de decidir
-- Cómo entra la persona a su cuenta en otro teléfono. Propuesta: código por SMS que llega al mismo teléfono y se llena solo; no implica control remoto. Por confirmar.
 - Cómo se distinguen los creadores invitados del contenido hecho con IA.
 - Duración máxima de los shorts y qué pasa al llegar al último ("Por hoy es todo").
 - Registro suave de juego, por ejemplo "Esta semana jugó 5 veces", sin puntajes.

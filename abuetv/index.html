@@ -437,7 +437,7 @@ p.sub{margin:0;font-size:20px;color:var(--muted)}
       <div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle"></div>
     </div>
   </div>
-  <p class="stage-note">AbueTV v0.8 · prototipo para celular. Ábralo en el teléfono para verlo a pantalla completa.</p>
+  <p class="stage-note">AbueTV v0.9 · prototipo para celular. Ábralo en el teléfono para verlo a pantalla completa.</p>
 </div>
 
 <script>
@@ -494,12 +494,6 @@ const TOPICS=[
 const TOP=Object.fromEntries(TOPICS.map(t=>[t.id,t]));
 /* Imágenes de temas: cuando existan, agregar aquí la ruta, p. ej. boleros:"img/temas/boleros.webp". Sin ruta se muestra el emoji. */
 const PHOTOS={};
-const COUNTRIES=[
-  ["🇦🇷","Argentina"],["🇧🇴","Bolivia"],["🇨🇱","Chile"],["🇨🇴","Colombia"],["🇨🇷","Costa Rica"],["🇨🇺","Cuba"],
-  ["🇪🇨","Ecuador"],["🇸🇻","El Salvador"],["🇬🇹","Guatemala"],["🇭🇳","Honduras"],["🇲🇽","México"],["🇳🇮","Nicaragua"],
-  ["🇵🇦","Panamá"],["🇵🇾","Paraguay"],["🇵🇪","Perú"],["🇵🇷","Puerto Rico"],["🇩🇴","Rep. Dominicana"],["🇺🇾","Uruguay"],
-  ["🇻🇪","Venezuela"],["🌎","Otro país"]
-];
 
 /* ================= CATÁLOGO PROPIO (videos creados con IA por AbueTV) ================= */
 const VIDEOS=[
@@ -574,7 +568,7 @@ const S={
   saved:Array.isArray(saved0.saved)?saved0.saved.filter(id=>VID[id]||SHO[id]):[],
   last:saved0.last&&VID[saved0.last.id]?saved0.last:null,
   tab:"home", screen:saved0.onboarded?"home":"welcome",
-  flow:null, draftName:"", draftCountry:null, backTo:null,
+  flow:null, draftName:"", backTo:null,
   filter:"para", sOrder:[], sIdx:0, st:0, sPlaying:false, vid:null, t:0, playing:false, vol:3, endShown:false, confirmUnsave:null
 };
 function persist(){ try{ localStorage.setItem(STORE,JSON.stringify({onboarded:S.onboarded,account:S.account,interests:S.interests,saved:S.saved,last:S.last})); }catch(e){} }
@@ -648,7 +642,7 @@ function render(keepScroll){
   const me=$("me"); me.hidden=!inApp;
   if(inApp){ const n=firstName(); me.innerHTML=`<span class="av">${n?esc(n.charAt(0).toUpperCase()):ic("user")}</span><span>Mis gustos</span>`; me.setAttribute("aria-current",S.tab==="likes"?"page":"false"); }
   document.querySelectorAll(".nav button").forEach(b=>{ if(b.dataset.act==="tab:"+S.tab) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
-  const views={welcome:vWelcome,name:vName,country:vCountry,interests:vInterests,home:vHome,player:vPlayer,shorts:vShorts,games:vGames,memory:vMemory,refran:vQuiz,trivia:vQuiz,bingo:vBingo,saved:vSaved,likes:vLikes};
+  const views={welcome:vWelcome,name:vName,interests:vInterests,home:vHome,player:vPlayer,shorts:vShorts,games:vGames,memory:vMemory,refran:vQuiz,trivia:vQuiz,bingo:vBingo,saved:vSaved,likes:vLikes};
   content.innerHTML=views[S.screen]();
   const sh=S.screen==="shorts";
   content.classList.toggle("dark",sh);
@@ -659,43 +653,32 @@ function render(keepScroll){
   updateScrollBtns();
 }
 
-/* ================= BIENVENIDA Y REGISTRO ================= */
+/* ================= BIENVENIDA (sin cuentas en la primera versión) ================= */
 function vWelcome(){
   return `<div class="pad col">
     <div class="brand"><span class="mark" aria-hidden="true">${LOGO}</span><h1 class="brandword">Abue<em>TV</em></h1><span class="tagline">Videos y juegos, con calma.</span></div>
     <div class="collage" aria-hidden="true">${["v01","v05","v11","v08"].map(id=>thumb(VID[id],{noDur:true})).join("")}</div>
     <p class="sub">Música, recetas, fe, juegos y recuerdos de toda Latinoamérica, con letra grande y botones claros.</p>
-    <button class="btn primary xl" data-act="startGuest">${ic("play","fill")}Empezar a ver</button>
-    <button class="btn ghost xl" data-act="startSignup">${ic("user")}Crear mi cuenta</button>
-    <p class="fine">No necesita cuenta para ver videos. Si no crea una, sus gustos y guardados se quedan en este teléfono.</p>
+    <button class="btn primary xl" data-act="start">${ic("play","fill")}Empezar</button>
+    <p class="fine">Sin cuentas ni contraseñas. Lo que elija se guarda en este teléfono.</p>
   </div>`;
 }
 function stepHead(n){
-  return `<div class="stepbar"><button class="back" data-act="back">${ic("left")}Volver</button>${n?`<span>Paso ${n} de 3</span>`:""}</div>
-    ${n?`<div class="progress" aria-hidden="true"><i style="width:${n/3*100}%"></i></div>`:""}`;
+  return `<div class="stepbar"><button class="back" data-act="back">${ic("left")}Volver</button>${n?`<span>Paso ${n} de 2</span>`:""}</div>
+    ${n?`<div class="progress" aria-hidden="true"><i style="width:${n/2*100}%"></i></div>`:""}`;
 }
 function vName(){
   const ok=!!S.draftName.trim();
   return `<div class="pad col">
-    ${stepHead(1)}
+    ${S.flow==="edit"?`<div class="stepbar"><button class="back" data-act="back">${ic("left")}Volver</button></div>`:stepHead(1)}
     <h1 class="big">¿Cómo le gusta que le digan?</h1>
     <div class="field">
       <label for="nameInput">Su nombre</label>
       <input class="input" id="nameInput" type="text" autocomplete="given-name" maxlength="30" placeholder="Ej.: Doña Rosa" value="${esc(S.draftName)}">
-      <p class="sub" style="font-size:18px">Así le vamos a saludar cada día.</p>
+      <p class="sub" style="font-size:18px">Así le vamos a saludar cada día. Es opcional.</p>
     </div>
-    <button class="btn primary xl" data-act="nameNext" id="nameNext" aria-disabled="${!ok}">Continuar${ic("right")}</button>
-  </div>`;
-}
-function vCountry(){
-  return `<div class="pad col">
-    ${stepHead(2)}
-    <h1 class="big">¿De qué país es usted?</h1>
-    <p class="sub">Así le mostramos primero música y recetas de su tierra.</p>
-    <div class="cgrid" role="group" aria-label="Países">
-      ${COUNTRIES.map(([f,n])=>`<button class="country" data-act="country:${n}" aria-pressed="${S.draftCountry===n}"><span class="flag" aria-hidden="true">${f}</span>${n}</button>`).join("")}
-    </div>
-    <div class="picked"><p>${S.draftCountry?"Eligió: "+S.draftCountry:"Toque su país"}</p><button class="btn primary xl" data-act="countryNext" aria-disabled="${!S.draftCountry}">Continuar${ic("right")}</button></div>
+    <button class="btn primary xl" data-act="nameNext" id="nameNext" aria-disabled="${!ok}">${S.flow==="edit"?"Guardar mi nombre":"Continuar"}${ic(S.flow==="edit"?"check":"right")}</button>
+    ${S.flow==="edit"?"":`<button class="btn ghost" data-act="skipName">Prefiero no decirlo</button>`}
   </div>`;
 }
 function topicGrid(){
@@ -708,7 +691,7 @@ const pickedText=n=>n?`Eligió ${n} ${n===1?"tema":"temas"}`:"Todavía no eligi�
 function vInterests(){
   const n=S.interests.length;
   return `<div class="pad col">
-    ${stepHead(S.flow==="signup"?3:0)}
+    ${stepHead(2)}
     <h1 class="big">¿Qué le gusta ver?</h1>
     <p class="sub">Toque todos los temas que quiera. Puede cambiarlos después en <b>Mis gustos</b>.</p>
     ${topicGrid()}
@@ -719,12 +702,12 @@ function vInterests(){
   </div>`;
 }
 function finishOnboarding(){
-  const created=S.flow==="signup";
-  if(created) S.account={name:S.draftName.trim(),country:S.draftCountry};
+  const nm=S.draftName.trim();
+  S.account=nm?{name:nm}:null;
   S.onboarded=true; S.flow=null; persist();
-  S.tab=S.backTo==="likes"?"likes":"home"; S.screen=S.tab; S.backTo=null; S.filter="para";
+  S.tab="home"; S.screen="home"; S.filter="para";
   render();
-  toast(created?`¡Le damos la bienvenida, ${firstName()}!`:"¡Le damos la bienvenida a AbueTV!");
+  toast(nm?`¡Le damos la bienvenida, ${nm}!`:"¡Le damos la bienvenida a AbueTV!");
 }
 
 /* ================= INICIO ================= */
@@ -1183,18 +1166,13 @@ function bingoCell(i){
 }
 
 /* ================= GUARDADOS ================= */
-function guestNotice(text){
-  if(S.account) return "";
-  return `<div class="notice"><p>Está usando AbueTV sin cuenta.<small>${text}</small></p>
-    <button class="btn ghost" data-act="signupFromApp">${ic("user")}Crear mi cuenta</button></div>`;
-}
 function sRow(x){
   return `<button class="row" data-act="short:${x.id}">${thumb(x,{sm:true})}
     <span><b>${esc(x.title)}</b><small>Short · ${TOP[x.topic].label}</small><span class="see">${ic("play")}Ver</span></span></button>`;
 }
 function vSaved(){
   const list=S.saved.map(id=>VID[id]||SHO[id]).filter(Boolean);
-  const head=`<h1 class="big">Mis guardados</h1>${guestNotice("Sus guardados se quedan en este teléfono. Con una cuenta no los pierde si cambia de celular.")}`;
+  const head=`<h1 class="big">Mis guardados</h1><p class="sub">Sus guardados se quedan en este teléfono.</p>`;
   if(!list.length) return `<div class="pad col">${head}
     <div class="empty">${ic("heart")}<b>Todavía no hay videos guardados</b>
       <p class="sub">Cuando un video le guste, toque <b>Guardar</b> y aparecerá aquí.</p>
@@ -1211,13 +1189,12 @@ function vSaved(){
 
 /* ================= MIS GUSTOS ================= */
 function vLikes(){
-  const a=S.account;
-  const flag=a&&a.country?(COUNTRIES.find(c=>c[1]===a.country)||["🌎"])[0]:"";
+  const nm=firstName();
   const n=S.interests.length;
   return `<div class="pad col">
-    <div class="profile"><span class="av">${a?esc(a.name.trim().charAt(0).toUpperCase()):ic("user")}</span>
-      <div><b>${a?esc(a.name):"Invitado"}</b><span>${a?(a.country?flag+" "+esc(a.country):"Latinoamérica"):"Sin cuenta · guardado en este teléfono"}</span></div></div>
-    ${guestNotice("Sus gustos se guardan en este teléfono. Cree una cuenta para llevarlos a cualquier celular.")}
+    <div class="profile"><span class="av">${nm?esc(nm.charAt(0).toUpperCase()):ic("user")}</span>
+      <div><b>${nm?esc(nm):"Mis gustos"}</b><span>Todo se guarda en este teléfono</span></div></div>
+    <button class="btn ghost" data-act="editName">${ic("user")}${nm?"Cambiar mi nombre":"Decirnos su nombre"}</button>
     <h2 class="h3">Temas que me gustan</h2>
     <p class="sub">Toque para elegir o quitar. La lista <b>Para usted</b> cambia según lo que elija.</p>
     ${topicGrid()}
@@ -1263,30 +1240,30 @@ $("phone").addEventListener("click",e=>{
   const el=e.target.closest("[data-act]"); if(!el) return;
   if(el.getAttribute("aria-disabled")==="true"){
     if(el.dataset.act==="nameNext"){ toast("Primero escriba su nombre, por favor."); $("nameInput").focus(); }
-    if(el.dataset.act==="countryNext") toast("Primero toque su país, por favor.");
     return;
   }
   try{ navigator.vibrate&&navigator.vibrate(10); }catch(err){}
   const k=el.dataset.act.indexOf(":");
   const act=k<0?el.dataset.act:el.dataset.act.slice(0,k), arg=k<0?"":el.dataset.act.slice(k+1);
   switch(act){
-    case "startGuest": S.flow="guest"; S.screen="interests"; render(); break;
-    case "startSignup": S.flow="signup"; S.draftName=""; S.draftCountry=null; S.screen="name"; render(); break;
-    case "signupFromApp": stopPlayer(); S.backTo=S.tab; S.flow="signup"; S.draftName=""; S.draftCountry=null; S.onboarded=false; S.screen="name"; render(); break;
-    case "nameNext": S.screen="country"; render(); break;
-    case "country": S.draftCountry=arg; render(true); break;
+    case "start": S.flow="start"; S.draftName=""; S.screen="name"; render(); break;
+    case "skipName": S.draftName=""; S.screen="interests"; render(); break;
+    case "editName": S.flow="edit"; S.draftName=firstName(); S.screen="name"; render(); break;
+    case "nameNext":
+      if(S.flow==="edit"){ const nm=S.draftName.trim(); S.account=nm?{name:nm}:null; persist(); S.flow=null; S.tab="likes"; S.screen="likes"; render(); toast("Listo. Ahora le decimos "+nm+"."); }
+      else { S.screen="interests"; render(); }
+      break;
     case "topic": S.interests=S.interests.includes(arg)?S.interests.filter(x=>x!==arg):S.interests.concat(arg); if(S.onboarded) persist(); syncTiles(); break;
     case "finish": finishOnboarding(); break;
     case "back":
-      if(S.screen==="country") S.screen="name";
-      else if(S.screen==="interests") S.screen=S.flow==="signup"?"country":"welcome";
-      else if(S.screen==="name"){ if(S.backTo){ S.onboarded=true; S.flow=null; S.tab=S.backTo; S.screen=S.backTo; S.backTo=null; } else S.screen="welcome"; }
+      if(S.flow==="edit"){ S.flow=null; S.tab="likes"; S.screen="likes"; }
+      else if(S.screen==="interests") S.screen="name";
+      else S.screen="welcome";
       render(); break;
     case "tab": goTab(arg); break;
     case "filter": S.filter=arg; S.showTopics=false; render(true); break;
     case "topics": S.showTopics=!S.showTopics; render(true); break;
     case "toastClose": clearTimeout(toastTimer); $("toast").classList.remove("show"); break;
-    case "countryNext": S.screen="interests"; render(); break;
     case "exitShorts": goTab(S.ret&&S.ret!=="shorts"?S.ret:"home"); break;
     case "play": openPlayer(arg); break;
     case "resume": if(S.last) openPlayer(S.last.id,S.last.t); break;
