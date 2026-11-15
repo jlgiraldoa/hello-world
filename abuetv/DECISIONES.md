@@ -1,6 +1,6 @@
 # AbueTV · Decisiones de producto y diseño
 
-Registro de lo que ya decidimos juntos. Prototipo actual: `abuetv/index.html` (v0.7).
+Registro de lo que ya decidimos juntos. Prototipo actual: `abuetv/index.html` (v0.8).
 
 ## Producto
 - **Qué es:** videos, shorts y juegos tranquilos para adultos mayores (75+).
@@ -30,12 +30,13 @@ Registro de lo que ya decidimos juntos. Prototipo actual: `abuetv/index.html` (v
 - **El país no avanza solo:** se marca y luego se toca "Continuar".
 
 ## Diseño
+- **Nombre:** AbueTV. **Lema:** "Videos y juegos, con calma."
+- **Logo:** "Tele de antes": televisor con antenas y un corazón en la pantalla, en verde azulado y arena (dibujado en `identidad.html`). Se usa en el ícono, la bienvenida, la barra superior y como "canal" en cada video.
 - **Paleta "Sereno"** (fija): verde azulado `#0F766E` para la acción principal, arena para avisos suaves y rojo `#B42318` solo para salir o volver.
 - **Estilo:** inspirado en YouTube (miniaturas grandes, lista "Siguiente para usted", Shorts verticales), con solo las funciones esenciales.
 - Íconos de línea siempre acompañados de texto; textos en minúscula normal.
 
 ## Pendiente de decidir
-- Nombre y logo definitivos.
 - Cómo entra la persona a su cuenta en otro teléfono: código por SMS o con ayuda de un familiar.
 - Cómo se distinguen los creadores invitados del contenido hecho con IA.
 - Duración máxima de los shorts y qué pasa al llegar al último ("Por hoy es todo").
