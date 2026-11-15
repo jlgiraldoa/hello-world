@@ -41,10 +41,11 @@ Registro de lo que ya decidimos juntos. Prototipo actual: `abuetv/index.html` (v
 - **Personas en las imágenes:** adultos de 25 a 50 años; no se representan personas mayores. Prompts en `PROMPTS-IMAGENES.md`.
 
 ## Descartado
+- **Principio: no se manipulan celulares remotamente.** Nadie controla ni configura el teléfono de la persona desde otro aparato.
 - **Manejo remoto por familiares:** nadie administra la app desde otro teléfono (ni modo cuidador ni elegir contenido a distancia). La persona usa AbueTV por su cuenta.
 
 ## Pendiente de decidir
-- Cómo entra la persona a su cuenta en otro teléfono: queda el código por SMS (la ayuda de un familiar se descartó).
+- Cómo entra la persona a su cuenta en otro teléfono. Propuesta: código por SMS que llega al mismo teléfono y se llena solo; no implica control remoto. Por confirmar.
 - Cómo se distinguen los creadores invitados del contenido hecho con IA.
 - Duración máxima de los shorts y qué pasa al llegar al último ("Por hoy es todo").
 - Registro suave de juego, por ejemplo "Esta semana jugó 5 veces", sin puntajes.
