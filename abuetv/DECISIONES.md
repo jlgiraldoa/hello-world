@@ -37,8 +37,8 @@ Registro de lo que ya decidimos juntos. Prototipo actual: `abuetv/index.html` (v
 - Íconos de línea siempre acompañados de texto; textos en minúscula normal.
 
 ## Imágenes de temas
-- **Estilo:** ilustración cálida tipo gouache (confirmado).
-- **Personas en las imágenes:** adultos de 25 a 50 años; no se representan personas mayores. Prompts en `PROMPTS-IMAGENES.md`.
+- **Primera versión:** se queda con las imágenes actuales del prototipo (emoji sobre fondos de color de cada tema). **Se cancelan las imágenes hechas con IA.**
+- Los prompts quedan guardados en `PROMPTS-IMAGENES.md` por si se retoman más adelante.
 
 ## Descartado
 - **Principio: no se manipulan celulares remotamente.** Nadie controla ni configura el teléfono de la persona desde otro aparato.
